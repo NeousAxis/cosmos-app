@@ -332,11 +332,26 @@ function App() {
                 <summary style={{ padding: '16px', cursor: 'pointer', fontWeight: 500, fontSize: '15px', color: 'var(--text-main)', userSelect: 'none' }}>
                   Comprendre le Calendrier Solaire
                 </summary>
-                <div style={{ padding: '0 16px 16px 16px', fontSize: '14px', lineHeight: '1.6', color: 'var(--text-muted)', whiteSpace: 'pre-line' }}>
-                  La perception moderne des cycles célestes souffre d'un contresens symbolique majeur. Alors que notre civilisation repose sur un calendrier solaire calé sur le rythme des saisons, nous continuons souvent de nommer les événements lunaires selon la position de la Lune, alors que celle-ci n'est qu'un miroir passif.
-                  Chaque mois, c’est l’énergie de la constellation qui s’infuse au travers du Soleil et rayonne sur l’ensemble du système solaire qui définit la nature de la période que nous traversons sur Terre. Lorsque la Pleine Lune survient, elle ne crée pas sa propre influence ; elle ne fait que refléter et rendre visible la puissance de ce flux solaire spécifique qui l’éclaire de plein fouet. Se focaliser uniquement sur le signe où se projette la Lune revient à regarder le reflet dans un miroir plutôt que la source de la lumière elle-même.
-                  Ce passage d'une compréhension basée sur les cycles lunaires vers la maîtrise du calendrier solaire a marqué un tournant historique fondamental, symbolisant l'éveil de la conscience moderne. Cette primauté de la lumière et de la raison a inspiré le Siècle des Lumières, favorisant l'essor de la pensée scientifique, des progrès de la médecine et des technologies contemporaines.
-                  En somme, il est nécessaire de distinguer l'émetteur de son reflet. Les gens désignent la Pleine Lune par le signe où elle se trouve par convention astronomique de position, mais les effets vécus appartiennent bien au mois solaire en cours. Nous confondons le contenu (l'énergie solaire du moment) avec le contenant (le signe où la Lune se projette).
+                <div style={{ padding: '0 16px 16px 16px', fontSize: '14px', lineHeight: '1.7', color: 'var(--text-muted)' }}>
+                  <p style={{ marginBottom: '16px' }}>
+                    La perception moderne des cycles célestes souffre d'un contresens symbolique majeur. Alors que notre civilisation repose sur un calendrier solaire calé sur le rythme des saisons, nous continuons souvent de nommer les événements lunaires selon la position de la Lune, alors que celle-ci n'est qu'un miroir passif.
+                  </p>
+
+                  <p style={{ marginBottom: '16px' }}>
+                    Chaque mois, c'est l'énergie de la constellation qui s'infuse au travers du Soleil et rayonne sur l'ensemble du système solaire qui définit la nature de la période que nous traversons sur Terre. Lorsque la Pleine Lune survient, elle ne crée pas sa propre influence ; elle ne fait que refléter et rendre visible la puissance de ce flux solaire spécifique qui l'éclaire de plein fouet.
+                  </p>
+
+                  <p style={{ marginBottom: '16px' }}>
+                    Se focaliser uniquement sur le signe où se projette la Lune revient à regarder le reflet dans un miroir plutôt que la source de la lumière elle-même. Ce passage d'une compréhension basée sur les cycles lunaires vers la maîtrise du calendrier solaire a marqué un tournant historique fondamental, symbolisant l'éveil de la conscience moderne.
+                  </p>
+
+                  <p style={{ marginBottom: '16px' }}>
+                    Cette primauté de la lumière et de la raison a inspiré le Siècle des Lumières, favorisant l'essor de la pensée scientifique, des progrès de la médecine et des technologies contemporaines.
+                  </p>
+
+                  <p style={{ marginBottom: 0 }}>
+                    En somme, il est nécessaire de distinguer l'émetteur de son reflet. Les gens désignent la Pleine Lune par le signe où elle se trouve par convention astronomique de position, mais les effets vécus appartiennent bien au mois solaire en cours. Nous confondons le contenu (l'énergie solaire du moment) avec le contenant (le signe où la Lune se projette).
+                  </p>
                 </div>
               </details>
             </div>
