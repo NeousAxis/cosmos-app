@@ -348,7 +348,14 @@ function App() {
                 <div key={festival.id} className="vulgarisation-block" style={{ marginBottom: '24px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', borderBottom: '1px solid #eee', paddingBottom: '8px' }}>
                     <Sparkles size={18} color="var(--accent)" />
-                    <span className="phase-name" style={{ fontSize: '16px', color: 'var(--text-main)' }}>{festival.name}</span>
+                    <div style={{ flex: 1 }}>
+                      <span className="phase-name" style={{ fontSize: '16px', color: 'var(--text-main)' }}>{festival.name}</span>
+                      {festival.date2026 && (
+                        <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>
+                          📅 {festival.date2026}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <div className="teaching-section">

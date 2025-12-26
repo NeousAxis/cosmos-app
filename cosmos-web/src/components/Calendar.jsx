@@ -6,22 +6,56 @@ const Calendar = () => {
     const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
     const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
+
     // Specific moon phases for Dec 2025 as requested
     // Dec 5: Full Moon of Capricorn
     // Dec 19: New Moon of Aquarius
-    const getPhaseInfo = (day) => {
-        if (day === 5) return { type: 'full', label: 'Pleine Lune du Capricorne' };
-        if (day === 19) return { type: 'new', label: 'Nouvelle Lune du Verseau' };
+    // Dec 26: First Quarter (approximately)
 
-        // Approximation logic for other days
-        if (day < 5) return { type: 'waxing', label: 'Gibbeuse Croissante' };
-        if (day > 5 && day < 12) return { type: 'waning', label: 'Gibbeuse Décroissante' };
-        if (day === 12) return { type: 'quarter', label: 'Dernier Quartier' };
-        if (day > 12 && day < 19) return { type: 'waning', label: 'Dernier Croissant' };
-        if (day > 19 && day < 26) return { type: 'waxing', label: 'Premier Croissant' };
-        if (day === 26) return { type: 'quarter', label: 'Premier Quartier' };
-        return { type: 'waxing', label: 'Gibbeuse Croissante' };
+    const getPhaseInfo = (day) => {
+        // Calculate moon phase percentage (0 = new, 0.5 = full, 1 = new again)
+        // Cycle: Dec 19 (new) -> Dec 26 (quarter) -> Jan 4 (full) -> Jan 11 (quarter) -> Jan 19 (new)
+
+        let phase, label, percentage;
+
+        if (day === 5) {
+            return { type: 'full', label: 'Pleine Lune du Capricorne', percentage: 100 };
+        } else if (day === 19) {
+            return { type: 'new', label: 'Nouvelle Lune du Verseau', percentage: 0 };
+        } else if (day === 12) {
+            return { type: 'quarter-waning', label: 'Dernier Quartier', percentage: 50 };
+        } else if (day === 26) {
+            return { type: 'quarter-waxing', label: 'Premier Quartier', percentage: 50 };
+        }
+
+        // Progressive phases
+        if (day < 5) {
+            // Waxing from previous new moon (assume Dec -10) to full (Dec 5)
+            percentage = 50 + (day / 5) * 50; // 50-100%
+            if (day <= 2) {
+                return { type: 'waxing-crescent', label: 'Premier Croissant', percentage };
+            } else {
+                return { type: 'waxing-gibbous', label: 'Gibbeuse Croissante', percentage };
+            }
+        } else if (day > 5 && day < 12) {
+            // Waning from full (5) to last quarter (12)
+            percentage = 100 - ((day - 5) / 7) * 50; // 100-50%
+            return { type: 'waning-gibbous', label: 'Gibbeuse Décroissante', percentage };
+        } else if (day > 12 && day < 19) {
+            // Waning from last quarter (12) to new (19)
+            percentage = 50 - ((day - 12) / 7) * 50; // 50-0%
+            return { type: 'waning-crescent', label: 'Dernier Croissant', percentage };
+        } else if (day > 19 && day < 26) {
+            // Waxing from new (19) to first quarter (26)
+            percentage = ((day - 19) / 7) * 50; // 0-50%
+            return { type: 'waxing-crescent', label: 'Premier Croissant', percentage };
+        } else {
+            // After first quarter
+            percentage = 50 + ((day - 26) / 9) * 50; // 50-100%
+            return { type: 'waxing-gibbous', label: 'Gibbeuse Croissante', percentage };
+        }
     };
+
 
     return (
         <div className="calendar-container" style={{ width: '100%', maxWidth: '340px', margin: '0 auto' }}>
@@ -71,6 +105,7 @@ const Calendar = () => {
                                     type={phase.type}
                                     size={14}
                                     color={isToday ? '#fff' : 'var(--text-main)'}
+                                    percentage={phase.percentage || 50}
                                 />
                             </div>
                         </div>
