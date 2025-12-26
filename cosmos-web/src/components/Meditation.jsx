@@ -11,11 +11,12 @@ const Meditation = ({ sign, phase, onClose }) => {
 
     const step = MEDITATION_STEPS[currentStep];
 
-    // Trigger Gong automatically when step changes (or on mount)
+    // Play Gong logic when timer is active
     useEffect(() => {
-        // Just 1 gong per phase change as requested
-        playGong(1);
-    }, [currentStep]);
+        if (isActive) {
+            playGong(1);
+        }
+    }, [isActive]);
 
     useEffect(() => {
         let interval = null;
@@ -39,6 +40,7 @@ const Meditation = ({ sign, phase, onClose }) => {
             const nextStep = currentStep + 1;
             setCurrentStep(nextStep);
             setTimeLeft(MEDITATION_STEPS[nextStep].duration);
+            setIsActive(false); // Pause on next step to require meaningful user action to start, or could keep playing if desired
         } else {
             onClose(); // Finish
         }
@@ -65,7 +67,7 @@ const Meditation = ({ sign, phase, onClose }) => {
             <div className="meditation-header">
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                     <span style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--text-muted)' }}>
-                        Méditation : Alignement · Contact · Distribution · Intégration
+                        Méditation
                     </span>
                     <span style={{ fontSize: '11px', color: 'var(--text-main)', marginTop: '4px', fontWeight: 500 }}>
                         Durée Totale : {getTotalDuration()} minutes
@@ -115,7 +117,7 @@ const Meditation = ({ sign, phase, onClose }) => {
                                 onClick={() => setIsActive(!isActive)}
                                 style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-main)' }}
                             >
-                                {isActive ? <Pause size={48} /> : <Play size={48} onClick={() => setIsActive(true)} />}
+                                {isActive ? <Pause size={48} /> : <Play size={48} />}
                             </button>
 
                             <button
