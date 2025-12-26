@@ -4,12 +4,14 @@ const MoonIcon = ({ type, size = 16, color = 'currentColor', percentage = 50 }) 
     // Accurate Moon Phase SVGs with proper illumination based on percentage
 
     // Helper function to calculate the ellipse rx based on percentage
+    // The key is: smaller rx = more illuminated, larger rx = less illuminated
     const getEllipseRx = (pct) => {
-        // 0% = 0 (new), 50% = 10 (quarter), 100% = 0 (full, but inverted)
+        // For waxing: 0% (new) -> rx=10, 50% (quarter) -> rx=0, 100% (full) -> rx=-10 (flip)
+        // For waning: reverse
         if (pct <= 50) {
-            return 10 - (pct / 50) * 10; // 10 to 0
+            return 10 - (pct / 50) * 10; // 10 to 0 (new to quarter)
         } else {
-            return ((pct - 50) / 50) * 10; // 0 to 10
+            return -((pct - 50) / 50) * 10; // 0 to -10 (quarter to full)
         }
     };
 
@@ -32,37 +34,45 @@ const MoonIcon = ({ type, size = 16, color = 'currentColor', percentage = 50 }) 
 
         case 'waxing-crescent':
         case 'waxing-gibbous':
-            // Waxing phases - right side illuminated
-            const waxRx = getEllipseRx(percentage);
+            // Waxing phases - right side illuminated, growing from right
+            const waxRx = Math.abs(getEllipseRx(percentage));
+            const waxFill = percentage > 50;
+
             return (
                 <svg width={size} height={size} viewBox="0 0 24 24">
-                    <defs>
-                        <mask id={`wax-mask-${size}-${Math.round(percentage)}`}>
-                            <circle cx="12" cy="12" r="10" fill="white" />
-                            <ellipse cx="12" cy="12" rx={waxRx} ry="10" fill="black" />
-                        </mask>
-                    </defs>
-                    <circle cx="12" cy="12" r="10" fill={color} mask={`url(#wax-mask-${size}-${Math.round(percentage)})`} />
                     <circle cx="12" cy="12" r="10" fill="none" stroke={color} strokeWidth="0.5" opacity="0.2" />
+                    {waxFill ? (
+                        // Gibbous - mostly lit, dark shadow on left
+                        <>
+                            <circle cx="12" cy="12" r="10" fill={color} />
+                            <ellipse cx="12" cy="12" rx={waxRx} ry="10" fill="white" transform="scale(-1, 1) translate(-24, 0)" />
+                        </>
+                    ) : (
+                        // Crescent - mostly dark, lit crescent on right
+                        <ellipse cx="12" cy="12" rx={waxRx} ry="10" fill={color} transform="translate(12, 0)" />
+                    )}
                 </svg>
             );
 
         case 'waning-crescent':
         case 'waning-gibbous':
-            // Waning phases - left side illuminated
-            const wanRx = getEllipseRx(percentage);
+            // Waning phases - left side illuminated, shrinking from left
+            const wanRx = Math.abs(getEllipseRx(percentage));
+            const wanFill = percentage > 50;
+
             return (
                 <svg width={size} height={size} viewBox="0 0 24 24">
-                    <defs>
-                        <mask id={`wan-mask-${size}-${Math.round(percentage)}`}>
-                            <circle cx="12" cy="12" r="10" fill="white" />
-                            <ellipse cx="12" cy="12" rx={wanRx} ry="10" fill="black" />
-                        </mask>
-                    </defs>
-                    <g transform="scale(-1, 1) translate(-24, 0)">
-                        <circle cx="12" cy="12" r="10" fill={color} mask={`url(#wan-mask-${size}-${Math.round(percentage)})`} />
-                    </g>
                     <circle cx="12" cy="12" r="10" fill="none" stroke={color} strokeWidth="0.5" opacity="0.2" />
+                    {wanFill ? (
+                        // Gibbous - mostly lit, dark shadow on right
+                        <>
+                            <circle cx="12" cy="12" r="10" fill={color} />
+                            <ellipse cx="12" cy="12" rx={wanRx} ry="10" fill="white" transform="translate(12, 0)" />
+                        </>
+                    ) : (
+                        // Crescent - mostly dark, lit crescent on left
+                        <ellipse cx="12" cy="12" rx={wanRx} ry="10" fill={color} transform="scale(-1, 1) translate(-24, 0)" />
+                    )}
                 </svg>
             );
 
