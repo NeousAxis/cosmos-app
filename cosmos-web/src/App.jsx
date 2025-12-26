@@ -176,6 +176,12 @@ function App() {
                   </div>
 
                   <div className="action-highlight">
+                    <div style={{ marginBottom: '12px', padding: '12px', background: 'rgba(var(--accent-rgb), 0.08)', borderRadius: '8px', borderLeft: '3px solid var(--accent)' }}>
+                      <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--accent)', display: 'block', marginBottom: '6px' }}>Phrase clé de cette phase :</span>
+                      <p style={{ fontSize: '14px', fontStyle: 'italic', margin: 0, color: 'var(--text-main)' }}>
+                        « {phaseContent.note_cle} »
+                      </p>
+                    </div>
                     <span className="teaching-label">Ce que cette phrase invite à ajuster concrètement</span>
                     <p className="teaching-text">
                       {phaseContent.action}
