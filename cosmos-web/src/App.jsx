@@ -131,7 +131,7 @@ function App() {
                       transition: 'all 0.2s ease'
                     }}
                   >
-                    Lecture Individuelle
+                    Lecture Individuel
                   </button>
                   <button
                     onClick={() => setEnergyMode('global')}
@@ -147,7 +147,7 @@ function App() {
                       transition: 'all 0.2s ease'
                     }}
                   >
-                    Lecture Globale
+                    Lecture Global
                   </button>
                 </div>
               </div>
