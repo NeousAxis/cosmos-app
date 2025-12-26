@@ -1,0 +1,244 @@
+/* Clean, Sober, Editorial Design */
+:root {
+  --bg-main: #f4f4f0;
+  /* Warm Paper */
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --accent: #2c3e50;
+  /* Desaturated Blue-Grey */
+
+  /* Or Dark Mode Option if preferred, but "Sober" often implies high legibility */
+  /* Let's go with a very clean "Book" style */
+
+  --font-serif: 'Outfit', sans-serif;
+  /* Keeping Outfit for modern clean look, actually Outfit is sans. */
+  --font-display: 'Playfair Display', serif;
+  /* Need a serif for "Sober/Elegant" */
+
+  --spacing-unit: 24px;
+  --max-width: 650px;
+}
+
+/* Retrieve Playfair Display if possible, otherwise rely on system serif */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+.app-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: var(--spacing-unit);
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 40px 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.current-date {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+}
+
+/* Sections */
+.section-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.sign-card {
+  margin-bottom: 60px;
+}
+
+.sign-title {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: var(--text-main);
+}
+
+.key-note {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.vulgarisation-block {
+  background: #ffffff;
+  padding: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  margin-bottom: 40px;
+}
+
+.phase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.phase-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--text-main);
+}
+
+.teaching-section {
+  margin-bottom: 24px;
+}
+
+.teaching-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.teaching-text {
+  font-size: 16px;
+  color: var(--text-main);
+  margin-bottom: 0;
+}
+
+.action-highlight {
+  background-color: #f0f4f8;
+  padding: 20px;
+  border-left: 4px solid var(--accent);
+  margin-top: 32px;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  width: auto;
+  background-color: transparent;
+  color: var(--text-main);
+  border: none;
+  border-bottom: 1px solid var(--text-main);
+  padding: 4px 8px;
+  /* Slight breathing room */
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-style: italic;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 40px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--text-muted);
+  border-bottom-color: var(--text-muted);
+  transform: translateY(-2px);
+}
+
+/* Ensure the section holding the button centers it */
+main section:last-child {
+  text-align: center;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: var(--text-main);
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Meditation Overlay */
+.meditation-overlay {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.meditation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.meditation-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.meditation-step-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.meditation-instruction {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  line-height: 1.4;
+  color: var(--text-main);
+  margin-bottom: 40px;
+}
+
+.meditation-timer {
+  font-family: monospace;
+  font-size: 48px;
+  color: var(--text-muted);
+}
