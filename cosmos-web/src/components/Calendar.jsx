@@ -127,13 +127,13 @@ const Calendar = () => {
                 <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '12px', textAlign: 'center' }}>Cycles du Mois</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '11px' }}>
-                        <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: 'var(--text-main)' }} />
+                        <span style={{ fontSize: '16px' }}>🌕</span>
                         <div style={{ flex: 1 }}>
                             <strong>5 Déc. :</strong> Pleine Lune du Capricorne
                         </div>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '11px' }}>
-                        <div style={{ width: '10px', height: '10px', borderRadius: '50%', border: '1px solid var(--text-main)' }} />
+                        <span style={{ fontSize: '16px' }}>🌑</span>
                         <div style={{ flex: 1 }}>
                             <strong>19 Déc. :</strong> Nouvelle Lune du Verseau
                         </div>
