@@ -136,7 +136,7 @@ function App() {
                       transition: 'all 0.2s ease'
                     }}
                   >
-                    Lecture Individuel
+                    Lecture Individuelle
                   </button>
                   <button
                     onClick={() => setEnergyMode('global')}
@@ -152,7 +152,7 @@ function App() {
                       transition: 'all 0.2s ease'
                     }}
                   >
-                    Lecture Mondial
+                    Lecture Mondiale
                   </button>
                 </div>
               </div>
@@ -357,7 +357,29 @@ function App() {
             </div>
 
             <div className="festivals-container">
-              <h3 style={{ fontFamily: 'Playfair Display', fontSize: '20px', marginBottom: '24px', textAlign: 'center' }}>Les 3 Portes Majeures</h3>
+              <h3 style={{ fontFamily: 'Playfair Display', fontSize: '20px', marginBottom: '16px', textAlign: 'center' }}>Les 3 Fêtes Majeures</h3>
+
+              <div style={{ marginBottom: '32px', padding: '16px', background: 'rgba(0,0,0,0.02)', borderRadius: '12px', fontSize: '14px', lineHeight: '1.7', color: 'var(--text-muted)' }}>
+                <p style={{ marginBottom: '12px' }}>
+                  Chaque année, trois rendez-vous marquent une progression vers une solidarité mondiale. En avril, la Fête de Pâques, du renouveau célèbre l'énergie de l'amour universel, nous invitant à privilégier la vie et la reconstruction sur la destruction.
+                </p>
+
+                <p style={{ marginBottom: '12px' }}>
+                  En mai, le WESAK, la fête de la clarté. Elle apporte une impulsion de sagesse, aidant l'intelligence humaine à mieux comprendre les besoins du monde.
+                </p>
+
+                <p style={{ marginBottom: '12px' }}>
+                  Enfin, en juin, la Fête de la Volonté de Bien est l'unité humaine célébrant notre volonté de vivre ensemble dans la fraternité. Ces moments ne sont pas des dogmes, mais des occasions de synchroniser nos intentions pour instaurer des relations humaines justes.
+                </p>
+
+                <p style={{ marginBottom: '12px' }}>
+                  Ce cycle permet à chacun d'apprendre à aimer, à comprendre, puis à agir concrètement pour le bien de tous.
+                </p>
+
+                <p style={{ marginBottom: 0, fontStyle: 'italic', color: 'var(--accent)' }}>
+                  Pour mieux comprendre ces fêtes, imaginez une grande respiration collective : en avril nous inspirons de la bienveillance, en mai nous y ajoutons de la réflexion, et en juin nous expirons cette force pour construire un monde plus uni.
+                </p>
+              </div>
 
               {FESTIVALS.map(festival => (
                 <div key={festival.id} className="vulgarisation-block" style={{ marginBottom: '24px' }}>
