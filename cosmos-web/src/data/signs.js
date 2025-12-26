@@ -390,7 +390,7 @@ L’âme parle ; La Bataille continue mais la lutte est terminée. Réjouis-toi 
         lecture_reel: "Je ressens en cette période un appel à la verticalité. Je traverse un moment où le besoin de structure et de silence s'impose, non comme une contrainte, mais comme une nécessité pour tenir debout. Je sens une densité qui me demande de ralentir pour ne pas trébucher.",
         lecture_energetique: "Les vieilles structures hiérarchiques mondiales montrent leurs limites. On observe une tension entre le besoin de règles strictes (sécurité) et l'émergence d'une autorité plus horizontale et intuitive. C'est le moment de repenser nos systèmes de gouvernance.",
         epreuve: "Je confonds souvent ma rigueur avec de la rigidité, ou mon besoin de solitude avec de la froideur. Je lutte contre la peur du vide en remplissant mon agenda.",
-        action: "Je décide aujourd'hui d'accepter le silence sans chercher à le combler. Je pose un acte ferme mais juste, qui définit ma limite sans fermer mon cœur."
+        action: "Je décide aujourd'hui d'accepter le silence sans chercher à le combler. Je pose un acte ferme mais bienveillant, qui définit ma limite sans fermer mon cœur."
       },
       contact: {
         lecture_reel: "L'ascension intérieure m'amène à un point de contact précis. Je perçois une clarté nouvelle sur mes objectifs, non plus comme des ambitions, mais comme une responsabilité envers moi-même.",
