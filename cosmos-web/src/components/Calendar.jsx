@@ -7,17 +7,14 @@ const Calendar = () => {
     const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
 
-    // Specific moon phases for Dec 2025 as requested
-    // Dec 5: Full Moon of Capricorn
-    // Dec 19: New Moon of Aquarius
-    // Dec 26: First Quarter (approximately)
+    // Moon phase calculation for December 2025
+    // Dec 5: Full Moon (100%)
+    // Dec 12: Last Quarter (50%)
+    // Dec 19: New Moon (0%)
+    // Dec 26: First Quarter (50%)
 
     const getPhaseInfo = (day) => {
-        // Calculate moon phase percentage (0 = new, 0.5 = full, 1 = new again)
-        // Cycle: Dec 19 (new) -> Dec 26 (quarter) -> Jan 4 (full) -> Jan 11 (quarter) -> Jan 19 (new)
-
-        let phase, label, percentage;
-
+        // Key dates
         if (day === 5) {
             return { type: 'full', label: 'Pleine Lune du Capricorne', percentage: 100 };
         } else if (day === 19) {
@@ -28,32 +25,45 @@ const Calendar = () => {
             return { type: 'quarter-waxing', label: 'Premier Quartier', percentage: 50 };
         }
 
-        // Progressive phases
+        // Progressive phases between key dates
+        let percentage, type, label;
+
         if (day < 5) {
-            // Waxing from previous new moon (assume Dec -10) to full (Dec 5)
-            percentage = 50 + (day / 5) * 50; // 50-100%
-            if (day <= 2) {
-                return { type: 'waxing-crescent', label: 'Premier Croissant', percentage };
-            } else {
-                return { type: 'waxing-gibbous', label: 'Gibbeuse Croissante', percentage };
-            }
+            // Before full moon: waxing from ~70% to 100%
+            percentage = 70 + (day / 5) * 30;
+            type = 'waxing-gibbous';
+            label = 'Gibbeuse Croissante';
         } else if (day > 5 && day < 12) {
-            // Waning from full (5) to last quarter (12)
-            percentage = 100 - ((day - 5) / 7) * 50; // 100-50%
-            return { type: 'waning-gibbous', label: 'Gibbeuse Décroissante', percentage };
+            // After full moon, before last quarter: waning from 100% to 50%
+            const daysSinceFull = day - 5;
+            const totalDays = 12 - 5;
+            percentage = 100 - (daysSinceFull / totalDays) * 50;
+            type = 'waning-gibbous';
+            label = 'Gibbeuse Décroissante';
         } else if (day > 12 && day < 19) {
-            // Waning from last quarter (12) to new (19)
-            percentage = 50 - ((day - 12) / 7) * 50; // 50-0%
-            return { type: 'waning-crescent', label: 'Dernier Croissant', percentage };
+            // After last quarter, before new moon: waning from 50% to 0%
+            const daysSinceQuarter = day - 12;
+            const totalDays = 19 - 12;
+            percentage = 50 - (daysSinceQuarter / totalDays) * 50;
+            type = 'waning-crescent';
+            label = 'Dernier Croissant';
         } else if (day > 19 && day < 26) {
-            // Waxing from new (19) to first quarter (26)
-            percentage = ((day - 19) / 7) * 50; // 0-50%
-            return { type: 'waxing-crescent', label: 'Premier Croissant', percentage };
+            // After new moon, before first quarter: waxing from 0% to 50%
+            const daysSinceNew = day - 19;
+            const totalDays = 26 - 19;
+            percentage = (daysSinceNew / totalDays) * 50;
+            type = 'waxing-crescent';
+            label = 'Premier Croissant';
         } else {
-            // After first quarter
-            percentage = 50 + ((day - 26) / 9) * 50; // 50-100%
-            return { type: 'waxing-gibbous', label: 'Gibbeuse Croissante', percentage };
+            // After first quarter (26-31): waxing from 50% to ~80%
+            const daysSinceQuarter = day - 26;
+            const totalDays = 31 - 26;
+            percentage = 50 + (daysSinceQuarter / totalDays) * 30;
+            type = 'waxing-gibbous';
+            label = 'Gibbeuse Croissante';
         }
+
+        return { type, label, percentage };
     };
 
 
