@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
+import MoonIcon from './MoonIcon';
 
 const Calendar = () => {
     const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -65,16 +66,12 @@ const Calendar = () => {
                         >
                             <span style={{ fontSize: '12px', fontWeight: isToday ? 600 : 400 }}>{d}</span>
 
-                            <div style={{ height: '14px', display: 'flex', alignItems: 'center' }}>
-                                {phase.type === 'full' ? (
-                                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: isToday ? '#fff' : 'var(--text-main)' }} />
-                                ) : phase.type === 'new' ? (
-                                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', border: `1px solid ${isToday ? '#fff' : 'var(--text-main)'}` }} />
-                                ) : (
-                                    <div style={{ fontSize: '8px', color: isToday ? 'rgba(255,255,255,0.8)' : 'var(--text-muted)', textAlign: 'center', lineHeight: '1' }}>
-                                        {phase.type === 'waxing' ? '●' : '○'}
-                                    </div>
-                                )}
+                            <div style={{ height: '16px', display: 'flex', alignItems: 'center' }}>
+                                <MoonIcon
+                                    type={phase.type}
+                                    size={14}
+                                    color={isToday ? '#fff' : 'var(--text-main)'}
+                                />
                             </div>
                         </div>
                     );
