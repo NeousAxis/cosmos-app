@@ -6,6 +6,7 @@ import { SPLENDEUR_TEXT } from './data/splendeur';
 import { getMeditationSign, getCurrentPhase } from './utils';
 import Meditation from './components/Meditation';
 import Constellation from './components/Constellation';
+import CosmosLogo from './components/CosmosLogo';
 import Calendar from './components/Calendar';
 import MoonPhase from './components/MoonPhase';
 import { Sparkles, BookOpen, Calendar as CalendarIcon, Feather, Quote, Bell } from 'lucide-react';
@@ -15,7 +16,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 function App() {
   const [sign, setSign] = useState(null);
   const [phase, setPhase] = useState(null);
-  const [activeTab, setActiveTab] = useState('energie'); // 'energie', 'cosmosophie', 'enseignement', 'calendrier', 'symbolique'
+  const [activeTab, setActiveTab] = useState('energie'); // 'energie', 'cosmosophie', 'inspiration', 'calendrier', 'symbolique'
   const [isMeditationOpen, setIsMeditationOpen] = useState(false);
   const [phaseContent, setPhaseContent] = useState(null);
   const [energyMode, setEnergyMode] = useState('individuel'); // 'individuel' | 'global'
@@ -77,7 +78,10 @@ function App() {
   return (
     <div className="app-container" style={{ paddingBottom: '90px' }}>
       <header>
-        <h1>COSMOS</h1>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '8px' }}>
+          <CosmosLogo size={36} />
+          <h1 style={{ margin: 0 }}>COSMOS</h1>
+        </div>
         <div className="current-date">
           {new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}
         </div>
@@ -203,66 +207,71 @@ function App() {
           </motion.div>
         )}
 
-        {activeTab === 'enseignement' && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-            <div style={{ padding: '20px' }}>
-              <div style={{
-                background: 'rgba(var(--accent-rgb), 0.05)',
-                padding: '16px',
-                borderRadius: '12px',
-                marginBottom: '24px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                border: '1px solid var(--accent)'
-              }}>
-                <Bell size={20} color="var(--accent)" />
-                <span style={{ fontSize: '13px', color: 'var(--text-main)', fontWeight: 500 }}>
-                  Notifications activées : Vous recevrez la citation du jour chaque matin.
-                </span>
-              </div>
+        {activeTab === 'inspiration' && (() => {
+          // Get today's quote (rotate through quotes based on day of year)
+          const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+          const todayQuote = CAPRICORN_QUOTES[dayOfYear % CAPRICORN_QUOTES.length];
 
-              <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', marginBottom: '32px', textAlign: 'center' }}>L'Enseignement Quotidien</h3>
+          return (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+              <div style={{ padding: '20px' }}>
+                <div style={{
+                  background: 'rgba(var(--accent-rgb), 0.05)',
+                  padding: '16px',
+                  borderRadius: '12px',
+                  marginBottom: '32px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  border: '1px solid var(--accent)'
+                }}>
+                  <Bell size={20} color="var(--accent)" />
+                  <span style={{ fontSize: '13px', color: 'var(--text-main)', fontWeight: 500 }}>
+                    Citation envoyée chaque matin à 7h00
+                  </span>
+                </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                {CAPRICORN_QUOTES.map((q, i) => (
-                  <motion.div
-                    key={q.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    style={{
-                      background: '#fff',
-                      padding: '32px 24px',
-                      borderRadius: '16px',
-                      boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
-                      position: 'relative',
-                      border: '1px solid rgba(0,0,0,0.02)'
-                    }}
-                  >
-                    <Quote size={40} style={{ position: 'absolute', top: '10px', left: '10px', opacity: 0.05 }} />
-                    <p style={{
-                      fontFamily: 'Playfair Display',
-                      fontSize: '20px',
-                      lineHeight: '1.6',
-                      fontStyle: 'italic',
-                      marginBottom: '20px',
-                      color: 'var(--text-main)'
-                    }}>
-                      "{q.text}"
-                    </p>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontWeight: 600, fontSize: '14px', color: 'var(--accent)' }}>— {q.author}</span>
-                      <span style={{ fontSize: '12px', color: 'var(--text-muted)', background: 'rgba(0,0,0,0.05)', padding: '4px 8px', borderRadius: '4px' }}>
-                        {q.energy}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
+                <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', marginBottom: '40px', textAlign: 'center' }}>L'Inspiration Quotidienne</h3>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  style={{
+                    background: '#fff',
+                    padding: '48px 32px',
+                    borderRadius: '20px',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.06)',
+                    position: 'relative',
+                    border: '1px solid rgba(0,0,0,0.03)',
+                    maxWidth: '600px',
+                    margin: '0 auto'
+                  }}
+                >
+                  <Quote size={60} style={{ position: 'absolute', top: '20px', left: '20px', opacity: 0.04 }} />
+                  <p style={{
+                    fontFamily: 'Playfair Display',
+                    fontSize: '24px',
+                    lineHeight: '1.7',
+                    fontStyle: 'italic',
+                    marginBottom: '32px',
+                    color: 'var(--text-main)',
+                    textAlign: 'center'
+                  }}>
+                    "{todayQuote.text}"
+                  </p>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '24px', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+                    <span style={{ fontWeight: 600, fontSize: '16px', color: 'var(--accent)' }}>— {todayQuote.author}</span>
+                    <span style={{ fontSize: '13px', color: 'var(--text-muted)', background: 'rgba(0,0,0,0.05)', padding: '6px 12px', borderRadius: '6px', fontWeight: 500 }}>
+                      {todayQuote.energy}
+                    </span>
+                  </div>
+                </motion.div>
               </div>
-            </div>
-          </motion.div>
-        )}
+            </motion.div>
+          );
+        })()}
+
 
         {activeTab === 'calendrier' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
@@ -369,7 +378,7 @@ function App() {
       }}>
         <TabButton id="energie" icon={<Sparkles size={20} />} label="Énergie" />
         <TabButton id="cosmosophie" icon={<BookOpen size={20} />} label="Cosmosophie" />
-        <TabButton id="enseignement" icon={<Quote size={20} />} label="Enseignement" />
+        <TabButton id="inspiration" icon={<Quote size={20} />} label="Inspiration" />
         <TabButton id="calendrier" icon={<CalendarIcon size={20} />} label="Calendrier" />
         <TabButton id="symbolique" icon={<Feather size={20} />} label="Symbolique" />
       </nav>
