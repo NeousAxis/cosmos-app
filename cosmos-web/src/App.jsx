@@ -147,7 +147,7 @@ function App() {
                       transition: 'all 0.2s ease'
                     }}
                   >
-                    Lecture Global
+                    Lecture Mondial
                   </button>
                 </div>
               </div>
@@ -161,19 +161,23 @@ function App() {
                 </p>
               </div>
 
-              <div className="teaching-section">
-                <span className="teaching-label">Ce qui est souvent confondu ou résisté</span>
-                <p className="teaching-text">
-                  {phaseContent.epreuve}
-                </p>
-              </div>
+              {energyMode === 'individuel' && (
+                <>
+                  <div className="teaching-section">
+                    <span className="teaching-label">Ce qui est souvent confondu ou résisté</span>
+                    <p className="teaching-text">
+                      {phaseContent.epreuve}
+                    </p>
+                  </div>
 
-              <div className="action-highlight">
-                <span className="teaching-label">Ce que cette phrase invite à ajuster concrètement</span>
-                <p className="teaching-text">
-                  {phaseContent.action}
-                </p>
-              </div>
+                  <div className="action-highlight">
+                    <span className="teaching-label">Ce que cette phrase invite à ajuster concrètement</span>
+                    <p className="teaching-text">
+                      {phaseContent.action}
+                    </p>
+                  </div>
+                </>
+              )}
             </section>
 
             <section style={{ textAlign: 'center' }}>
