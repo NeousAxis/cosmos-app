@@ -1,49 +1,40 @@
 import React from 'react';
 
 const CosmosLogo = ({ size = 40 }) => {
-    // Sacred geometry symbol: Circle with cross, diagonals, and inner square
-    // 12 points total: 8 cardinal + 4 square corners
-    const radius = 45;
+    // Sacred geometry: Cross + Square + Circle
     const center = 50;
-    const squareSize = 32; // Size of inner square
+    const crossLength = 40; // Length from center to edge
 
-    // Calculate 8 points around the circle (N, NE, E, SE, S, SW, W, NW)
-    const circlePoints = [
-        { x: center, y: center - radius, label: 'N' },           // Top
-        { x: center + radius * 0.707, y: center - radius * 0.707, label: 'NE' }, // Top-right
-        { x: center + radius, y: center, label: 'E' },           // Right
-        { x: center + radius * 0.707, y: center + radius * 0.707, label: 'SE' }, // Bottom-right
-        { x: center, y: center + radius, label: 'S' },           // Bottom
-        { x: center - radius * 0.707, y: center + radius * 0.707, label: 'SW' }, // Bottom-left
-        { x: center - radius, y: center, label: 'W' },           // Left
-        { x: center - radius * 0.707, y: center - radius * 0.707, label: 'NW' }, // Top-left
-    ];
-
-    // 4 corners of inner square
-    const squarePoints = [
-        { x: center - squareSize / 2, y: center - squareSize / 2, label: 'TL' }, // Top-left
-        { x: center + squareSize / 2, y: center - squareSize / 2, label: 'TR' }, // Top-right
-        { x: center + squareSize / 2, y: center + squareSize / 2, label: 'BR' }, // Bottom-right
-        { x: center - squareSize / 2, y: center + squareSize / 2, label: 'BL' }, // Bottom-left
+    // 4 points of the cross (N, E, S, W)
+    const crossPoints = [
+        { x: center, y: center - crossLength, label: 'N' },      // Top
+        { x: center + crossLength, y: center, label: 'E' },      // Right
+        { x: center, y: center + crossLength, label: 'S' },      // Bottom
+        { x: center - crossLength, y: center, label: 'W' },      // Left
     ];
 
     const centerPoint = { x: center, y: center, label: 'C' };
-    const allPoints = [...circlePoints, ...squarePoints, centerPoint];
 
-    // Lines: Cross (N-S, E-W) + Diagonals (NE-SW, NW-SE)
-    const lines = [
-        [0, 4], // N to S (vertical)
-        [2, 6], // E to W (horizontal)
-        [1, 5], // NE to SW (diagonal)
-        [3, 7], // SE to NW (diagonal)
+    // Circle radius - touches the 4 sides of the square
+    const circleRadius = crossLength;
+
+    // All points for rendering
+    const allPoints = [...crossPoints, centerPoint];
+
+    // Lines forming the square (connecting the 4 cross endpoints)
+    const squareLines = [
+        [0, 1], // N to E
+        [1, 2], // E to S
+        [2, 3], // S to W
+        [3, 0], // W to N
     ];
 
-    // Square lines
-    const squareLines = [
-        [0, 1],   // Top side
-        [1, 2],  // Right side
-        [2, 3], // Bottom side
-        [3, 0],  // Left side
+    // Cross lines (from center to each endpoint)
+    const crossLines = [
+        [4, 0], // Center to N
+        [4, 1], // Center to E
+        [4, 2], // Center to S
+        [4, 3], // Center to W
     ];
 
     return (
@@ -53,39 +44,39 @@ const CosmosLogo = ({ size = 40 }) => {
             viewBox="0 0 100 100"
             style={{ overflow: 'visible' }}
         >
-            {/* Circle outline */}
+            {/* Circle touching the 4 sides of the square */}
             <circle
                 cx={center}
                 cy={center}
-                r={radius}
+                r={circleRadius}
                 fill="none"
                 stroke="var(--text-main)"
                 strokeWidth="1.5"
                 opacity="0.6"
             />
 
-            {/* Lines - Cross and Diagonals */}
-            {lines.map((line, i) => (
+            {/* Cross lines */}
+            {crossLines.map((line, i) => (
                 <line
-                    key={i}
-                    x1={circlePoints[line[0]].x}
-                    y1={circlePoints[line[0]].y}
-                    x2={circlePoints[line[1]].x}
-                    y2={circlePoints[line[1]].y}
+                    key={`cross-${i}`}
+                    x1={allPoints[line[0]].x}
+                    y1={allPoints[line[0]].y}
+                    x2={allPoints[line[1]].x}
+                    y2={allPoints[line[1]].y}
                     stroke="var(--text-main)"
                     strokeWidth="1.5"
                     opacity="0.5"
                 />
             ))}
 
-            {/* Square Lines */}
+            {/* Square lines (connecting cross endpoints) */}
             {squareLines.map((line, i) => (
                 <line
                     key={`sq-${i}`}
-                    x1={squarePoints[line[0]].x}
-                    y1={squarePoints[line[0]].y}
-                    x2={squarePoints[line[1]].x}
-                    y2={squarePoints[line[1]].y}
+                    x1={crossPoints[line[0]].x}
+                    y1={crossPoints[line[0]].y}
+                    x2={crossPoints[line[1]].x}
+                    y2={crossPoints[line[1]].y}
                     stroke="var(--text-main)"
                     strokeWidth="1.5"
                     opacity="0.5"
@@ -98,7 +89,7 @@ const CosmosLogo = ({ size = 40 }) => {
                     key={i}
                     cx={p.x}
                     cy={p.y}
-                    r={i === 12 ? "2.5" : "2"}
+                    r={i === 4 ? "2.5" : "2"}
                     fill="var(--text-main)"
                 />
             ))}
