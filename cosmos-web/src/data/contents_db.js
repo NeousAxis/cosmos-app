@@ -5,12 +5,27 @@
  * ANNEE -> SIGNE -> PHASE -> { lecture_reel, lecture_energetique, epreuve, action }
  */
 
+const LECTURE_ENERGETIQUE_CAPRICORNE = `Les vieilles structures hiérarchiques mondiales montrent leurs limites, non parce qu’elles manqueraient d’ordre ou de règles, mais parce qu’elles ne sont plus le lieu d’où émerge l’autorité véritable. Le basculement en cours ne consiste pas à réformer l’autorité existante, mais à reconnaître qu’une autorité collective est en train de se constituer, portée par les peuples eux-mêmes.
+
+Depuis plusieurs décennies, des mouvements citoyens horizontaux ont rendu visible cette mutation. Des expériences comme Nuit Debout en France ou Occupy Wall Street n’avaient pas vocation à désigner un nouveau leader, mais à tester une intelligence partagée, une parole distribuée, une capacité collective de discernement. Ces mouvements annoncent une transformation profonde de la notion d’autorité.
+
+Nous entrons dans l’ère du Verseau, une ère où la conscience collective devient le véritable centre de gravité. L’autorité ne peut plus être incarnée par un individu providentiel. Elle émerge désormais de groupes de femmes et d’hommes capables d’écoute, de discernement et de responsabilité partagée. Ce qui fait autorité n’est plus la position, mais la justesse collective.
+
+Dans cette dynamique, le Capricorne ne représente pas le pouvoir vertical, mais la maîtrise. Une maîtrise qui ne s’exerce plus par le contrôle, mais par la capacité à donner forme, à structurer et à stabiliser ce qui émerge du collectif. Le Capricorne reçoit, canalise et rend opérante l’intuition de groupe.
+
+La phrase-clé qui éclaire cette transition est :
+« Passer du contrôle à la maîtrise par une écoute profonde de l’intuition. »
+
+Cette intuition n’est pas individuelle. Elle est l’expression de la conscience collective du Verseau, une lumière diffuse qui circule à travers les groupes humains. L’énergie du Capricorne permet à cette intuition collective de se distribuer dans le réel, de devenir structure, règle juste et cadre vivant.
+
+Silencieusement, une nouvelle forme d’autorité se met en place. Elle ne se proclame pas, elle se reconnaît dans l’action. Elle ne s’impose pas, elle se manifeste lorsque le groupe agit en cohérence avec ce qu’il perçoit ensemble comme juste.`;
+
 export const CONTENTS_DB = {
     "2025": {
         "capricorn": {
             "alignement": {
                 lecture_reel: "Je ressens en cette période un appel à la verticalité. Je traverse un moment où le besoin de structure et de silence s'impose, non comme une contrainte, mais comme une nécessité pour tenir debout. Je sens une densité qui me demande de ralentir pour ne pas trébucher.",
-                lecture_energetique: "Les vieilles structures hiérarchiques mondiales montrent leurs limites. On observe une tension entre le besoin de règles strictes (sécurité) et l'émergence d'une autorité plus horizontale et intuitive. C'est le moment de repenser nos systèmes de gouvernance.",
+                lecture_energetique: LECTURE_ENERGETIQUE_CAPRICORNE,
                 epreuve: "Je confonds souvent ma rigueur avec de la rigidité, ou mon besoin de solitude avec de la froideur. Je lutte contre la peur du vide en remplissant mon agenda.",
                 action: "Je décide aujourd'hui d'accepter le silence sans chercher à le combler. Je pose un acte ferme mais bienveillant, qui définit ma limite sans fermer mon cœur."
             },
@@ -38,7 +53,7 @@ export const CONTENTS_DB = {
         "capricorn": {
             "alignement": {
                 lecture_reel: "Je ressens en cette période un appel à la verticalité. Je traverse un moment où le besoin de structure et de silence s'impose, non comme une contrainte, mais comme une nécessité pour tenir debout. Je sens une densité qui me demande de ralentir pour ne pas trébucher.",
-                lecture_energetique: "Les vieilles structures hiérarchiques mondiales montrent leurs limites. On observe une tension entre le besoin de règles strictes (sécurité) et l'émergence d'une autorité plus horizontale et intuitive. C'est le moment de repenser nos systèmes de gouvernance.",
+                lecture_energetique: LECTURE_ENERGETIQUE_CAPRICORNE,
                 epreuve: "Je confonds souvent ma rigueur avec de la rigidité, ou mon besoin de solitude avec de la froideur. Je lutte contre la peur du vide en remplissant mon agenda.",
                 action: "Je décide aujourd'hui d'accepter le silence sans chercher à le combler. Je pose un acte ferme mais bienveillant, qui définit ma limite sans fermer mon cœur."
             },
