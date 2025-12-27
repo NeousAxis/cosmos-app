@@ -3,7 +3,9 @@ import './index.css';
 import { SIGNS } from './data/signs';
 import { FESTIVALS } from './data/festivals';
 import { COSMOSOPHIE_SECTIONS } from './data/splendeur';
-import { getMeditationSign, getCurrentPhase } from './utils';
+import { getMeditationSign } from './utils';
+import { getPhaseForDate } from './data/calendar';
+import { CONTENTS_DB } from './data/contents_db';
 import Meditation from './components/Meditation';
 import Constellation from './components/Constellation';
 import CosmosLogo from './components/CosmosLogo';
@@ -12,53 +14,69 @@ import MoonPhase from './components/MoonPhase';
 import { Sparkles, BookOpen, Calendar as CalendarIcon, Feather, Quote, Bell } from 'lucide-react';
 import { CAPRICORN_QUOTES } from './data/quotes';
 import { motion, AnimatePresence } from 'framer-motion';
-import { generatePhaseContent } from './services/api';
 
 function App() {
   const [sign, setSign] = useState(null);
   const [phase, setPhase] = useState(null);
-  const [activeTab, setActiveTab] = useState('energie'); // 'energie', 'cosmosophie', 'inspiration', 'calendrier', 'symbolique'
+  const [activeTab, setActiveTab] = useState('energie');
   const [isMeditationOpen, setIsMeditationOpen] = useState(false);
   const [phaseContent, setPhaseContent] = useState({
-    lecture_reel: "Chargement...",
-    lecture_energetique: "Chargement...",
+    lecture_reel: "Contenu à venir...",
+    lecture_energetique: "Contenu à venir...",
     epreuve: "...",
     action: "..."
   });
-  const [energyMode, setEnergyMode] = useState('individuel'); // 'individuel' | 'global'
-  const [isLoadingAI, setIsLoadingAI] = useState(false);
+  const [energyMode, setEnergyMode] = useState('individuel');
 
   useEffect(() => {
-    const loadContent = async () => {
-      const s = getMeditationSign();
-      const p = getCurrentPhase();
-      setSign(s);
-      setPhase(p);
+    // 1. Déterminer la date du jour
+    const now = new Date();
+    const currentYear = now.getFullYear().toString();
 
-      setIsLoadingAI(true);
-      try {
-        const aiContent = await generatePhaseContent(s.name, s.phrase_evolutive, s.note_cle, p.id, p.name);
-        if (aiContent) {
-          setPhaseContent(aiContent);
-        } else {
-          if (s && s.phases_content && s.phases_content[p.id]) {
-            setPhaseContent(s.phases_content[p.id]);
-          } else {
-            setPhaseContent({ lecture_reel: "Contenu à venir...", lecture_energetique: "Contenu à venir...", epreuve: "...", action: "..." });
-          }
-        }
-      } catch (error) {
-        console.error('Erreur IA:', error);
-        if (s && s.phases_content && s.phases_content[p.id]) {
-          setPhaseContent(s.phases_content[p.id]);
-        } else {
-          setPhaseContent({ lecture_reel: "Contenu à venir...", lecture_energetique: "Contenu à venir...", epreuve: "...", action: "..." });
-        }
-      } finally {
-        setIsLoadingAI(false);
+    // 2. Récupérer la phase active depuis le calendrier perpétuel
+    const activePhase = getPhaseForDate(now);
+
+    // 3. Charger les infos du signe
+    let currentSign = null;
+    let currentPhaseData = null;
+
+    if (activePhase) {
+      currentSign = SIGNS.find(s => s.id === activePhase.signId);
+      currentPhaseData = {
+        id: activePhase.phaseId,
+        // On peut ajouter le nom lisible ici si besoin, ou le récupérer de SIGNS/constants
+        name: activePhase.phaseId.charAt(0).toUpperCase() + activePhase.phaseId.slice(1) // Simple capitalisation
+      };
+
+      // 4. Charger le contenu depuis la DB manuelle
+      const dbYear = CONTENTS_DB[currentYear];
+      if (dbYear && dbYear[activePhase.signId] && dbYear[activePhase.signId][activePhase.phaseId]) {
+        setPhaseContent(dbYear[activePhase.signId][activePhase.phaseId]);
+      } else {
+        // Fallback si pas de texte rédigé pour cette année/phase
+        setPhaseContent({
+          lecture_reel: "Le contenu pour cette phase n'est pas encore disponible.",
+          lecture_energetique: "...",
+          epreuve: "...",
+          action: "..."
+        });
       }
-    };
-    loadContent();
+    } else {
+      // Hors phase (transition ?) -> On peut afficher le signe du mois par défaut
+      const defaultSign = getMeditationSign();
+      currentSign = defaultSign;
+      currentPhaseData = { id: 'waiting', name: 'Transition' };
+      setPhaseContent({
+        lecture_reel: "Nous sommes dans une période de transition entre deux cycles.",
+        lecture_energetique: "...",
+        epreuve: "...",
+        action: "..."
+      });
+    }
+
+    setSign(currentSign);
+    setPhase(currentPhaseData);
+
   }, []);
 
   if (!sign || !phase) return <div className="app-container">Chargement...</div>;
