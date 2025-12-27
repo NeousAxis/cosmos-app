@@ -20,22 +20,58 @@ function App() {
   const [isMeditationOpen, setIsMeditationOpen] = useState(false);
   const [phaseContent, setPhaseContent] = useState(null);
   const [energyMode, setEnergyMode] = useState('individuel'); // 'individuel' | 'global'
+  const [isLoadingContent, setIsLoadingContent] = useState(true);
 
   useEffect(() => {
-    const s = getMeditationSign();
-    const p = getCurrentPhase();
-    setSign(s);
-    setPhase(p);
+    const loadContent = async () => {
+      const s = getMeditationSign();
+      const p = getCurrentPhase();
+      setSign(s);
+      setPhase(p);
 
-    if (s && s.phases_content && s.phases_content[p.id]) {
-      setPhaseContent(s.phases_content[p.id]);
-    } else {
-      setPhaseContent({
-        lecture_reel: "Contenu à venir...",
-        epreuve: "...",
-        action: "..."
-      });
-    }
+      setIsLoadingContent(true);
+
+      // Essayer de charger depuis l'API d'abord
+      try {
+        const { generatePhaseContent } = await import('./services/api.js');
+
+        const generatedContent = await generatePhaseContent(
+          s.name,
+          s.phrase_evolutive,
+          s.note_cle,
+          p.id,
+          p.name
+        );
+
+        if (generatedContent) {
+          setPhaseContent(generatedContent);
+        } else {
+          // Fallback sur le contenu statique
+          useFallbackContent(s, p);
+        }
+      } catch (error) {
+        console.error('Erreur lors du chargement du contenu:', error);
+        // Fallback sur le contenu statique
+        useFallbackContent(s, p);
+      } finally {
+        setIsLoadingContent(false);
+      }
+    };
+
+    const useFallbackContent = (s, p) => {
+      if (s && s.phases_content && s.phases_content[p.id]) {
+        setPhaseContent(s.phases_content[p.id]);
+      } else {
+        setPhaseContent({
+          lecture_reel: "Contenu à venir...",
+          lecture_energetique: "Contenu à venir...",
+          epreuve: "...",
+          action: "..."
+        });
+      }
+    };
+
+    loadContent();
   }, []);
 
   if (!sign || !phase) return <div className="app-container">Chargement...</div>;
@@ -161,9 +197,16 @@ function App() {
                 <span className="teaching-label">
                   {energyMode === 'individuel' ? 'Ce qui se joue intérieurement' : 'Lecture Énergétique Mondiale'}
                 </span>
-                <p className="teaching-text">
-                  {energyMode === 'individuel' ? phaseContent.lecture_reel : phaseContent.lecture_energetique || "Contenu global à venir..."}
-                </p>
+                {isLoadingContent ? (
+                  <div style={{ padding: '20px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '14px' }}>
+                    <div style={{ marginBottom: '8px' }}>✨ Génération du contenu en cours...</div>
+                    <div style={{ fontSize: '12px', opacity: 0.7 }}>L'IA traduit les enseignements pour toi</div>
+                  </div>
+                ) : (
+                  <p className="teaching-text">
+                    {energyMode === 'individuel' ? phaseContent.lecture_reel : phaseContent.lecture_energetique || "Contenu global à venir..."}
+                  </p>
+                )}
               </div>
 
               {energyMode === 'individuel' && (
