@@ -26,7 +26,7 @@ Pour chaque phase, retourne un JSON avec :
 - lecture_reel: Ce qui se joue intérieurement (ton impersonnel STRICT avec "on", "ses", "l'on", 2-3 phrases)
 - lecture_energetique: Ce qui se joue collectivement en s'appuyant sur les événements mondiaux actuels (décembre 2025) ET EN EXPLIQUANT POURQUOI ET COMMENT L'ÉNERGIE DU SIGNE PRODUIT CES EFFETS DANS LE MONDE. MINIMUM 15 LIGNES, DÉVELOPPEMENT APPROFONDI. (impersonnel, paragraphe long et détaillé)
 - epreuve: Ce qui est confondu ou résisté. ATTENTION : souvent c'est l'INVERSE de ce qu'on pourrait croire (1-2 phrases)
-- action: Un geste précis à poser dans la vie quotidienne. NE JAMAIS DONNER DE PRATIQUE DE MÉDITATION (il y a déjà un bouton méditation). Proposer une action concrète, simple, quotidienne. (1-2 phrases)`;
+- action: Un geste précis à poser dans la vie quotidienne EN LIEN DIRECT AVEC L'ÉNERGIE DU SIGNE ET LA NOTE CLÉ. NE JAMAIS DONNER DE PRATIQUE DE MÉDITATION (il y a déjà un bouton méditation). Proposer une action concrète, efficace, qui incarne l'énergie du mois. (1-2 phrases)`;
 
 export default async function handler(req, res) {
     // CORS
@@ -79,8 +79,8 @@ lecture_energetique (15+ LIGNES, avec lien explicite avec l'énergie du signe) :
 epreuve (souvent l'INVERSE) :
 "Croire qu'on manque d'ambition alors qu'on est écrasé par des attentes trop élevées."
 
-action (geste concret, PAS de méditation) :
-"Identifier une tâche reportée depuis longtemps et y consacrer 15 minutes aujourd'hui."
+action (geste concret en lien avec la note clé, PAS de méditation) :
+"Au lieu de planifier rigidement la journée, définir une seule priorité essentielle et laisser l'intuition guider le reste du temps. Observer comment la maîtrise peut émerger du lâcher-prise plutôt que du contrôle."
 
 Retourne UNIQUEMENT le JSON, rien d'autre.`;
 
