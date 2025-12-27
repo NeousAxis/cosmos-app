@@ -44,8 +44,9 @@ function App() {
       currentSign = SIGNS.find(s => s.id === activePhase.signId);
       currentPhaseData = {
         id: activePhase.phaseId,
-        // On peut ajouter le nom lisible ici si besoin, ou le récupérer de SIGNS/constants
-        name: activePhase.phaseId.charAt(0).toUpperCase() + activePhase.phaseId.slice(1) // Simple capitalisation
+        name: activePhase.phaseId.charAt(0).toUpperCase() + activePhase.phaseId.slice(1),
+        start: activePhase.dates.start,
+        end: activePhase.dates.end
       };
 
       // 4. Charger le contenu depuis la DB manuelle
@@ -65,7 +66,7 @@ function App() {
       // Hors phase (transition ?) -> On peut afficher le signe du mois par défaut
       const defaultSign = getMeditationSign();
       currentSign = defaultSign;
-      currentPhaseData = { id: 'waiting', name: 'Transition' };
+      currentPhaseData = { id: 'waiting', name: 'Transition', start: null, end: null };
       setPhaseContent({
         lecture_reel: "Nous sommes dans une période de transition entre deux cycles.",
         lecture_energetique: "...",
@@ -82,14 +83,23 @@ function App() {
   if (!sign || !phase) return <div className="app-container">Chargement...</div>;
 
   // Calculate generic percentage based on phase for display
-  const getPhasePercentage = (pid) => {
-    switch (pid) {
-      case 'alignement': return '15%';
-      case 'contact': return '50%';
-      case 'distribution': return '100%';
-      case 'integration': return '75%';
-      default: return '40%';
-    }
+  const getPhasePercentage = () => {
+    if (!phase.start || !phase.end) return '0%';
+
+    // Pour tester le dynamisme, on utilise new Date()
+    // En prod, ça suivra l'heure réelle
+    const now = new Date().getTime();
+    const start = new Date(phase.start).getTime(); // YYYY-MM-DDT00:00:00...
+    // Pour la fin, on ajoute 23h59:59 pour couvrir la journée
+    const end = new Date(phase.end).getTime() + (24 * 60 * 60 * 1000) - 1;
+
+    if (now < start) return '0%';
+    if (now > end) return '100%';
+
+    const total = end - start;
+    const current = now - start;
+    const percent = Math.round((current / total) * 100);
+    return `${percent}%`;
   };
 
   const TabButton = ({ id, label, icon }) => (
@@ -148,7 +158,7 @@ function App() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <MoonPhase phaseId={phase.id} />
-                    <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-main)' }}>{getPhasePercentage(phase.id)}</span>
+                    <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-main)' }}>{getPhasePercentage()}</span>
                   </div>
                   <span className="phase-name">{phase.name}</span>
                 </div>
