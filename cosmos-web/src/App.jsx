@@ -18,7 +18,12 @@ function App() {
   const [phase, setPhase] = useState(null);
   const [activeTab, setActiveTab] = useState('energie'); // 'energie', 'cosmosophie', 'inspiration', 'calendrier', 'symbolique'
   const [isMeditationOpen, setIsMeditationOpen] = useState(false);
-  const [phaseContent, setPhaseContent] = useState(null);
+  const [phaseContent, setPhaseContent] = useState({
+    lecture_reel: "Chargement...",
+    lecture_energetique: "Chargement...",
+    epreuve: "...",
+    action: "..."
+  });
   const [energyMode, setEnergyMode] = useState('individuel'); // 'individuel' | 'global'
 
   useEffect(() => {
