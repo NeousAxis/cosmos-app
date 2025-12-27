@@ -1,12 +1,324 @@
 /**
  * CALENDRIER COSMOS AUTOMATIQUE (2025-2030)
- * Généré le 2025-12-27T23:13:25.115Z
+ * Généré le 2025-12-27T23:55:50.931Z
  * Basé sur les phases lunaires astronomiques.
  */
 export const CALENDAR = [
   {
+    "signId": "sagittarius",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2023-11-18",
+        "end": "2023-11-24"
+      },
+      {
+        "id": "contact",
+        "start": "2023-11-25",
+        "end": "2023-12-01"
+      },
+      {
+        "id": "distribution",
+        "start": "2023-12-02",
+        "end": "2023-12-09"
+      },
+      {
+        "id": "integration",
+        "start": "2023-12-10",
+        "end": "2023-12-16"
+      }
+    ]
+  },
+  {
+    "signId": "capricorn",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2023-12-17",
+        "end": "2023-12-24"
+      },
+      {
+        "id": "contact",
+        "start": "2023-12-25",
+        "end": "2023-12-31"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-01-01",
+        "end": "2024-01-07"
+      },
+      {
+        "id": "integration",
+        "start": "2024-01-08",
+        "end": "2024-01-15"
+      }
+    ]
+  },
+  {
+    "signId": "aquarius",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-01-16",
+        "end": "2024-01-22"
+      },
+      {
+        "id": "contact",
+        "start": "2024-01-23",
+        "end": "2024-01-29"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-01-30",
+        "end": "2024-02-06"
+      },
+      {
+        "id": "integration",
+        "start": "2024-02-07",
+        "end": "2024-02-13"
+      }
+    ]
+  },
+  {
+    "signId": "pisces",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-02-14",
+        "end": "2024-02-21"
+      },
+      {
+        "id": "contact",
+        "start": "2024-02-22",
+        "end": "2024-02-28"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-02-29",
+        "end": "2024-03-06"
+      },
+      {
+        "id": "integration",
+        "start": "2024-03-07",
+        "end": "2024-03-14"
+      }
+    ]
+  },
+  {
+    "signId": "aries",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-03-15",
+        "end": "2024-03-21"
+      },
+      {
+        "id": "contact",
+        "start": "2024-03-22",
+        "end": "2024-03-29"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-03-30",
+        "end": "2024-04-05"
+      },
+      {
+        "id": "integration",
+        "start": "2024-04-06",
+        "end": "2024-04-12"
+      }
+    ]
+  },
+  {
+    "signId": "taurus",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-04-13",
+        "end": "2024-04-20"
+      },
+      {
+        "id": "contact",
+        "start": "2024-04-21",
+        "end": "2024-04-27"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-04-28",
+        "end": "2024-05-04"
+      },
+      {
+        "id": "integration",
+        "start": "2024-05-05",
+        "end": "2024-05-12"
+      }
+    ]
+  },
+  {
+    "signId": "gemini",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-05-13",
+        "end": "2024-05-19"
+      },
+      {
+        "id": "contact",
+        "start": "2024-05-20",
+        "end": "2024-05-27"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-05-28",
+        "end": "2024-06-03"
+      },
+      {
+        "id": "integration",
+        "start": "2024-06-04",
+        "end": "2024-06-10"
+      }
+    ]
+  },
+  {
+    "signId": "cancer",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-06-11",
+        "end": "2024-06-18"
+      },
+      {
+        "id": "contact",
+        "start": "2024-06-19",
+        "end": "2024-06-25"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-06-26",
+        "end": "2024-07-02"
+      },
+      {
+        "id": "integration",
+        "start": "2024-07-03",
+        "end": "2024-07-10"
+      }
+    ]
+  },
+  {
+    "signId": "cancer",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-07-11",
+        "end": "2024-07-17"
+      },
+      {
+        "id": "contact",
+        "start": "2024-07-18",
+        "end": "2024-07-25"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-07-26",
+        "end": "2024-08-01"
+      },
+      {
+        "id": "integration",
+        "start": "2024-08-02",
+        "end": "2024-08-08"
+      }
+    ]
+  },
+  {
+    "signId": "leo",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-08-09",
+        "end": "2024-08-16"
+      },
+      {
+        "id": "contact",
+        "start": "2024-08-17",
+        "end": "2024-08-23"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-08-24",
+        "end": "2024-08-31"
+      },
+      {
+        "id": "integration",
+        "start": "2024-09-01",
+        "end": "2024-09-07"
+      }
+    ]
+  },
+  {
+    "signId": "virgo",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-09-08",
+        "end": "2024-09-14"
+      },
+      {
+        "id": "contact",
+        "start": "2024-09-15",
+        "end": "2024-09-22"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-09-23",
+        "end": "2024-09-29"
+      },
+      {
+        "id": "integration",
+        "start": "2024-09-30",
+        "end": "2024-10-06"
+      }
+    ]
+  },
+  {
+    "signId": "libra",
+    "year": 2024,
+    "phases": [
+      {
+        "id": "alignement",
+        "start": "2024-10-07",
+        "end": "2024-10-14"
+      },
+      {
+        "id": "contact",
+        "start": "2024-10-15",
+        "end": "2024-10-21"
+      },
+      {
+        "id": "distribution",
+        "start": "2024-10-22",
+        "end": "2024-10-29"
+      },
+      {
+        "id": "integration",
+        "start": "2024-10-30",
+        "end": "2024-11-05"
+      }
+    ]
+  },
+  {
     "signId": "scorpio",
-    "year": 2025,
+    "year": 2024,
     "phases": [
       {
         "id": "alignement",
@@ -32,7 +344,7 @@ export const CALENDAR = [
   },
   {
     "signId": "sagittarius",
-    "year": 2025,
+    "year": 2024,
     "phases": [
       {
         "id": "alignement",

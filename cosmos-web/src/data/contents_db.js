@@ -21,6 +21,16 @@ Cette intuition n’est pas individuelle. Elle est l’expression de la conscien
 Silencieusement, une nouvelle forme d’autorité se met en place. Elle ne se proclame pas, elle se reconnaît dans l’action. Elle ne s’impose pas, elle se manifeste lorsque le groupe agit en cohérence avec ce qu’il perçoit ensemble comme juste.`;
 
 export const CONTENTS_DB = {
+    "2024": {
+        "sagittarius": {
+            "integration": {
+                lecture_reel: "Je sens que l'élan d'expansion touche à sa fin pour se transformer en sagesse. C'est le temps de digérer les horizons explorés pour ne garder que l'essentiel.",
+                lecture_energetique: "Le feu du Sagittaire s'intériorise pour préparer la structure du Capricorne. L'enthousiasme laisse place à la maturité.",
+                epreuve: "Je suis tenté de fuir vers une nouvelle aventure ou une nouvelle idée sans avoir pris le temps de tirer les leçons de l'expérience qui s'achève.",
+                action: "Je prends un moment pour noter une vérité majeure apprise durant ce cycle, avant de passer à l'action suivante."
+            }
+        }
+    },
     "2025": {
         "capricorn": {
             "alignement": {
