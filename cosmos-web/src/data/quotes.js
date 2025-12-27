@@ -27,6 +27,6 @@ export const CAPRICORN_QUOTES = [
         id: 5,
         text: "Rien de grand ne s'est accompli dans le monde sans passion, mais rien de durable sans méthode.",
         author: "Hegel",
-        energy: "Maitrise"
+        energy: "Maîtrise"
     }
 ];

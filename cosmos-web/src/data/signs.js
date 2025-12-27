@@ -400,7 +400,7 @@ L’âme parle ; La Bataille continue mais la lutte est terminée. Réjouis-toi 
       },
       distribution: {
         lecture_reel: "Je comprends que le sommet n'est pas une fin, mais un point de départ pour redescendre vers les autres. Je sens l'élan de partager ce que j'ai structuré en moi.",
-        lecture_energetique: "C'est l'appel à une redistibution des ressources et des responsabilités. Le 'chef' n'est plus celui qui décide seul en haut de la pyramide, mais celui qui s'assure que la structure sert le bien commun. La notion de service public est réactivée.",
+        lecture_energetique: "C'est l'appel à une redistribution des ressources et des responsabilités. Le 'chef' n'est plus celui qui décide seul en haut de la pyramide, mais celui qui s'assure que la structure sert le bien commun. La notion de service public est réactivée.",
         epreuve: "Je crains que le partage ne me dépossède de mon autorité ou de mes acquis intérieurs.",
         action: "Je choisis de transmettre une compétence ou une vision claire à quelqu'un qui en a besoin, sans attente de retour."
       },
