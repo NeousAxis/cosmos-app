@@ -26,7 +26,7 @@ Pour chaque phase, retourne un JSON avec :
 - lecture_reel: Ce qui se joue intérieurement (ton impersonnel STRICT avec "on", "ses", "l'on", 2-3 phrases)
 - lecture_energetique: Ce qui se joue collectivement en s'appuyant sur les événements mondiaux actuels (décembre 2025) ET EN EXPLIQUANT POURQUOI ET COMMENT L'ÉNERGIE DU SIGNE PRODUIT CES EFFETS DANS LE MONDE. MINIMUM 15 LIGNES, DÉVELOPPEMENT APPROFONDI. (impersonnel, paragraphe long et détaillé)
 - epreuve: Ce qui est confondu ou résisté. ATTENTION : souvent c'est l'INVERSE de ce qu'on pourrait croire (1-2 phrases)
-- action: Un geste précis à poser dans la vie quotidienne. NE JAMAIS DONNER DE PRATIQUE DE MÉDITATION (il y a déjà un bouton méditation). Proposer une action concrète, simple, quotidienne. (1-2 phrases)`;
+- action: Un geste symbolique ou une micro-action concrète DIRECTEMENT LIÉ(E) À L'ÉNERGIE DU SIGNE (et non générique). Il doit permettre d'ancrer physiquement la leçon du moment. Pas de "rangement" ou de "ménage" sauf si c'est hautement symbolique. Pas de méditation. (1-2 phrases)`;
 
 export default async function handler(req, res) {
     // CORS
@@ -79,8 +79,8 @@ lecture_energetique (15+ LIGNES, avec lien explicite avec l'énergie du signe) :
 epreuve (souvent l'INVERSE) :
 "Croire qu'on manque d'ambition alors qu'on est écrasé par des attentes trop élevées."
 
-action (geste concret, PAS de méditation) :
-"Identifier une tâche reportée depuis longtemps et y consacrer 15 minutes aujourd'hui."
+action (geste concret en lien avec l'énergie, PAS de méditation ni de conseil générique) :
+"Pour incarner l'énergie du Capricorne (structure), poser un acte d'autorité bienveillante : dire 'non' à une sollicitation qui disperse l'attention pour privilégier l'essentiel."
 
 Retourne UNIQUEMENT le JSON, rien d'autre.`;
 
