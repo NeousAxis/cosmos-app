@@ -12,6 +12,7 @@ import MoonPhase from './components/MoonPhase';
 import { Sparkles, BookOpen, Calendar as CalendarIcon, Feather, Quote, Bell } from 'lucide-react';
 import { CAPRICORN_QUOTES } from './data/quotes';
 import { motion, AnimatePresence } from 'framer-motion';
+import { generatePhaseContent } from './services/api';
 
 function App() {
   const [sign, setSign] = useState(null);
