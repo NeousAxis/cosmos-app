@@ -24,7 +24,7 @@ en expériences quotidiennes simples et en pratiques méditatives effectives.
 ## FORMAT DE SORTIE
 Pour chaque phase, retourne un JSON avec :
 - lecture_reel: Ce qui se joue intérieurement (ton impersonnel avec "on", 2-3 phrases)
-- lecture_energetique: Ce qui se joue collectivement EN S'APPUYANT SUR LES ÉVÉNEMENTS MONDIAUX ACTUELS (décembre 2025) pour en offrir une explication (impersonnel, 2-3 phrases)
+- lecture_energetique: Ce qui se joue collectivement en s'appuyant sur les événements mondiaux actuels (décembre 2025) ET EN EXPLIQUANT POURQUOI ET COMMENT L'ÉNERGIE DU SIGNE PRODUIT CES EFFETS DANS LE MONDE (impersonnel, 2-3 phrases)
 - epreuve: Ce qui est confondu ou résisté (1-2 phrases)
 - action: Un geste précis à poser QUI INVITE À MÉDITER (s'asseoir en silence, observer sa respiration, répéter mentalement la note clé) OU À PRENDRE UN TEMPS DE SILENCE pour écouter sa voix intérieure. NE PAS CONFONDRE MÉDITATION ET RELAXATION/BIEN-ÊTRE. (1-2 phrases)`;
 
@@ -70,7 +70,7 @@ Génère le contenu pour cette phase en respectant EXACTEMENT le format suivant 
 
 {
   "lecture_reel": "Ce qui se joue intérieurement (2-3 phrases, ton impersonnel avec 'on', 'ses')",
-  "lecture_energetique": "Ce qui se joue collectivement en s'appuyant sur les événements mondiaux actuels (2-3 phrases)",
+  "lecture_energetique": "Ce qui se joue collectivement en s'appuyant sur les événements mondiaux actuels ET en expliquant le lien avec l'énergie du signe (2-3 phrases)",
   "epreuve": "Ce qui est confondu ou résisté (1-2 phrases)",
   "action": "Un geste précis qui invite à méditer ou prendre un temps de silence (1-2 phrases)"
 }
@@ -80,8 +80,8 @@ EXEMPLES :
 lecture_reel :
 "C'est une période où on peut ressentir l'appel à une vérité plus grande, où on se perd dans l'immensité de ce que l'on pressent. Lâcher prise sur ses certitudes demande un effort immense, une forme de foi nouvelle."
 
-lecture_energetique (avec événements actuels de décembre 2025) :
-"Les tensions géopolitiques de fin 2025 reflètent une quête collective de souveraineté et d'authenticité. Les mouvements sociaux questionnent les structures de pouvoir établies. Une nouvelle conscience émerge face aux défis climatiques et économiques."
+lecture_energetique (avec événements actuels ET explication du lien avec l'énergie du signe) :
+"L'énergie du Capricorne pousse les structures à se révéler dans leur vérité. Les tensions géopolitiques de fin 2025 reflètent cette mise à l'épreuve des systèmes de pouvoir établis. Les mouvements sociaux questionnent l'autorité traditionnelle car cette énergie invite à passer du contrôle rigide à une maîtrise authentique basée sur l'intégrité."
 
 action (invitation à la MÉDITATION, PAS de relaxation/bien-être) :
 "S'asseoir en silence 5 minutes chaque matin, dos droit, et répéter mentalement la note clé à chaque inspiration. Observer ce qui émerge sans chercher à comprendre."
@@ -90,7 +90,9 @@ OU :
 
 "Prendre un temps de silence quotidien pour écouter sa voix intérieure. S'asseoir, fermer les yeux, et simplement observer sa respiration pendant quelques minutes."
 
-IMPORTANT : Ne pas proposer de s'allonger, de se relaxer, ou de se concentrer sur les sensations physiques. La méditation est une pratique assise, en silence, d'observation.
+IMPORTANT : 
+- Pour lecture_energetique : TOUJOURS expliquer POURQUOI et COMMENT l'énergie du signe produit ces effets dans le monde
+- Pour action : Ne pas proposer de s'allonger, de se relaxer, ou de se concentrer sur les sensations physiques. La méditation est une pratique assise, en silence, d'observation.
 
 Retourne UNIQUEMENT le JSON, rien d'autre.`;
 
