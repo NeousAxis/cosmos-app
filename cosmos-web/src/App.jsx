@@ -157,7 +157,7 @@ function App() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <MoonPhase phaseId={phase.id} />
+                    <MoonPhase phaseId={phase.id} percentageStr={getPhasePercentage()} />
                     <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-main)' }}>{getPhasePercentage()}</span>
                   </div>
                   <span className="phase-name">{phase.name}</span>
