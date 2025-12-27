@@ -19,8 +19,6 @@
   --max-width: 650px;
 }
 
-/* Retrieve Playfair Display if possible, otherwise rely on system serif */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap');
 
 :root {
   --font-body: 'Inter', sans-serif;
