@@ -1,13 +1,11 @@
-import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 
 dotenv.config();
 
-const anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
-});
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // Charger le prompt système depuis le fichier
 const SYSTEM_PROMPT = fs.readFileSync(
@@ -17,17 +15,14 @@ const SYSTEM_PROMPT = fs.readFileSync(
 
 /**
  * Génère le contenu pour une phase spécifique d'un signe
- * 
- * @param {string} signName - Nom du signe (ex: "Capricorne")
- * @param {string} phraseEvolutive - Phrase clé évolutive du signe
- * @param {string} noteCle - Note clé traduite
- * @param {string} phaseId - ID de la phase (alignement, contact, distribution, integration)
- * @param {string} phaseName - Nom de la phase
- * @returns {Promise<Object>} Contenu structuré pour la phase
  */
 export async function generatePhaseContent(signName, phraseEvolutive, noteCle, phaseId, phaseName) {
 
-    const prompt = `Tu travailles sur le signe du ${signName}.
+    const prompt = `${SYSTEM_PROMPT}
+
+---
+
+Tu travailles sur le signe du ${signName}.
 
 **Phrase clé évolutive (source) :**
 "${phraseEvolutive}"
@@ -56,18 +51,16 @@ RAPPELS CRITIQUES :
 
 Retourne UNIQUEMENT le JSON, rien d'autre.`;
 
-    const message = await anthropic.messages.create({
-        model: 'claude-3-5-sonnet-20241022',
-        max_tokens: 1024,
-        temperature: 0.7,
-        messages: [{
-            role: 'user',
-            content: prompt
-        }],
-        system: SYSTEM_PROMPT
+    const model = genAI.getGenerativeModel({
+        model: "gemini-2.0-flash-exp",
+        generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 1024,
+        }
     });
 
-    const content = message.content[0].text;
+    const result = await model.generateContent(prompt);
+    const content = result.response.text();
 
     // Extraire le JSON de la réponse
     const jsonMatch = content.match(/\{[\s\S]*\}/);
@@ -115,7 +108,11 @@ export async function generateAllPhasesForSign(signData) {
  * Génère une note clé à partir d'une phrase évolutive
  */
 export async function generateNoteCle(signName, phraseEvolutive) {
-    const prompt = `Tu travailles sur le signe du ${signName}.
+    const prompt = `${SYSTEM_PROMPT}
+
+---
+
+Tu travailles sur le signe du ${signName}.
 
 **Phrase clé évolutive (source) :**
 "${phraseEvolutive}"
@@ -137,18 +134,16 @@ Note clé : "Dans le silence, l'intuition donne la juste direction."
 
 Retourne UNIQUEMENT la note clé, rien d'autre.`;
 
-    const message = await anthropic.messages.create({
-        model: 'claude-3-5-sonnet-20241022',
-        max_tokens: 256,
-        temperature: 0.8,
-        messages: [{
-            role: 'user',
-            content: prompt
-        }],
-        system: SYSTEM_PROMPT
+    const model = genAI.getGenerativeModel({
+        model: "gemini-2.0-flash-exp",
+        generationConfig: {
+            temperature: 0.8,
+            maxOutputTokens: 256,
+        }
     });
 
-    return message.content[0].text.trim().replace(/^["']|["']$/g, '');
+    const result = await model.generateContent(prompt);
+    return result.response.text().trim().replace(/^["']|["']$/g, '');
 }
 
-export { anthropic };
+export { genAI };
