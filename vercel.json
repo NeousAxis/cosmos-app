@@ -2,16 +2,5 @@
     "buildCommand": "cd cosmos-web && npm run build",
     "outputDirectory": "cosmos-web/dist",
     "devCommand": "cd cosmos-web && npm run dev",
-    "installCommand": "cd cosmos-web && npm install && cd ../cosmos-ai && npm install",
-    "functions": {
-        "api/**/*.js": {
-            "runtime": "nodejs20.x"
-        }
-    },
-    "rewrites": [
-        {
-            "source": "/api/:path*",
-            "destination": "/cosmos-ai/src/:path*"
-        }
-    ]
+    "installCommand": "cd cosmos-web && npm install"
 }
