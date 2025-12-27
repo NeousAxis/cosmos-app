@@ -26,7 +26,7 @@ Pour chaque phase, retourne un JSON avec :
 - lecture_reel: Ce qui se joue intérieurement (ton impersonnel avec "on", 2-3 phrases)
 - lecture_energetique: Ce qui se joue collectivement EN S'APPUYANT SUR LES ÉVÉNEMENTS MONDIAUX ACTUELS (décembre 2025) pour en offrir une explication (impersonnel, 2-3 phrases)
 - epreuve: Ce qui est confondu ou résisté (1-2 phrases)
-- action: Un geste précis à poser QUI INVITE À MÉDITER OU À PRENDRE UN TEMPS DE SILENCE pour écouter sa voix intérieure (1-2 phrases)`;
+- action: Un geste précis à poser QUI INVITE À MÉDITER (s'asseoir en silence, observer sa respiration, répéter mentalement la note clé) OU À PRENDRE UN TEMPS DE SILENCE pour écouter sa voix intérieure. NE PAS CONFONDRE MÉDITATION ET RELAXATION/BIEN-ÊTRE. (1-2 phrases)`;
 
 export default async function handler(req, res) {
     // CORS
@@ -83,8 +83,14 @@ lecture_reel :
 lecture_energetique (avec événements actuels de décembre 2025) :
 "Les tensions géopolitiques de fin 2025 reflètent une quête collective de souveraineté et d'authenticité. Les mouvements sociaux questionnent les structures de pouvoir établies. Une nouvelle conscience émerge face aux défis climatiques et économiques."
 
-action (invitation à la méditation) :
-"Prendre 5 minutes chaque matin pour s'asseoir en silence et écouter ce qui émerge, sans chercher à comprendre. Si la méditation n'est pas possible, simplement observer sa respiration pendant quelques instants."
+action (invitation à la MÉDITATION, PAS de relaxation/bien-être) :
+"S'asseoir en silence 5 minutes chaque matin, dos droit, et répéter mentalement la note clé à chaque inspiration. Observer ce qui émerge sans chercher à comprendre."
+
+OU :
+
+"Prendre un temps de silence quotidien pour écouter sa voix intérieure. S'asseoir, fermer les yeux, et simplement observer sa respiration pendant quelques minutes."
+
+IMPORTANT : Ne pas proposer de s'allonger, de se relaxer, ou de se concentrer sur les sensations physiques. La méditation est une pratique assise, en silence, d'observation.
 
 Retourne UNIQUEMENT le JSON, rien d'autre.`;
 
