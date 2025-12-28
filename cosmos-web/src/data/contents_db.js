@@ -29,6 +29,14 @@ export const CONTENTS_DB = {
                 epreuve: "Je suis tenté de fuir vers une nouvelle aventure ou une nouvelle idée sans avoir pris le temps de tirer les leçons de l'expérience qui s'achève.",
                 action: "Je prends un moment pour noter une vérité majeure apprise durant ce cycle, avant de passer à l'action suivante."
             }
+        },
+        "capricorn": {
+            "integration": {
+                lecture_reel: "Bien que nous soyons dans l'énergie du Capricorne, cette phase d'intégration marque la fin de l'année civile. C'est le moment de synthétiser les leçons de 2024 pour bâtir l'année à venir sur des fondations solides.",
+                lecture_energetique: "La structure du Capricorne nous aide à cristalliser nos expériences en sagesse durable.",
+                epreuve: "La tentation de juger sévèrement ce qui n'a pas été accompli en 2024.",
+                action: "Je célèbre une réussite concrète de cette année, aussi petite soit-elle, comme première pierre de mon édifice 2025."
+            }
         }
     },
     "2025": {

@@ -19,9 +19,9 @@ function App() {
   /* --- ÉTAT INITIAL INTELLIGENT --- */
   const [sign, setSign] = useState(() => {
     const now = new Date();
-    // FIX 28 DEC 2024 -> Sagittaire
+    // FIX 28 DEC 2024 -> CAPRICORNE (Demande utilisateur force)
     if (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2024) {
-      return SIGNS.find(s => s.id === 'sagittarius') || SIGNS[0];
+      return SIGNS.find(s => s.id === 'capricorn') || SIGNS[0];
     }
     // Sinon on laisse faire le useEffect, valeur par défaut
     return SIGNS[0];
@@ -56,10 +56,10 @@ function App() {
     // 2. Récupérer la phase active depuis le calendrier perpétuel
     let activePhase = getPhaseForDate(now);
 
-    // FIX URGENT: Forcer Intégration si 28 Décembre (car getPhaseForDate semble avoir un souci de cache ou timezone)
+    // FIX URGENT: Forcer Intégration + CAPRICORNE si 28 Décembre
     if (isDec28) {
       activePhase = {
-        signId: 'sagittarius',
+        signId: 'capricorn',
         phaseId: 'integration',
         dates: {
           start: '2024-12-28',
