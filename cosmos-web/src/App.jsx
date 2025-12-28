@@ -231,38 +231,47 @@ function App() {
                 </div>
               </div>
 
-              <div className="teaching-section">
-                <span className="teaching-label">
-                  {energyMode === 'individuel' ? 'Ce qui se joue intérieurement' : 'Lecture Énergétique Mondiale'}
-                </span>
-                <p className="teaching-text" style={{ whiteSpace: 'pre-wrap' }}>
-                  {energyMode === 'individuel' ? phaseContent.lecture_reel : phaseContent.lecture_energetique || "Contenu global à venir..."}
-                </p>
-              </div>
-
-              {energyMode === 'individuel' && (
-                <>
-                  <div className="teaching-section">
-                    <span className="teaching-label">Ce qui est souvent confondu ou résisté</span>
-                    <p className="teaching-text" style={{ whiteSpace: 'pre-wrap' }}>
-                      {phaseContent.epreuve}
+              {(() => {
+                const formatText = (text) => {
+                  if (!text) return null;
+                  return text.split(/\n\n+/).map((paragraph, index) => (
+                    <p key={index} className="teaching-text" style={{ marginBottom: '16px', whiteSpace: 'pre-wrap' }}>
+                      {paragraph.trim()}
                     </p>
-                  </div>
+                  ));
+                };
 
-                  <div className="action-highlight">
-                    <div style={{ marginBottom: '12px', padding: '12px', background: 'rgba(var(--accent-rgb), 0.08)', borderRadius: '8px', borderLeft: '3px solid var(--accent)' }}>
-                      <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--accent)', display: 'block', marginBottom: '6px' }}>Phrase clé du mois :</span>
-                      <p style={{ fontSize: '14px', fontStyle: 'italic', margin: 0, color: 'var(--text-main)' }}>
-                        « {sign.note_cle} »
-                      </p>
+                return (
+                  <>
+                    <div className="teaching-section">
+                      <span className="teaching-label">
+                        {energyMode === 'individuel' ? 'Ce qui se joue intérieurement' : 'Lecture Énergétique Mondiale'}
+                      </span>
+                      {formatText(energyMode === 'individuel' ? phaseContent.lecture_reel : phaseContent.lecture_energetique || "Contenu global à venir...")}
                     </div>
-                    <span className="teaching-label">Ce que cette phrase invite à ajuster concrètement</span>
-                    <p className="teaching-text" style={{ whiteSpace: 'pre-wrap' }}>
-                      {phaseContent.action}
-                    </p>
-                  </div>
-                </>
-              )}
+
+                    {energyMode === 'individuel' && (
+                      <>
+                        <div className="teaching-section">
+                          <span className="teaching-label">Ce qui est souvent confondu ou résisté</span>
+                          {formatText(phaseContent.epreuve)}
+                        </div>
+
+                        <div className="action-highlight">
+                          <div style={{ marginBottom: '12px', padding: '12px', background: 'rgba(var(--accent-rgb), 0.08)', borderRadius: '8px', borderLeft: '3px solid var(--accent)' }}>
+                            <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--accent)', display: 'block', marginBottom: '6px' }}>Phrase clé du mois :</span>
+                            <p style={{ fontSize: '14px', fontStyle: 'italic', margin: 0, color: 'var(--text-main)' }}>
+                              « {sign.note_cle} »
+                            </p>
+                          </div>
+                          <span className="teaching-label">Ce que cette phrase invite à ajuster concrètement</span>
+                          {formatText(phaseContent.action)}
+                        </div>
+                      </>
+                    )}
+                  </>
+                );
+              })()}
             </section>
 
             <section style={{ textAlign: 'center' }}>
