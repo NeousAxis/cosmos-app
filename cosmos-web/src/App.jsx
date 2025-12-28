@@ -228,69 +228,119 @@ function App() {
                   >
                     Lecture Mondiale
                   </button>
+                  <button
+                    onClick={() => setEnergyMode('symbolique')}
+                    style={{
+                      padding: '8px 16px',
+                      borderRadius: '20px',
+                      border: 'none',
+                      background: energyMode === 'symbolique' ? 'var(--text-main)' : 'transparent',
+                      color: energyMode === 'symbolique' ? '#fff' : 'var(--text-muted)',
+                      fontSize: '13px',
+                      fontWeight: 500,
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    Lecture Symbolique
+                  </button>
                 </div>
               </div>
 
-              <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-                <button
-                  onClick={() => setActiveTab('symbolique')}
-                  style={{
-                    background: 'transparent',
-                    border: 'none',
-                    borderBottom: '1px solid var(--text-muted)',
-                    fontFamily: 'Playfair Display',
-                    fontSize: '16px',
-                    fontStyle: 'italic',
-                    color: 'var(--text-muted)',
-                    cursor: 'pointer',
-                    padding: '4px 8px'
-                  }}
-                >
-                  Lire la Symbolique du Signe &rarr;
-                </button>
-              </div>
+              {/* Suppression du lien texte inutile */}
 
-              {(() => {
-                const formatText = (text) => {
-                  if (!text) return null;
-                  return text.split(/\n\n+/).map((paragraph, index) => (
-                    <p key={index} className="teaching-text" style={{ marginBottom: '16px', whiteSpace: 'pre-wrap' }}>
-                      {paragraph.trim()}
-                    </p>
-                  ));
-                };
+              {energyMode === 'symbolique' ? (
+                /* Contenu Mode Symbolique */
+                <div style={{ animation: 'fadeIn 0.3s ease' }}>
+                  <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', textAlign: 'center', marginBottom: '8px' }}>Symbolique du Signe</h3>
+                  <h4 style={{ fontFamily: 'Playfair Display', fontSize: '18px', textAlign: 'center', marginBottom: '32px', fontWeight: 400, color: 'var(--text-muted)' }}>
+                    {sign.name} – Énergies, fonctions, effets et ombres
+                  </h4>
 
-                return (
-                  <>
-                    <div className="teaching-section">
-                      <span className="teaching-label">
-                        {energyMode === 'individuel' ? 'Ce qui se joue intérieurement' : 'Lecture Énergétique Mondiale'}
-                      </span>
-                      {formatText(energyMode === 'individuel' ? phaseContent.lecture_reel : phaseContent.lecture_energetique || "Contenu global à venir...")}
+                  {sign.symbolique_detaillee && (
+                    <div className="teaching-text" style={{ whiteSpace: 'pre-wrap', marginBottom: '32px' }}>
+                      {(() => {
+                        // Réutilisation du splitter pour le texte symbolique aussi si besoin, ou standard
+                        return sign.symbolique_detaillee.replace(/^1\. Fonction/, '1. Fonction').split(/\n\n+/).map((p, i) => (
+                          <p key={i} style={{ marginBottom: '16px' }}>{p.trim()}</p>
+                        ));
+                      })()}
                     </div>
+                  )}
 
-                    {energyMode === 'individuel' && (
-                      <>
-                        <div className="teaching-section">
-                          <span className="teaching-label">Ce qui est souvent confondu ou résisté</span>
-                          {formatText(phaseContent.epreuve)}
-                        </div>
+                  {sign.intro_splendeur && (
+                    <div style={{
+                      marginBottom: '32px',
+                      fontFamily: 'Playfair Display',
+                      fontSize: '18px',
+                      lineHeight: '1.6',
+                      textAlign: 'center',
+                      color: 'var(--text-main)'
+                    }}>
+                      {sign.intro_splendeur}
+                    </div>
+                  )}
 
-                        <div className="action-highlight">
-                          <div style={{ marginBottom: '12px', padding: '12px', background: 'rgba(var(--accent-rgb), 0.08)', borderRadius: '8px', borderLeft: '3px solid var(--accent)' }}>
-                            <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--accent)', display: 'block', marginBottom: '6px' }}>Phrase clé du mois :</span>
-                            <p style={{ fontSize: '14px', fontStyle: 'italic', margin: 0, color: 'var(--text-main)' }}>
-                              « {sign.note_cle} »
-                            </p>
+                  <div style={{ width: '40px', height: '1px', background: 'var(--text-muted)', margin: '0 auto 32px' }} />
+
+                  {sign.parole_ame && (
+                    <div style={{
+                      fontFamily: 'Playfair Display',
+                      fontSize: '18px',
+                      fontStyle: 'italic',
+                      lineHeight: '1.8',
+                      textAlign: 'center',
+                      paddingLeft: '16px',
+                      paddingRight: '16px'
+                    }}>
+                      {sign.parole_ame}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                /* Contenu Mode Individuel / Global */
+                (() => {
+                  const formatText = (text) => {
+                    if (!text) return null;
+                    return text.split(/\n\n+/).map((paragraph, index) => (
+                      <p key={index} className="teaching-text" style={{ marginBottom: '16px', whiteSpace: 'pre-wrap' }}>
+                        {paragraph.trim()}
+                      </p>
+                    ));
+                  };
+
+                  return (
+                    <>
+                      <div className="teaching-section">
+                        <span className="teaching-label">
+                          {energyMode === 'individuel' ? 'Ce qui se joue intérieurement' : 'Lecture Énergétique Mondiale'}
+                        </span>
+                        {formatText(energyMode === 'individuel' ? phaseContent.lecture_reel : phaseContent.lecture_energetique || "Contenu global à venir...")}
+                      </div>
+
+                      {energyMode === 'individuel' && (
+                        <>
+                          <div className="teaching-section">
+                            <span className="teaching-label">Ce qui est souvent confondu ou résisté</span>
+                            {formatText(phaseContent.epreuve)}
                           </div>
-                          <span className="teaching-label">Ce que cette phrase invite à ajuster concrètement</span>
-                          {formatText(phaseContent.action)}
-                        </div>
-                      </>
-                    )}
-                  </>
-                );
-              })()}
+
+                          <div className="action-highlight">
+                            <div style={{ marginBottom: '12px', padding: '12px', background: 'rgba(var(--accent-rgb), 0.08)', borderRadius: '8px', borderLeft: '3px solid var(--accent)' }}>
+                              <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--accent)', display: 'block', marginBottom: '6px' }}>Phrase clé du mois :</span>
+                              <p style={{ fontSize: '14px', fontStyle: 'italic', margin: 0, color: 'var(--text-main)' }}>
+                                « {sign.note_cle} »
+                              </p>
+                            </div>
+                            <span className="teaching-label">Ce que cette phrase invite à ajuster concrètement</span>
+                            {formatText(phaseContent.action)}
+                          </div>
+                        </>
+                      )}
+                    </>
+                  );
+                })()
+              )}
             </section>
 
             <section style={{ textAlign: 'center' }}>
