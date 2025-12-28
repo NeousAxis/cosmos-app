@@ -154,7 +154,7 @@ function App() {
       <header>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '8px' }}>
           <CosmosLogo size={36} />
-          <h1 style={{ margin: 0 }}>COSMOS 2025 v2</h1>
+          <h1 style={{ margin: 0 }}>COSMOS 2025 v3</h1>
         </div>
         <div className="current-date">
           {new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}
@@ -235,7 +235,7 @@ function App() {
                 <span className="teaching-label">
                   {energyMode === 'individuel' ? 'Ce qui se joue intérieurement' : 'Lecture Énergétique Mondiale'}
                 </span>
-                <p className="teaching-text">
+                <p className="teaching-text" style={{ whiteSpace: 'pre-wrap' }}>
                   {energyMode === 'individuel' ? phaseContent.lecture_reel : phaseContent.lecture_energetique || "Contenu global à venir..."}
                 </p>
               </div>
@@ -244,7 +244,7 @@ function App() {
                 <>
                   <div className="teaching-section">
                     <span className="teaching-label">Ce qui est souvent confondu ou résisté</span>
-                    <p className="teaching-text">
+                    <p className="teaching-text" style={{ whiteSpace: 'pre-wrap' }}>
                       {phaseContent.epreuve}
                     </p>
                   </div>
@@ -257,7 +257,7 @@ function App() {
                       </p>
                     </div>
                     <span className="teaching-label">Ce que cette phrase invite à ajuster concrètement</span>
-                    <p className="teaching-text">
+                    <p className="teaching-text" style={{ whiteSpace: 'pre-wrap' }}>
                       {phaseContent.action}
                     </p>
                   </div>
@@ -477,12 +477,12 @@ function App() {
 
                   <div className="teaching-section">
                     <span className="teaching-label">Énergie</span>
-                    <p className="teaching-text">{festival.energy}</p>
+                    <p className="teaching-text" style={{ whiteSpace: 'pre-wrap' }}>{festival.energy}</p>
                   </div>
 
                   <div className="teaching-section">
                     <span className="teaching-label">Sens Simplifié</span>
-                    <p className="teaching-text">{festival.meaning}</p>
+                    <p className="teaching-text" style={{ whiteSpace: 'pre-wrap' }}>{festival.meaning}</p>
                   </div>
 
                   <div className="action-highlight" style={{ marginTop: '12px', padding: '12px', background: 'rgba(0,0,0,0.02)', borderRadius: '8px' }}>
