@@ -1,15 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MEDITATION_STEPS } from '../data/signs';
 import { X, Play, Pause, SkipForward } from 'lucide-react';
 import { playGong } from '../soundUtils';
 
 const Meditation = ({ sign, phase, onClose }) => {
-    const [currentStep, setCurrentStep] = useState(0);
-    const [timeLeft, setTimeLeft] = useState(MEDITATION_STEPS[0].duration);
+    // Calculer la durée totale une fois
+    const TOTAL_DURATION = useMemo(() => MEDITATION_STEPS.reduce((acc, s) => acc + s.duration, 0), []);
+
+    // Timer global (compte à rebours du total)
+    const [timeLeft, setTimeLeft] = useState(TOTAL_DURATION);
     const [isActive, setIsActive] = useState(false);
 
-    const step = MEDITATION_STEPS[currentStep];
+    // Trouver l'étape actuelle basée sur le temps écoulé
+    const getCurrentStepIndex = () => {
+        const elapsed = TOTAL_DURATION - timeLeft;
+        let cumulative = 0;
+        for (let i = 0; i < MEDITATION_STEPS.length; i++) {
+            cumulative += MEDITATION_STEPS[i].duration;
+            if (elapsed < cumulative) return i;
+        }
+        return MEDITATION_STEPS.length - 1;
+    };
+
+    const currentStepIndex = getCurrentStepIndex();
+    const step = MEDITATION_STEPS[currentStepIndex];
 
     // Play Gong logic when timer is active
     useEffect(() => {
@@ -22,27 +37,35 @@ const Meditation = ({ sign, phase, onClose }) => {
         let interval = null;
         if (isActive && timeLeft > 0) {
             interval = setInterval(() => {
-                setTimeLeft(timeLeft => timeLeft - 1);
+                setTimeLeft(time => {
+                    const newTime = time - 1;
+                    // Check triggers for gong or transitions here if needed
+                    return newTime;
+                });
             }, 1000);
-        } else if (timeLeft === 0) {
-            // Auto transition
-            if (currentStep < MEDITATION_STEPS.length - 1) {
-                handleNext();
-            } else {
-                setIsActive(false); // Finished
-            }
+        } else if (timeLeft <= 0) {
+            setIsActive(false); // Finished
+            playGong(3); // End sound
         }
         return () => clearInterval(interval);
-    }, [isActive, timeLeft, currentStep]);
+    }, [isActive, timeLeft]);
 
-    const handleNext = () => {
-        if (currentStep < MEDITATION_STEPS.length - 1) {
-            const nextStep = currentStep + 1;
-            setCurrentStep(nextStep);
-            setTimeLeft(MEDITATION_STEPS[nextStep].duration);
-            setIsActive(false); // Pause on next step to require meaningful user action to start, or could keep playing if desired
+    // Fonction pour sauter à l'étape suivante (avancer le temps)
+    const handleSkip = () => {
+        // Calculer quand commence la prochaine étape
+        let cumulative = 0;
+        for (let i = 0; i <= currentStepIndex; i++) {
+            cumulative += MEDITATION_STEPS[i].duration;
+        }
+
+        // Le temps restant cible est (Total - Fin de l'étape actuelle)
+        const nextTimeLeft = TOTAL_DURATION - cumulative;
+
+        if (nextTimeLeft > 0) {
+            setTimeLeft(nextTimeLeft);
         } else {
-            onClose(); // Finish
+            // Fin de méditation
+            onClose();
         }
     };
 
@@ -50,11 +73,6 @@ const Meditation = ({ sign, phase, onClose }) => {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-    };
-
-    const getTotalDuration = () => {
-        const total = MEDITATION_STEPS.reduce((acc, s) => acc + s.duration, 0);
-        return Math.floor(total / 60);
     };
 
     return (
@@ -70,7 +88,7 @@ const Meditation = ({ sign, phase, onClose }) => {
                         Méditation
                     </span>
                     <span style={{ fontSize: '11px', color: 'var(--text-main)', marginTop: '4px', fontWeight: 500 }}>
-                        Durée Totale : {getTotalDuration()} minutes
+                        Durée Totale : {Math.floor(TOTAL_DURATION / 60)} minutes
                     </span>
                 </div>
                 <button onClick={onClose} className="btn-ghost" style={{ border: 'none', padding: '10px' }}>
@@ -81,10 +99,10 @@ const Meditation = ({ sign, phase, onClose }) => {
             <div className="meditation-content">
                 <AnimatePresence mode='wait'>
                     <motion.div
-                        key={currentStep}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                        key={currentStepIndex} // Clé sur l'étape pour animer les transitions de TEXTE, pas de TIMER
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.5 }}
                         style={{ width: '100%' }}
                     >
@@ -107,29 +125,30 @@ const Meditation = ({ sign, phase, onClose }) => {
                                 </div>
                             )}
                         </div>
-
-                        <div className="meditation-timer">
-                            {formatTime(timeLeft)}
-                        </div>
-
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginTop: '40px' }}>
-                            <button
-                                onClick={() => setIsActive(!isActive)}
-                                style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-main)' }}
-                            >
-                                {isActive ? <Pause size={48} /> : <Play size={48} />}
-                            </button>
-
-                            <button
-                                onClick={handleNext}
-                                className="btn-ghost"
-                            >
-                                Passer
-                            </button>
-                        </div>
-
                     </motion.div>
                 </AnimatePresence>
+
+                {/* Le timer est sorti de motion.div pour ne pas clignoter/resetter visuellement à chaque étape */}
+                <div className="meditation-timer">
+                    {formatTime(timeLeft)}
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginTop: '40px' }}>
+                    <button
+                        onClick={() => setIsActive(!isActive)}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-main)' }}
+                    >
+                        {isActive ? <Pause size={48} /> : <Play size={48} />}
+                    </button>
+
+                    <button
+                        onClick={handleSkip}
+                        className="btn-ghost"
+                        title="Passer à l'étape suivante"
+                    >
+                        Succession
+                    </button>
+                </div>
             </div>
         </motion.div>
     );
