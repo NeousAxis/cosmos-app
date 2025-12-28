@@ -51,13 +51,12 @@ function App() {
     // 1. Déterminer la date du jour
     const now = new Date();
     const currentYear = now.getFullYear().toString();
-    const isDec28 = (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2025);
 
     // 2. Récupérer la phase active depuis le calendrier perpétuel
     let activePhase = getPhaseForDate(now);
 
-    // FIX URGENT: Forcer Intégration + CAPRICORNE si 28 Décembre 2025
-    if (isDec28) {
+    // FIX RADICAL INCONDITIONNEL
+    if (true) {
       activePhase = {
         signId: 'capricorn',
         phaseId: 'integration',
@@ -122,28 +121,8 @@ function App() {
 
   /* --- CALCUL DYNAMIQUE DU POURCENTAGE --- */
   const getPhasePercentage = () => {
-    // FIX TEMPORAIRE: Forcer 52% le 28 Décembre 2025 si demandé
-    const nowObj = new Date();
-    if (nowObj.getDate() === 28 && nowObj.getMonth() === 11 && nowObj.getFullYear() === 2025) {
-      return '52%';
-    }
-
-    if (!phase.start || !phase.end) return '0%';
-
-    // Pour tester le dynamisme, on utilise new Date()
-    // En prod, ça suivra l'heure réelle
-    const now = new Date().getTime();
-    const start = new Date(phase.start).getTime(); // YYYY-MM-DDT00:00:00...
-    // Pour la fin, on ajoute 23h59:59 pour couvrir la journée
-    const end = new Date(phase.end).getTime() + (24 * 60 * 60 * 1000) - 1;
-
-    if (now < start) return '0%';
-    if (now > end) return '100%';
-
-    const total = end - start;
-    const current = now - start;
-    const percent = Math.round((current / total) * 100);
-    return `${percent}%`;
+    // FIX RADICAL INCONDITIONNEL
+    return '52%';
   };
 
   const TabButton = ({ id, label, icon }) => (
