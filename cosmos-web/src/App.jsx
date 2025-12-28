@@ -197,7 +197,7 @@ function App() {
             <section className="vulgarisation-block">
               <div className="phase-header">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span className="section-title" style={{ marginBottom: 0 }}>Phase Actuelle</span>
+                  <span className="section-title" style={{ marginBottom: 0 }}>PHASE LUNAIRE</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
