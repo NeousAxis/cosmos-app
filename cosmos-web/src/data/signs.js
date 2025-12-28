@@ -382,6 +382,113 @@ accomplie.`,
     phrase_evolutive: 'Je suis perdu dans la lumière suprême, et pourtant je tourne le dos à cette lumière.',
     note_cle: 'Passer du contrôle à la maîtrise par une écoute profonde de l’intuition.',
     intro_splendeur: "Au Capricorne, les Cornes soufflent la Victoire et dans la toute Lumière resplendit le Triomphe.",
+    symbolique_detaillee: `Le Capricorne – Énergies, fonctions, effets et ombres
+
+1. Fonction fondamentale du Capricorne dans le cycle
+
+Le Capricorne correspond à une phase d’intégration et de consolidation.
+Il intervient lorsque ce qui a été perçu, contacté et distribué doit devenir structure stable, capable de durer dans le temps et de porter la vie sans l’entraver.
+
+Son rôle n’est pas d’inspirer ni d’impulser, mais de donner une forme juste au réel.
+Il agit comme un seuil entre l’intuition et la loi, entre l’élan intérieur et la responsabilité concrète.
+
+Le Capricorne est une énergie de maturité.
+
+2. Énergie principale : la maîtrise
+
+L’énergie centrale du Capricorne est la maîtrise.
+Une maîtrise qui ne repose pas sur la domination, mais sur l’intériorisation progressive des lois du vivant.
+
+Cette maîtrise se manifeste par :
+
+la capacité à tenir une forme dans le temps,
+
+la capacité à assumer les conséquences de ses actes,
+
+la capacité à agir sans se servir personnellement de ce qui est accompli.
+
+Le Capricorne transforme la puissance en justesse et l’élan en responsabilité.
+
+3. Rapport à l’autorité
+
+L’autorité du Capricorne n’est pas une autorité imposée.
+Elle est le fruit de l’expérience, de l’épreuve et de la fidélité à une ligne intérieure.
+
+Elle ne cherche ni à convaincre ni à séduire.
+Elle s’impose naturellement parce qu’elle fait tenir le réel.
+
+C’est une autorité silencieuse, acquise, reconnue a posteriori par ce qu’elle permet de stabiliser.
+
+4. Désintéressement et service
+
+Une caractéristique essentielle du Capricorne est le désintéressement.
+Lorsqu’il est aligné, il agit sans recherche de reconnaissance, sans besoin de lumière personnelle.
+
+Il reçoit la lumière, mais ne la garde pas.
+Il la transforme en cadre, en loi juste, en structure transmissible.
+
+C’est ce désintéressement qui lui permet d’approcher la maîtrise des forces du Bien, non par vertu morale, mais par absence d’appropriation.
+
+5. Rapport au temps
+
+Le Capricorne est intimement lié au temps long.
+Il œuvre dans la durée, la patience, la maturation.
+
+Ce qui est posé sous son influence n’est pas destiné à produire un effet immédiat, mais à résister à l’épreuve du temps.
+Il révèle ce qui peut durer et ce qui ne le peut pas.
+
+6. Effets intérieurs
+
+Intérieurement, l’énergie du Capricorne confronte à la responsabilité personnelle.
+Elle met en tension le besoin de contrôle et l’apprentissage de la maîtrise.
+
+Elle invite à s’appuyer sur les compétences réellement acquises par l’expérience, plutôt que sur la peur de mal faire ou de perdre le contrôle.
+Elle demande de faire confiance à ce qui a déjà été intégré.
+
+7. Effets collectifs et sociétaux
+
+Collectivement, le Capricorne agit comme un révélateur des structures.
+Ce qui est artificiel se rigidifie, ce qui est juste se consolide, ce qui est fondé sur le contrôle excessif montre ses limites.
+
+Il ne provoque pas la rupture, mais met en évidence les seuils de viabilité des systèmes politiques, économiques et sociaux.
+Il prépare silencieusement le terrain à un changement de conscience plus large.
+
+8. Les défauts du Capricorne et leurs effets
+a. Défauts sociétaux
+
+À l’échelle des sociétés, lorsque l’énergie du Capricorne est déséquilibrée, la structure devient une fin en soi. Les systèmes se rigidifient, les institutions s’alourdissent, les règles se multiplient jusqu’à perdre leur lien avec la vie réelle. La loi n’est plus un cadre protecteur mais un mécanisme de contrôle.
+
+Cela se traduit par une gouvernance verticale excessive, une peur chronique du changement et une incapacité à intégrer l’évolution des consciences collectives. Les structures cherchent alors à se maintenir par inertie plutôt que par justesse, générant lenteur, exclusion et perte de sens.
+
+b. Défauts exprimés par des groupes en activité
+
+Au niveau des groupes, organisations ou collectifs en action, le déséquilibre du Capricorne se manifeste par une obsession de la procédure, de la hiérarchie et du résultat mesurable. La maîtrise se transforme en contrôle permanent, la confiance est remplacée par la surveillance.
+
+Les groupes fonctionnent alors par conformité plutôt que par intelligence collective. La créativité est contenue, l’initiative individuelle est freinée, et la peur de l’erreur domine. Le cadre, au lieu de soutenir l’élan commun, devient un carcan qui empêche l’adaptation et étouffe la dynamique vivante du groupe.
+
+c. Défauts sur l’individu
+
+Chez l’individu, l’ombre du Capricorne s’exprime par une rigidité intérieure. Le besoin de tout maîtriser génère tension, fatigue et isolement. La personne s’identifie à ses responsabilités, à ses fonctions ou à ses rôles, au point de perdre le contact avec son ressenti profond.
+
+La peur de l’échec conduit à une sur-anticipation constante, empêchant l’intuition de guider l’action. L’individu cherche alors la sécurité dans le contrôle plutôt que dans la confiance en ses compétences acquises. La structure intérieure se fige, et la vie devient un ensemble d’obligations plutôt qu’un espace de justesse incarnée.
+
+9. Place du Capricorne dans l’ensemble du cycle
+
+Dans l’architecture globale du cycle, le Capricorne clôt, stabilise et rend transmissible.
+Sans lui, l’intuition reste sans forme.
+Mais sans ouverture, il devient prison.
+
+Sa fonction juste est de permettre à la lumière de circuler dans des structures vivantes, prêtes à être dépassées lorsque le cycle l’exige.
+
+Synthèse symbolique
+
+Le Capricorne est l’énergie qui rend la lumière utilisable par le monde.
+Il ne brille pas, il soutient.
+Il ne commande pas, il structure.
+Il ne possède pas, il sert.
+
+Lorsqu’il est aligné, il fonde la durabilité.
+Lorsqu’il est figé, il devient l’obstacle que le cycle devra dépasser.`,
     poeme: `Au Capricorne, les Cornes soufflent la Victoire et dans la toute Lumière resplendit le Triomphe. Au sommet de la Montagne, la Lumière du Cœur vaillant éclaire silencieusement le monde. Épris de sa Sainteté, le chaos est illuminé d'une profonde intelligence.
 
 L’âme parle ; La Bataille continue mais la lutte est terminée. Réjouis-toi d'être arrivé ici mais ne languis pas dans la Lumière. Redescend dans la fosse avec les autres instrumentistes. Au mouvement succède un nouveau mouvement pour que l'hymne du Monde rayonne dans chaque atome. Ton cœur enflammé connaît maintenant la direction. Laisse ton instrument accordé à la plus haute Note de ton cœur expirer la symphonie soufflée par l'Œuvre en création. Grand ouvert en permanence l'Un-connu annonce la Beauté du Monde. Accepte Ma main dans la tienne et laisse-toi guider. L'imprévisible orne de somptueuses lumières le futur inspiré par l'Œuvre. Tu ne peux contrôler la Vie. L'Amour a pris racine en ton cœur et cette Note de Bonté qui résonne est celle de la Vérité. L'imprévisible qui est aussi l'Un-prévisible est ton allié.`,

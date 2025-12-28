@@ -500,6 +500,20 @@ function App() {
             <section className="sign-card" style={{ padding: '32px 24px' }}>
               <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', textAlign: 'center', marginBottom: '24px' }}>Symbolique du Signe</h3>
 
+              {sign.symbolique_detaillee && (
+                <div style={{
+                  marginBottom: '40px',
+                  whiteSpace: 'pre-wrap',
+                  fontFamily: 'Inter',
+                  fontSize: '15px',
+                  lineHeight: '1.8',
+                  color: 'var(--text-main)',
+                  textAlign: 'left'
+                }}>
+                  {sign.symbolique_detaillee}
+                </div>
+              )}
+
               {sign.intro_splendeur && (
                 <div style={{ marginBottom: '32px', fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '16px', textAlign: 'center', lineHeight: '1.6' }}>
                   "{sign.intro_splendeur}"

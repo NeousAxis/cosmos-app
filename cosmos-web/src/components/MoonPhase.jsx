@@ -28,8 +28,8 @@ const MoonPhase = ({ phaseId, percentageStr = "0%" }) => {
     }
     else if (phaseId === 'integration') {
         // De Dernier Quartier à Nouvelle Lune
-        if (progress < 25) emoji = '🌗';      // Dernier Quartier
-        else if (progress < 75) emoji = '🌘'; // Dernier Croissant
+        if (progress < 60) emoji = '🌗';      // Dernier Quartier (étendu pour couvrir 52%)
+        else if (progress < 85) emoji = '🌘'; // Dernier Croissant
         else emoji = '🌑';                    // Nouvelle Lune
     } else {
         // Fallback ou période de transition
