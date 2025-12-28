@@ -154,7 +154,7 @@ function App() {
       <header>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '8px' }}>
           <CosmosLogo size={36} />
-          <h1 style={{ margin: 0 }}>COSMOS</h1>
+          <h1 style={{ margin: 0 }}>COSMOS 2025</h1>
         </div>
         <div className="current-date">
           {new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}
