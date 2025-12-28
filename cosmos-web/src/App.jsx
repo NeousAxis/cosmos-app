@@ -251,51 +251,121 @@ function App() {
 
               {energyMode === 'symbolique' ? (
                 /* Contenu Mode Symbolique */
-                <div style={{ animation: 'fadeIn 0.3s ease' }}>
-                  <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', textAlign: 'center', marginBottom: '8px' }}>Symbolique du Signe</h3>
-                  <h4 style={{ fontFamily: 'Playfair Display', fontSize: '18px', textAlign: 'center', marginBottom: '32px', fontWeight: 400, color: 'var(--text-muted)' }}>
+                <div style={{ animation: 'fadeIn 0.3s ease', textAlign: 'left' }}>
+
+                  {/* --- Partie Éducative --- */}
+                  <h3 style={{ fontFamily: 'Playfair Display', fontSize: '26px', textAlign: 'center', marginBottom: '8px', marginTop: '0' }}>Symbolique du Signe</h3>
+                  <h4 style={{ fontFamily: 'Playfair Display', fontSize: '18px', textAlign: 'center', marginBottom: '40px', fontWeight: 400, color: 'var(--text-muted)' }}>
                     {sign.name} – Énergies, fonctions, effets et ombres
                   </h4>
 
                   {sign.symbolique_detaillee && (
-                    <div className="teaching-text" style={{ whiteSpace: 'pre-wrap', marginBottom: '32px' }}>
+                    <div style={{ marginBottom: '60px' }}>
                       {(() => {
-                        // Réutilisation du splitter pour le texte symbolique aussi si besoin, ou standard
-                        return sign.symbolique_detaillee.replace(/^1\. Fonction/, '1. Fonction').split(/\n\n+/).map((p, i) => (
-                          <p key={i} style={{ marginBottom: '16px' }}>{p.trim()}</p>
-                        ));
+                        // Nettoyage et splitting intelligent
+                        const cleanText = sign.symbolique_detaillee.replace(/^1\. Fonction/, '1. Fonction');
+                        const blocks = cleanText.split(/\n\n+/);
+
+                        return blocks.map((block, i) => {
+                          const trimmed = block.trim();
+                          // Détection des titres : Commence par un chiffre suivi d'un point OU est "Synthèse symbolique"
+                          const isTitle = /^\d+\./.test(trimmed) || trimmed.startsWith("Synthèse");
+
+                          if (isTitle) {
+                            return (
+                              <h5 key={i} style={{
+                                fontFamily: 'Playfair Display',
+                                fontSize: '20px',
+                                fontWeight: 700,
+                                color: 'var(--text-main)',
+                                marginTop: '32px',
+                                marginBottom: '16px'
+                              }}>
+                                {trimmed}
+                              </h5>
+                            );
+                          } else {
+                            return (
+                              <p key={i} className="teaching-text" style={{
+                                fontFamily: 'Inter',
+                                fontSize: '16px',
+                                lineHeight: '1.7',
+                                marginBottom: '16px',
+                                whiteSpace: 'pre-wrap'
+                              }}>
+                                {trimmed}
+                              </p>
+                            );
+                          }
+                        });
                       })()}
                     </div>
                   )}
 
-                  {sign.intro_splendeur && (
-                    <div style={{
-                      marginBottom: '32px',
-                      fontFamily: 'Playfair Display',
-                      fontSize: '18px',
-                      lineHeight: '1.6',
-                      textAlign: 'center',
-                      color: 'var(--text-main)'
-                    }}>
-                      {sign.intro_splendeur}
-                    </div>
-                  )}
+                  {/* --- Partie Poétique (Style "Splendeur") --- */}
+                  <div style={{ marginTop: '40px', paddingTop: '40px', borderTop: '1px solid rgba(0,0,0,0.1)' }}>
 
-                  <div style={{ width: '40px', height: '1px', background: 'var(--text-muted)', margin: '0 auto 32px' }} />
-
-                  {sign.parole_ame && (
+                    {/* Citation Top Centrée (si dispo, optionnel selon maquette, ici on utilise un extrait de l'intro) */}
                     <div style={{
                       fontFamily: 'Playfair Display',
-                      fontSize: '18px',
                       fontStyle: 'italic',
-                      lineHeight: '1.8',
+                      fontSize: '16px',
                       textAlign: 'center',
-                      paddingLeft: '16px',
-                      paddingRight: '16px'
+                      color: 'var(--text-muted)',
+                      marginBottom: '32px',
+                      padding: '0 20px'
                     }}>
-                      {sign.parole_ame}
+                      "{sign.intro_splendeur.split('.')[0]}."
                     </div>
-                  )}
+                    <div style={{ width: '40px', height: '1px', background: 'var(--text-muted)', margin: '0 auto 40px' }} />
+
+                    {/* Texte Intro */}
+                    {sign.intro_splendeur && (
+                      <div style={{
+                        marginBottom: '40px',
+                        fontFamily: 'Playfair Display',
+                        fontSize: '19px',
+                        lineHeight: '1.6',
+                        textAlign: 'left', // Justifié ou left selon préférence, left est plus web-safe pour la lecture
+                        color: 'var(--text-main)'
+                      }}>
+                        {sign.intro_splendeur}
+                      </div>
+                    )}
+
+                    {/* L'âme parle (Avec Barre Verticale) */}
+                    {sign.parole_ame && (
+                      <div style={{
+                        position: 'relative',
+                        paddingLeft: '32px', // Espace pour la barre
+                        borderLeft: '4px solid var(--accent)', // La barre bleue
+                        fontFamily: 'Playfair Display',
+                        fontSize: '19px',
+                        fontStyle: 'italic',
+                        lineHeight: '1.8',
+                        color: 'var(--text-main)',
+                        background: '#f9f9f7', // Légère teinte de fond optionnelle pour faire ressortir le bloc ? Non, restons sur du transparent comme l'image semble le montrer (ou un fond très subtil gris)
+                        padding: '24px 24px 24px 32px', // Padding autour
+                        backgroundColor: 'rgba(0,0,0,0.02)' // Très subtil fond pour unifier le bloc
+                      }}>
+                        {/* On met en gras "L'âme parle ;" si présent */}
+                        {(() => {
+                          const marker = "L’âme parle ;";
+                          if (sign.parole_ame.includes(marker)) {
+                            const parts = sign.parole_ame.split(marker);
+                            return (
+                              <>
+                                <strong>{marker}</strong>
+                                {parts[1]}
+                              </>
+                            );
+                          }
+                          return sign.parole_ame;
+                        })()}
+                      </div>
+                    )}
+                  </div>
+
                 </div>
               ) : (
                 /* Contenu Mode Individuel / Global */
