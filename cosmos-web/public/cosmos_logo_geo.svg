@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Fond transparent (ou blanc si nécessaire, ici transparent pour favicon) -->
+  
+  <!-- Groupe principal centrée -->
+  <g transform="translate(50, 50)">
+    <!-- Cercle Extérieur -->
+    <circle r="45" fill="none" stroke="#1a1a1a" stroke-width="2" />
+    
+    <!-- Losange (Carré tourné) -->
+    <!-- Points: (0, -45), (45, 0), (0, 45), (-45, 0) -->
+    <polygon points="0,-45 45,0 0,45 -45,0" fill="none" stroke="#1a1a1a" stroke-width="2" />
+    
+    <!-- Croix Centrale -->
+    <line x1="0" y1="-45" x2="0" y2="45" stroke="#1a1a1a" stroke-width="2" />
+    <line x1="-45" y1="0" x2="45" y2="0" stroke="#1a1a1a" stroke-width="2" />
+    
+    <!-- Points aux intersections -->
+    <circle cx="0" cy="-45" r="3" fill="#1a1a1a" /> <!-- Haut -->
+    <circle cx="45" cy="0" r="3" fill="#1a1a1a" /> <!-- Droite -->
+    <circle cx="0" cy="45" r="3" fill="#1a1a1a" /> <!-- Bas -->
+    <circle cx="-45" cy="0" r="3" fill="#1a1a1a" /> <!-- Gauche -->
+    <circle cx="0" cy="0" r="3" fill="#1a1a1a" />   <!-- Centre -->
+  </g>
+</svg>

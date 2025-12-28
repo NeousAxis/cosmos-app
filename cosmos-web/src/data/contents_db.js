@@ -34,10 +34,24 @@ export const CONTENTS_DB = {
     "2025": {
         "capricorn": {
             "alignement": {
-                lecture_reel: "Un déplacement profond s’opère entre la volonté de tout tenir, tout organiser, tout anticiper, et la nécessité d’apprendre à faire confiance à une intelligence plus vaste que le mental. Intérieurement, une tension peut apparaître entre le besoin de sécurité, d’efficacité et de maîtrise rationnelle, et l’émergence d’une perception plus fine, plus directe, qui ne passe pas par l’analyse mais par le ressenti juste. Ce qui se joue n’est pas un lâcher-prise passif, mais un changement de centre de pilotage. L’action ne disparaît pas, elle se décale. Elle cesse d’être guidée par la peur de perdre le contrôle pour s’appuyer sur une écoute attentive de ce qui cherche à se mettre en place à travers toi.",
+                lecture_reel: `Un déplacement profond s’opère entre la volonté de tout tenir, tout organiser, tout anticiper, et la nécessité d’apprendre à faire confiance à une intelligence plus vaste que le mental.
+
+Intérieurement, une tension peut apparaître entre le besoin de sécurité, d’efficacité et de maîtrise rationnelle, et l’émergence d’une perception plus fine, plus directe, qui ne passe pas par l’analyse mais par le ressenti juste.
+
+Ce qui se joue n’est pas un lâcher-prise passif, mais un changement de centre de pilotage. L’action ne disparaît pas, elle se décale. Elle cesse d’être guidée par la peur de perdre le contrôle pour s’appuyer sur une écoute attentive de ce qui cherche à se mettre en place à travers toi.`,
                 lecture_energetique: LECTURE_ENERGETIQUE_CAPRICORNE,
-                epreuve: "La maîtrise est souvent confondue avec le contrôle. Le contrôle est une réponse aux peurs, peur de l’erreur, du manque, du jugement ou de l’imprévu. Il cherche à verrouiller le réel pour éviter l’incertitude. La maîtrise, au contraire, devient possible lorsque l’on fait confiance aux compétences que la vie nous a permis de développer au fil des expériences, des réussites comme des échecs. Cette confiance est incarnée, elle repose sur ce qui a déjà été traversé et intégré. Là où le contrôle tente d’empêcher le réel d’advenir, la maîtrise s’appuie sur la capacité à y répondre avec justesse. La résistance apparaît lorsque l’on doute de cette compétence intérieure et que l’on préfère sur-anticiper plutôt que s’engager pleinement. Écouter l’intuition demande alors un courage particulier, celui de reconnaître que l’on est déjà capable, même sans garantie absolue.",
-                action: "Observer où le contrôle s’exerce par réflexe, agenda saturé, décisions prises trop vite, besoin de tout valider mentalement. À ces endroits précis, ralentir volontairement et créer un espace d’écoute avant l’action, même bref. Avant une décision importante, poser une question simple et attendre la réponse sans la forcer, est-ce juste maintenant. La réponse ne vient pas sous forme de raisonnement, mais de clarté intérieure, de tension ou de détente. Ce mois invite à faire moins, mais plus juste, à laisser l’intuition guider la structure plutôt que l’inverse, et à agir en confiance à partir de ce qui est déjà maîtrisé intérieurement."
+                epreuve: `La maîtrise est souvent confondue avec le contrôle. Le contrôle est une réponse aux peurs : peur de l’erreur, du manque, du jugement ou de l’imprévu. Il cherche à verrouiller le réel pour éviter l’incertitude.
+
+La maîtrise, au contraire, devient possible lorsque l’on fait confiance aux compétences que la vie nous a permis de développer au fil des expériences, des réussites comme des échecs. Cette confiance est incarnée, elle repose sur ce qui a déjà été traversé et intégré.
+
+Là où le contrôle tente d’empêcher le réel d’advenir, la maîtrise s’appuie sur la capacité à y répondre avec justesse. La résistance apparaît lorsque l’on doute de cette compétence intérieure et que l’on préfère sur-anticiper plutôt que s’engager pleinement.
+
+Écouter l’intuition demande alors un courage particulier, celui de reconnaître que l’on est déjà capable, même sans garantie absolue.`,
+                action: `Observer où le contrôle s’exerce par réflexe : agenda saturé, décisions prises trop vite, besoin de tout valider mentalement. À ces endroits précis, ralentir volontairement et créer un espace d’écoute avant l’action, même bref.
+
+Avant une décision importante, poser une question simple et attendre la réponse sans la forcer : "Est-ce juste maintenant ?". La réponse ne vient pas sous forme de raisonnement, mais de clarté intérieure, de tension ou de détente.
+
+Ce mois invite à faire moins, mais plus juste, à laisser l’intuition guider la structure plutôt que l’inverse, et à agir en confiance à partir de ce qui est déjà maîtrisé intérieurement.`
             },
             "contact": {
                 lecture_reel: "L'ascension intérieure m'amène à un point de contact précis. Je perçois une clarté nouvelle sur mes objectifs, non plus comme des ambitions, mais comme une responsabilité envers moi-même.",
@@ -62,10 +76,24 @@ export const CONTENTS_DB = {
     "2026": {
         "capricorn": {
             "alignement": {
-                lecture_reel: "Je ressens en cette période un appel à la verticalité. Je traverse un moment où le besoin de structure et de silence s'impose, non comme une contrainte, mais comme une nécessité pour tenir debout. Je sens une densité qui me demande de ralentir pour ne pas trébucher.",
+                lecture_reel: `Un déplacement profond s’opère entre la volonté de tout tenir, tout organiser, tout anticiper, et la nécessité d’apprendre à faire confiance à une intelligence plus vaste que le mental.
+                
+Intérieurement, une tension peut apparaître entre le besoin de sécurité, d’efficacité et de maîtrise rationnelle, et l’émergence d’une perception plus fine, plus directe, qui ne passe pas par l’analyse mais par le ressenti juste.
+
+Ce qui se joue n’est pas un lâcher-prise passif, mais un changement de centre de pilotage. L’action ne disparaît pas, elle se décale. Elle cesse d’être guidée par la peur de perdre le contrôle pour s’appuyer sur une écoute attentive de ce qui cherche à se mettre en place à travers toi.`,
                 lecture_energetique: LECTURE_ENERGETIQUE_CAPRICORNE,
-                epreuve: "Je confonds souvent ma rigueur avec de la rigidité, ou mon besoin de solitude avec de la froideur. Je lutte contre la peur du vide en remplissant mon agenda.",
-                action: "Je décide aujourd'hui d'accepter le silence sans chercher à le combler. Je pose un acte ferme mais bienveillant, qui définit ma limite sans fermer mon cœur."
+                epreuve: `La maîtrise est souvent confondue avec le contrôle. Le contrôle est une réponse aux peurs : peur de l’erreur, du manque, du jugement ou de l’imprévu. Il cherche à verrouiller le réel pour éviter l’incertitude.
+
+La maîtrise, au contraire, devient possible lorsque l’on fait confiance aux compétences que la vie nous a permis de développer au fil des expériences, des réussites comme des échecs. Cette confiance est incarnée, elle repose sur ce qui a déjà été traversé et intégré.
+
+Là où le contrôle tente d’empêcher le réel d’advenir, la maîtrise s’appuie sur la capacité à y répondre avec justesse. La résistance apparaît lorsque l’on doute de cette compétence intérieure et que l’on préfère sur-anticiper plutôt que s’engager pleinement.
+
+Écouter l’intuition demande alors un courage particulier, celui de reconnaître que l’on est déjà capable, même sans garantie absolue.`,
+                action: `Observer où le contrôle s’exerce par réflexe : agenda saturé, décisions prises trop vite, besoin de tout valider mentalement. À ces endroits précis, ralentir volontairement et créer un espace d’écoute avant l’action, même bref.
+
+Avant une décision importante, poser une question simple et attendre la réponse sans la forcer : "Est-ce juste maintenant ?". La réponse ne vient pas sous forme de raisonnement, mais de clarté intérieure, de tension ou de détente.
+
+Ce mois invite à faire moins, mais plus juste, à laisser l’intuition guider la structure plutôt que l’inverse, et à agir en confiance à partir de ce qui est déjà maîtrisé intérieurement.`
             },
             "contact": {
                 lecture_reel: "L'ascension intérieure m'amène à un point de contact précis. Je perçois une clarté nouvelle sur mes objectifs, non plus comme des ambitions, mais comme une responsabilité envers moi-même.",
