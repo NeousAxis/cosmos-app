@@ -381,10 +381,9 @@ accomplie.`,
     dates: '22 Décembre - 19 Janvier',
     phrase_evolutive: 'Je suis perdu dans la lumière suprême, et pourtant je tourne le dos à cette lumière.',
     note_cle: 'Passer du contrôle à la maîtrise par une écoute profonde de l’intuition.',
-    intro_splendeur: "Au Capricorne, les Cornes soufflent la Victoire et dans la toute Lumière resplendit le Triomphe.",
-    symbolique_detaillee: `Le Capricorne – Énergies, fonctions, effets et ombres
-
-1. Fonction fondamentale du Capricorne dans le cycle
+    intro_splendeur: "Au Capricorne, les Cornes soufflent la Victoire et dans la toute Lumière resplendit le Triomphe. Au sommet de la Montagne, la Lumière du Cœur vaillant éclaire silencieusement le monde. Épris de sa Sainteté, le chaos est illuminé d'une profonde intelligence.",
+    parole_ame: `L’âme parle ; La Bataille continue mais la lutte est terminée. Réjouis-toi d'être arrivé ici mais ne languis pas dans la Lumière. Redescend dans la fosse avec les autres instrumentistes. Au mouvement succède un nouveau mouvement pour que l'hymne du Monde rayonne dans chaque atome. Ton cœur enflammé connaît maintenant la direction. Laisse ton instrument accordé à la plus haute Note de ton cœur expirer la symphonie soufflée par l'Œuvre en création. Grand ouvert en permanence l'Un-connu annonce la Beauté du Monde. Accepte Ma main dans la tienne et laisse-toi guider. L'imprévisible orne de somptueuses lumières le futur inspiré par l'Œuvre. Tu ne peux contrôler la Vie. L'Amour a pris racine en ton cœur et cette Note de Bonté qui résonne est celle de la Vérité. L'imprévisible qui est aussi l'Un-prévisible est ton allié.`,
+    symbolique_detaillee: `1. Fonction fondamentale du Capricorne dans le cycle
 
 Le Capricorne correspond à une phase d’intégration et de consolidation.
 Il intervient lorsque ce qui a été perçu, contacté et distribué doit devenir structure stable, capable de durer dans le temps et de porter la vie sans l’entraver.
@@ -489,9 +488,7 @@ Il ne possède pas, il sert.
 
 Lorsqu’il est aligné, il fonde la durabilité.
 Lorsqu’il est figé, il devient l’obstacle que le cycle devra dépasser.`,
-    poeme: `Au Capricorne, les Cornes soufflent la Victoire et dans la toute Lumière resplendit le Triomphe. Au sommet de la Montagne, la Lumière du Cœur vaillant éclaire silencieusement le monde. Épris de sa Sainteté, le chaos est illuminé d'une profonde intelligence.
-
-L’âme parle ; La Bataille continue mais la lutte est terminée. Réjouis-toi d'être arrivé ici mais ne languis pas dans la Lumière. Redescend dans la fosse avec les autres instrumentistes. Au mouvement succède un nouveau mouvement pour que l'hymne du Monde rayonne dans chaque atome. Ton cœur enflammé connaît maintenant la direction. Laisse ton instrument accordé à la plus haute Note de ton cœur expirer la symphonie soufflée par l'Œuvre en création. Grand ouvert en permanence l'Un-connu annonce la Beauté du Monde. Accepte Ma main dans la tienne et laisse-toi guider. L'imprévisible orne de somptueuses lumières le futur inspiré par l'Œuvre. Tu ne peux contrôler la Vie. L'Amour a pris racine en ton cœur et cette Note de Bonté qui résonne est celle de la Vérité. L'imprévisible qui est aussi l'Un-prévisible est ton allié.`,
+    poeme: "",
     phases_content: {
       alignement: {
         lecture_reel: "Je ressens en cette période un appel à la verticalité. Je traverse un moment où le besoin de structure et de silence s'impose, non comme une contrainte, mais comme une nécessité pour tenir debout. Je sens une densité qui me demande de ralentir pour ne pas trébucher.",

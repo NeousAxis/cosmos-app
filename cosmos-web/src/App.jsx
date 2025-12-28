@@ -231,6 +231,25 @@ function App() {
                 </div>
               </div>
 
+              <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                <button
+                  onClick={() => setActiveTab('symbolique')}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    borderBottom: '1px solid var(--text-muted)',
+                    fontFamily: 'Playfair Display',
+                    fontSize: '16px',
+                    fontStyle: 'italic',
+                    color: 'var(--text-muted)',
+                    cursor: 'pointer',
+                    padding: '4px 8px'
+                  }}
+                >
+                  Lire la Symbolique du Signe &rarr;
+                </button>
+              </div>
+
               {(() => {
                 const formatText = (text) => {
                   if (!text) return null;
@@ -507,11 +526,14 @@ function App() {
         {activeTab === 'symbolique' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
             <section className="sign-card" style={{ padding: '32px 24px' }}>
-              <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', textAlign: 'center', marginBottom: '24px' }}>Symbolique du Signe</h3>
+              <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', textAlign: 'center', marginBottom: '8px' }}>Symbolique du Signe</h3>
+              <h4 style={{ fontFamily: 'Playfair Display', fontSize: '18px', textAlign: 'center', marginBottom: '32px', fontWeight: 400, color: 'var(--text-muted)' }}>
+                {sign.name} – Énergies, fonctions, effets et ombres
+              </h4>
 
               {sign.symbolique_detaillee && (
                 <div style={{
-                  marginBottom: '40px',
+                  marginBottom: '48px',
                   whiteSpace: 'pre-wrap',
                   fontFamily: 'Inter',
                   fontSize: '15px',
@@ -519,41 +541,39 @@ function App() {
                   color: 'var(--text-main)',
                   textAlign: 'left'
                 }}>
-                  {sign.symbolique_detaillee}
+                  {sign.symbolique_detaillee.replace(/^1\. Fonction/, '1. Fonction')} {/* Retire le titre s'il est dupliqué dans la string */}
                 </div>
               )}
 
               {sign.intro_splendeur && (
-                <div style={{ marginBottom: '32px', fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '16px', textAlign: 'center', lineHeight: '1.6' }}>
-                  "{sign.intro_splendeur}"
+                <div style={{
+                  marginBottom: '32px',
+                  fontFamily: 'Playfair Display',
+                  fontSize: '18px',
+                  lineHeight: '1.6',
+                  textAlign: 'center',
+                  color: 'var(--text-main)'
+                }}>
+                  {sign.intro_splendeur}
                 </div>
               )}
 
               <div style={{ width: '40px', height: '1px', background: 'var(--text-muted)', margin: '0 auto 32px' }} />
 
-              {sign.poeme && (() => {
-                const separatorRegex = /(L['’][AaâÂ]me parle\s*[:;])/i;
-                const parts = sign.poeme.split(separatorRegex);
-
-                if (parts.length >= 3) {
-                  return (
-                    <div style={{ fontFamily: 'Playfair Display', fontSize: '18px', lineHeight: '1.8', whiteSpace: 'pre-line' }}>
-                      <div style={{ textAlign: 'left', marginBottom: '32px' }}>
-                        {parts[0].trim()}
-                      </div>
-                      <div style={{ textAlign: 'left', fontStyle: 'italic', paddingLeft: '16px', borderLeft: '3px solid var(--accent)', color: 'var(--text-main)' }}>
-                        <strong>{parts[1]}</strong> {parts[2].trim()}
-                      </div>
-                    </div>
-                  );
-                } else {
-                  return (
-                    <div style={{ fontFamily: 'Playfair Display', fontSize: '18px', lineHeight: '1.8', whiteSpace: 'pre-line', textAlign: 'center' }}>
-                      {sign.poeme}
-                    </div>
-                  );
-                }
-              })()}
+              {sign.parole_ame && (
+                <div style={{
+                  fontFamily: 'Playfair Display',
+                  fontSize: '18px',
+                  fontStyle: 'italic',
+                  lineHeight: '1.8',
+                  textAlign: 'center',
+                  paddingLeft: '16px',
+                  paddingRight: '16px',
+                  // Masquer "L'âme parle ;" si présent au début pour le styliser ou le laisser tel quel
+                }}>
+                  {sign.parole_ame}
+                </div>
+              )}
             </section>
           </motion.div>
         )}
