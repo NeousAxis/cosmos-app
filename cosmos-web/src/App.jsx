@@ -19,8 +19,8 @@ function App() {
   /* --- ÉTAT INITIAL INTELLIGENT --- */
   const [sign, setSign] = useState(() => {
     const now = new Date();
-    // FIX 28 DEC 2024 -> CAPRICORNE (Demande utilisateur force)
-    if (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2024) {
+    // FIX 28 DEC 2025 -> CAPRICORNE (Demande utilisateur force)
+    if (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2025) {
       return SIGNS.find(s => s.id === 'capricorn') || SIGNS[0];
     }
     // Sinon on laisse faire le useEffect, valeur par défaut
@@ -29,13 +29,13 @@ function App() {
 
   const [phase, setPhase] = useState(() => {
     const now = new Date();
-    // FIX 28 DEC 2024 -> Intégration
-    if (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2024) {
+    // FIX 28 DEC 2025 -> Intégration
+    if (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2025) {
       return {
         id: 'integration',
         name: 'Intégration',
-        start: '2024-12-28',
-        end: '2025-01-03'
+        start: '2025-12-28',
+        end: '2026-01-03'
       };
     }
     return { id: 'alignement', name: 'Alignement', start: null, end: null };
@@ -51,19 +51,19 @@ function App() {
     // 1. Déterminer la date du jour
     const now = new Date();
     const currentYear = now.getFullYear().toString();
-    const isDec28 = (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2024);
+    const isDec28 = (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2025);
 
     // 2. Récupérer la phase active depuis le calendrier perpétuel
     let activePhase = getPhaseForDate(now);
 
-    // FIX URGENT: Forcer Intégration + CAPRICORNE si 28 Décembre
+    // FIX URGENT: Forcer Intégration + CAPRICORNE si 28 Décembre 2025
     if (isDec28) {
       activePhase = {
         signId: 'capricorn',
         phaseId: 'integration',
         dates: {
-          start: '2024-12-28',
-          end: '2025-01-03'
+          start: '2025-12-28',
+          end: '2026-01-03'
         }
       };
     }
@@ -122,9 +122,9 @@ function App() {
 
   /* --- CALCUL DYNAMIQUE DU POURCENTAGE --- */
   const getPhasePercentage = () => {
-    // FIX TEMPORAIRE: Forcer 52% le 28 Décembre si demandé
+    // FIX TEMPORAIRE: Forcer 52% le 28 Décembre 2025 si demandé
     const nowObj = new Date();
-    if (nowObj.getDate() === 28 && nowObj.getMonth() === 11 && nowObj.getFullYear() === 2024) {
+    if (nowObj.getDate() === 28 && nowObj.getMonth() === 11 && nowObj.getFullYear() === 2025) {
       return '52%';
     }
 

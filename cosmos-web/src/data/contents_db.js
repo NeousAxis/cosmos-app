@@ -81,6 +81,16 @@ Ce mois invite à faire moins, mais plus juste, à laisser l’intuition guider 
             }
         }
     },
+    "2025": {
+        "capricorn": {
+            "integration": {
+                lecture_reel: "Bien que nous soyons dans l'énergie du Capricorne, cette phase d'intégration marque la fin de l'année civile. C'est le moment de synthétiser les leçons de 2025 pour bâtir l'année à venir sur des fondations solides.",
+                lecture_energetique: "La structure du Capricorne nous aide à cristalliser nos expériences en sagesse durable.",
+                epreuve: "La tentation de juger sévèrement ce qui n'a pas été accompli en 2025.",
+                action: "Je célèbre une réussite concrète de cette année, aussi petite soit-elle, comme première pierre de mon édifice 2026."
+            }
+        }
+    },
     "2026": {
         "capricorn": {
             "alignement": {
