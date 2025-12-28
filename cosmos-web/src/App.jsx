@@ -16,16 +16,34 @@ import { CAPRICORN_QUOTES } from './data/quotes';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
-  const [sign, setSign] = useState(null);
-  const [phase, setPhase] = useState(null);
+  /* --- ÉTAT INITIAL INTELLIGENT --- */
+  const [sign, setSign] = useState(() => {
+    const now = new Date();
+    // FIX 28 DEC 2024 -> Sagittaire
+    if (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2024) {
+      return SIGNS.find(s => s.id === 'sagittarius') || SIGNS[0];
+    }
+    // Sinon on laisse faire le useEffect, valeur par défaut
+    return SIGNS[0];
+  });
+
+  const [phase, setPhase] = useState(() => {
+    const now = new Date();
+    // FIX 28 DEC 2024 -> Intégration
+    if (now.getDate() === 28 && now.getMonth() === 11 && now.getFullYear() === 2024) {
+      return {
+        id: 'integration',
+        name: 'Intégration',
+        start: '2024-12-28',
+        end: '2025-01-03'
+      };
+    }
+    return { id: 'alignement', name: 'Alignement', start: null, end: null };
+  });
+
   const [activeTab, setActiveTab] = useState('energie');
   const [isMeditationOpen, setIsMeditationOpen] = useState(false);
-  const [phaseContent, setPhaseContent] = useState({
-    lecture_reel: "Contenu à venir...",
-    lecture_energetique: "Contenu à venir...",
-    epreuve: "...",
-    action: "..."
-  });
+  const [phaseContent, setPhaseContent] = useState({});
   const [energyMode, setEnergyMode] = useState('individuel');
 
   /* --- CHARGEMENT DES DONNÉES (AUTO + MANUEL) --- */

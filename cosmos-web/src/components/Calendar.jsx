@@ -1,81 +1,98 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MoonIcon from './MoonIcon';
 
 const Calendar = () => {
+    const [currentDate, setCurrentDate] = useState(new Date());
     const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-    const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
-
-    // Moon phase calculation for December 2025
-    // Dec 5: Full Moon (100%)
-    // Dec 12: Last Quarter (50%)
-    // Dec 19: New Moon (0%)
-    // Dec 26: First Quarter (50%)
-
-    const getPhaseInfo = (day) => {
-        // Key dates
-        if (day === 5) {
-            return { type: 'full', label: 'Pleine Lune du Capricorne', percentage: 100 };
-        } else if (day === 19) {
-            return { type: 'new', label: 'Nouvelle Lune du Verseau', percentage: 0 };
-        } else if (day === 12) {
-            return { type: 'quarter-waning', label: 'Dernier Quartier', percentage: 50 };
-        } else if (day === 26) {
-            return { type: 'quarter-waxing', label: 'Premier Quartier', percentage: 50 };
-        }
-
-        // Progressive phases between key dates
-        let percentage, type, label;
-
-        if (day < 5) {
-            // Before full moon: waxing from ~70% to 100%
-            percentage = 70 + (day / 5) * 30;
-            type = 'waxing-gibbous';
-            label = 'Gibbeuse Croissante';
-        } else if (day > 5 && day < 12) {
-            // After full moon, before last quarter: waning from 100% to 50%
-            const daysSinceFull = day - 5;
-            const totalDays = 12 - 5;
-            percentage = 100 - (daysSinceFull / totalDays) * 50;
-            type = 'waning-gibbous';
-            label = 'Gibbeuse Décroissante';
-        } else if (day > 12 && day < 19) {
-            // After last quarter, before new moon: waning from 50% to 0%
-            const daysSinceQuarter = day - 12;
-            const totalDays = 19 - 12;
-            percentage = 50 - (daysSinceQuarter / totalDays) * 50;
-            type = 'waning-crescent';
-            label = 'Dernier Croissant';
-        } else if (day > 19 && day < 26) {
-            // After new moon, before first quarter: waxing from 0% to 50%
-            const daysSinceNew = day - 19;
-            const totalDays = 26 - 19;
-            percentage = (daysSinceNew / totalDays) * 50;
-            type = 'waxing-crescent';
-            label = 'Premier Croissant';
-        } else {
-            // After first quarter (26-31): waxing from 50% to ~80%
-            const daysSinceQuarter = day - 26;
-            const totalDays = 31 - 26;
-            percentage = 50 + (daysSinceQuarter / totalDays) * 30;
-            type = 'waxing-gibbous';
-            label = 'Gibbeuse Croissante';
-        }
-
-        return { type, label, percentage };
+    // Fonction simple pour calculer la phase de lune (0.0 - 1.0)
+    // 0 = Nouvelle Lune, 0.5 = Pleine Lune
+    const getMoonPhaseFraction = (date) => {
+        const synodic = 29.53058867;
+        const knownNewMoon = new Date('2024-01-11T11:57:00Z').getTime(); // Une nouvelle lune de référence
+        const time = date.getTime();
+        const diff = time - knownNewMoon;
+        const days = diff / (1000 * 60 * 60 * 24);
+        const cycles = days / synodic;
+        let phase = cycles % 1;
+        if (phase < 0) phase += 1;
+        return phase;
     };
 
+    const getPhaseInfo = (date) => {
+        const fraction = getMoonPhaseFraction(date);
+
+        // Illumination visuelle
+        const illumination = (1 - Math.cos(fraction * 2 * Math.PI)) / 2;
+        const visualPercent = Math.round(illumination * 100);
+
+        let type = 'new';
+        let label = 'Nouvelle Lune';
+
+        if (fraction < 0.02 || fraction > 0.98) { type = 'new'; label = 'Nouvelle Lune'; }
+        else if (fraction < 0.23) { type = 'waxing-crescent'; label = 'Premier Croissant'; }
+        else if (fraction < 0.27) { type = 'quarter-waxing'; label = 'Premier Quartier'; }
+        else if (fraction < 0.48) { type = 'waxing-gibbous'; label = 'Gibbeuse Croissante'; }
+        else if (fraction < 0.52) { type = 'full'; label = 'Pleine Lune'; }
+        else if (fraction < 0.73) { type = 'waning-gibbous'; label = 'Gibbeuse Décroissante'; }
+        else if (fraction < 0.77) { type = 'quarter-waning'; label = 'Dernier Quartier'; }
+        else { type = 'waning-crescent'; label = 'Dernier Croissant'; }
+
+        return { type, label, percentage: visualPercent };
+    };
+
+    const getDaysInMonth = (year, month) => {
+        return new Date(year, month + 1, 0).getDate();
+    };
+
+    const getFirstDayOfMonth = (year, month) => {
+        // 0 = Dimanche, 1 = Lundi...
+        const day = new Date(year, month, 1).getDay();
+        return day === 0 ? 6 : day - 1;
+    };
+
+    const prevMonth = () => {
+        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
+    };
+
+    const nextMonth = () => {
+        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
+    };
+
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const today = new Date();
+
+    const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+
+    const getMonthSign = (m) => {
+        const monthSigns = ["Capricorne", "Verseau", "Poissons", "Bélier", "Taureau", "Gémeaux", "Cancer", "Lion", "Vierge", "Balance", "Scorpion", "Sagittaire"];
+        return monthSigns[m];
+    };
+
+    const daysCount = getDaysInMonth(year, month);
+    const firstDayIndex = getFirstDayOfMonth(year, month);
+
+    const calendarDays = [];
+    for (let i = 0; i < firstDayIndex; i++) {
+        calendarDays.push(null);
+    }
+    for (let i = 1; i <= daysCount; i++) {
+        calendarDays.push(i);
+    }
 
     return (
         <div className="calendar-container" style={{ width: '100%', maxWidth: '340px', margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <button className="btn-ghost" style={{ padding: '4px' }}><ChevronLeft size={20} /></button>
+                <button onClick={prevMonth} className="btn-ghost" style={{ padding: '4px' }}><ChevronLeft size={20} /></button>
                 <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontFamily: 'Playfair Display', fontSize: '18px' }}>Décembre 2025</div>
-                    <div style={{ fontSize: '10px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Mois du Capricorne</div>
+                    <div style={{ fontFamily: 'Playfair Display', fontSize: '18px' }}>{monthNames[month]} {year}</div>
+                    <div style={{ fontSize: '10px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                        Mois {month === 11 ? "du Sagittaire / Capricorne" : "du " + getMonthSign(month)}
+                    </div>
                 </div>
-                <button className="btn-ghost" style={{ padding: '4px' }}><ChevronRight size={20} /></button>
+                <button onClick={nextMonth} className="btn-ghost" style={{ padding: '4px' }}><ChevronRight size={20} /></button>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '8px', marginBottom: '12px' }}>
@@ -85,37 +102,38 @@ const Calendar = () => {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '8px' }}>
-                {days.map(d => {
-                    const isToday = d === 26;
-                    const phase = getPhaseInfo(d);
+                {calendarDays.map((d, i) => {
+                    if (d === null) return <div key={`empty-${i}`} />;
+
+                    const isToday = d === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+                    const dateObj = new Date(year, month, d, 12, 0, 0);
+                    const phase = getPhaseInfo(dateObj);
                     const isMainPhase = phase.type === 'full' || phase.type === 'new';
 
                     return (
                         <div
                             key={d}
-                            title={phase.label}
+                            title={`${d} ${monthNames[month]} : ${phase.label}`}
                             style={{
                                 height: '44px',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
-                                position: 'relative',
+                                padding: '4px 0',
                                 borderRadius: '8px',
-                                backgroundColor: isToday ? 'var(--text-main)' : isMainPhase ? 'rgba(0,0,0,0.03)' : 'transparent',
-                                color: isToday ? '#fff' : 'inherit',
-                                border: isMainPhase ? '1px solid rgba(0,0,0,0.1)' : 'none',
-                                padding: '4px 0'
+                                background: isToday ? 'var(--text-main)' : 'rgba(0,0,0,0.02)',
+                                color: isToday ? '#fff' : 'var(--text-main)',
+                                border: isMainPhase && !isToday ? '1px solid var(--accent)' : 'none',
+                                cursor: 'default'
                             }}
                         >
-                            <span style={{ fontSize: '12px', fontWeight: isToday ? 600 : 400 }}>{d}</span>
-
-                            <div style={{ height: '16px', display: 'flex', alignItems: 'center' }}>
+                            <span style={{ fontSize: '13px', fontWeight: isToday ? 600 : 400 }}>{d}</span>
+                            <div style={{ transform: 'scale(0.7)' }}>
                                 <MoonIcon
+                                    percentage={Math.round(phase.percentage)}
                                     type={phase.type}
-                                    size={14}
-                                    color={isToday ? '#fff' : 'var(--text-main)'}
-                                    percentage={phase.percentage || 50}
+                                    color={isToday ? '#fff' : undefined}
                                 />
                             </div>
                         </div>
@@ -123,24 +141,10 @@ const Calendar = () => {
                 })}
             </div>
 
-            <div style={{ marginTop: '24px', padding: '16px', borderRadius: '12px', background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.05)' }}>
-                <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '12px', textAlign: 'center' }}>Cycles du Mois</div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '11px' }}>
-                        <span style={{ fontSize: '16px' }}>🌕</span>
-                        <div style={{ flex: 1 }}>
-                            <strong>5 Déc. :</strong> Pleine Lune du Capricorne
-                        </div>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '11px' }}>
-                        <span style={{ fontSize: '16px' }}>🌑</span>
-                        <div style={{ flex: 1 }}>
-                            <strong>19 Déc. :</strong> Nouvelle Lune du Verseau
-                        </div>
-                    </div>
-                </div>
-                <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid rgba(0,0,0,0.05)', fontSize: '10px', color: 'var(--text-muted)', fontStyle: 'italic', textAlign: 'center' }}>
-                    Les phases intermédiaires (○/●) marquent le flux de l'énergie entre ces deux portes.
+            <div style={{ marginTop: '20px', padding: '16px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
+                <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '12px', textAlign: 'center' }}>Cycles Lunaires</div>
+                <div style={{ fontSize: '11px', color: 'var(--text-muted)', textAlign: 'center', fontStyle: 'italic' }}>
+                    Calculé dynamiquement selon le cycle synodique de 29.53 jours.
                 </div>
             </div>
         </div>
