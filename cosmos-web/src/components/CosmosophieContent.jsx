@@ -56,25 +56,16 @@ const List = ({ items }) => (
     <ul style={{
         listStyle: 'none',
         padding: 0,
-        margin: '20px 0 30px 0'
+        margin: '20px 0 30px 0',
+        textAlign: 'left'
     }}>
         {items.map((item, index) => (
             <li key={index} style={{
                 marginBottom: '12px',
-                paddingLeft: '20px',
-                position: 'relative',
                 fontSize: '15px',
-                lineHeight: '1.6'
+                lineHeight: '1.6',
+                color: 'var(--text-main)'
             }}>
-                <span style={{
-                    position: 'absolute',
-                    left: 0,
-                    top: '8px',
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    backgroundColor: 'var(--accent)'
-                }} />
                 {item}
             </li>
         ))}
