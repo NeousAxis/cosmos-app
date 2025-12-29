@@ -268,7 +268,7 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
             />
             <PhaseBlock
                 title="Le Service"
-                content="Comment servir au mieux mes semblables ? Quelle réalisation est plus adaptée au progrès humain ? Quelle part de moi accomplit le plus grand Dessein ?"
+                content="Quelles sont les conséquences de mes actes ?"
             />
 
             <QuoteBlock>
