@@ -66,20 +66,21 @@ const Calendar = () => {
 
     const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 
-    // Paires de signes pour chaque mois
+    // Paires de signes pour chaque mois (Logique Solaire / Émetteur)
+    // Décembre = Capricorne / Verseau
     const monthSignsPairs = [
-        "Capricorne / Verseau", // Janvier
-        "Verseau / Poissons",   // Février
-        "Poissons / Bélier",    // Mars
-        "Bélier / Taureau",     // Avril
-        "Taureau / Gémeaux",    // Mai
-        "Gémeaux / Cancer",     // Juin
-        "Cancer / Lion",        // Juillet
-        "Lion / Vierge",        // Août
-        "Vierge / Balance",     // Septembre
-        "Balance / Scorpion",   // Octobre
-        "Scorpion / Sagittaire",// Novembre
-        "Sagittaire / Capricorne" // Décembre
+        "Verseau / Poissons",   // Janvier
+        "Poissons / Bélier",    // Février
+        "Bélier / Taureau",     // Mars
+        "Taureau / Gémeaux",    // Avril
+        "Gémeaux / Cancer",     // Mai
+        "Cancer / Lion",        // Juin
+        "Lion / Vierge",        // Juillet
+        "Vierge / Balance",     // Août
+        "Balance / Scorpion",   // Septembre
+        "Scorpion / Sagittaire",// Octobre
+        "Sagittaire / Capricorne",// Novembre
+        "Capricorne / Verseau"  // Décembre
     ];
 
     const daysCount = getDaysInMonth(year, month);
