@@ -11,7 +11,7 @@ import Constellation from './components/Constellation';
 import CosmosLogo from './components/CosmosLogo';
 import Calendar from './components/Calendar';
 import MoonPhase from './components/MoonPhase';
-import { Sparkles, BookOpen, Calendar as CalendarIcon, Feather, Quote, Bell } from 'lucide-react';
+import { Sparkles, BookOpen, Calendar as CalendarIcon, Feather, Quote, Bell, Settings } from 'lucide-react';
 import { CAPRICORN_QUOTES } from './data/quotes';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -643,57 +643,11 @@ function App() {
           </motion.div>
         )}
 
-        {activeTab === 'symbolique' && (
+        {activeTab === 'parametres' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-            <section className="sign-card" style={{ padding: '32px 24px' }}>
-              <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', textAlign: 'center', marginBottom: '8px' }}>Symbolique du Signe</h3>
-              <h4 style={{ fontFamily: 'Playfair Display', fontSize: '18px', textAlign: 'center', marginBottom: '32px', fontWeight: 400, color: 'var(--text-muted)' }}>
-                {sign.name} – Énergies, fonctions, effets et ombres
-              </h4>
-
-              {sign.symbolique_detaillee && (
-                <div style={{
-                  marginBottom: '48px',
-                  whiteSpace: 'pre-wrap',
-                  fontFamily: 'Inter',
-                  fontSize: '15px',
-                  lineHeight: '1.8',
-                  color: 'var(--text-main)',
-                  textAlign: 'left'
-                }}>
-                  {sign.symbolique_detaillee.replace(/^1\. Fonction/, '1. Fonction')} {/* Retire le titre s'il est dupliqué dans la string */}
-                </div>
-              )}
-
-              {sign.intro_splendeur && (
-                <div style={{
-                  marginBottom: '32px',
-                  fontFamily: 'Playfair Display',
-                  fontSize: '18px',
-                  lineHeight: '1.6',
-                  textAlign: 'center',
-                  color: 'var(--text-main)'
-                }}>
-                  {sign.intro_splendeur}
-                </div>
-              )}
-
-              <div style={{ width: '40px', height: '1px', background: 'var(--text-muted)', margin: '0 auto 32px' }} />
-
-              {sign.parole_ame && (
-                <div style={{
-                  fontFamily: 'Playfair Display',
-                  fontSize: '18px',
-                  fontStyle: 'italic',
-                  lineHeight: '1.8',
-                  textAlign: 'center',
-                  paddingLeft: '16px',
-                  paddingRight: '16px',
-                  // Masquer "L'âme parle ;" si présent au début pour le styliser ou le laisser tel quel
-                }}>
-                  {sign.parole_ame}
-                </div>
-              )}
+            <section className="sign-card" style={{ padding: '32px 24px', textAlign: 'center' }}>
+              <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', marginBottom: '24px' }}>Paramètres</h3>
+              <p style={{ color: 'var(--text-muted)' }}>Prochainement...</p>
             </section>
           </motion.div>
         )}
@@ -717,7 +671,7 @@ function App() {
         <TabButton id="cosmosophie" icon={<BookOpen size={20} />} label="Cosmosophie" />
         <TabButton id="inspiration" icon={<Quote size={20} />} label="Inspiration" />
         <TabButton id="calendrier" icon={<CalendarIcon size={20} />} label="Calendrier" />
-        <TabButton id="symbolique" icon={<Feather size={20} />} label="Symbolique" />
+        <TabButton id="parametres" icon={<Settings size={20} />} label="Paramètres" />
       </nav>
 
       <AnimatePresence>
