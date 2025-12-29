@@ -259,6 +259,69 @@ function App() {
                 /* Contenu Mode Symbolique */
                 <div style={{ animation: 'fadeIn 0.3s ease', textAlign: 'left' }}>
 
+                  {/* --- Partie Poétique (Style "Splendeur") --- */}
+                  <div style={{ marginBottom: '40px', paddingBottom: '40px', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
+
+                    {/* Citation Top Centrée */}
+                    <div style={{
+                      fontFamily: 'Playfair Display',
+                      fontStyle: 'italic',
+                      fontSize: '16px',
+                      textAlign: 'center',
+                      color: 'var(--text-muted)',
+                      marginBottom: '32px',
+                      padding: '0 20px'
+                    }}>
+                      "{sign.intro_splendeur.split('.')[0]}."
+                    </div>
+                    <div style={{ width: '40px', height: '1px', background: 'var(--text-muted)', margin: '0 auto 40px' }} />
+
+                    {/* Texte Intro */}
+                    {sign.intro_splendeur && (
+                      <div style={{
+                        marginBottom: '40px',
+                        fontFamily: 'Playfair Display',
+                        fontSize: '19px',
+                        lineHeight: '1.6',
+                        textAlign: 'left',
+                        color: 'var(--text-main)'
+                      }}>
+                        {sign.intro_splendeur}
+                      </div>
+                    )}
+
+                    {/* L'âme parle (Avec Barre Verticale) */}
+                    {sign.parole_ame && (
+                      <div style={{
+                        position: 'relative',
+                        paddingLeft: '32px',
+                        borderLeft: '4px solid var(--accent)',
+                        fontFamily: 'Playfair Display',
+                        fontSize: '19px',
+                        fontStyle: 'italic',
+                        lineHeight: '1.8',
+                        color: 'var(--text-main)',
+                        background: '#f9f9f7',
+                        padding: '24px 24px 24px 32px',
+                        backgroundColor: 'rgba(0,0,0,0.02)'
+                      }}>
+                        {(() => {
+                          const marker = "L’âme parle ;";
+                          if (sign.parole_ame.includes(marker)) {
+                            const parts = sign.parole_ame.split(marker);
+                            return (
+                              <>
+                                <strong>{marker}</strong>
+                                {parts[1]}
+                              </>
+                            );
+                          }
+                          return sign.parole_ame;
+                        })()}
+                      </div>
+                    )}
+                  </div>
+
                   {/* --- Partie Éducative --- */}
                   <h3 style={{ fontFamily: 'Playfair Display', fontSize: '26px', textAlign: 'center', marginBottom: '8px', marginTop: '0' }}>Symbolique du Signe</h3>
                   <h4 style={{ fontFamily: 'Playfair Display', fontSize: '18px', textAlign: 'center', marginBottom: '40px', fontWeight: 400, color: 'var(--text-muted)' }}>
@@ -308,69 +371,7 @@ function App() {
                     </div>
                   )}
 
-                  {/* --- Partie Poétique (Style "Splendeur") --- */}
-                  <div style={{ marginTop: '40px', paddingTop: '40px', borderTop: '1px solid rgba(0,0,0,0.1)' }}>
 
-                    {/* Citation Top Centrée (si dispo, optionnel selon maquette, ici on utilise un extrait de l'intro) */}
-                    <div style={{
-                      fontFamily: 'Playfair Display',
-                      fontStyle: 'italic',
-                      fontSize: '16px',
-                      textAlign: 'center',
-                      color: 'var(--text-muted)',
-                      marginBottom: '32px',
-                      padding: '0 20px'
-                    }}>
-                      "{sign.intro_splendeur.split('.')[0]}."
-                    </div>
-                    <div style={{ width: '40px', height: '1px', background: 'var(--text-muted)', margin: '0 auto 40px' }} />
-
-                    {/* Texte Intro */}
-                    {sign.intro_splendeur && (
-                      <div style={{
-                        marginBottom: '40px',
-                        fontFamily: 'Playfair Display',
-                        fontSize: '19px',
-                        lineHeight: '1.6',
-                        textAlign: 'left', // Justifié ou left selon préférence, left est plus web-safe pour la lecture
-                        color: 'var(--text-main)'
-                      }}>
-                        {sign.intro_splendeur}
-                      </div>
-                    )}
-
-                    {/* L'âme parle (Avec Barre Verticale) */}
-                    {sign.parole_ame && (
-                      <div style={{
-                        position: 'relative',
-                        paddingLeft: '32px', // Espace pour la barre
-                        borderLeft: '4px solid var(--accent)', // La barre bleue
-                        fontFamily: 'Playfair Display',
-                        fontSize: '19px',
-                        fontStyle: 'italic',
-                        lineHeight: '1.8',
-                        color: 'var(--text-main)',
-                        background: '#f9f9f7', // Légère teinte de fond optionnelle pour faire ressortir le bloc ? Non, restons sur du transparent comme l'image semble le montrer (ou un fond très subtil gris)
-                        padding: '24px 24px 24px 32px', // Padding autour
-                        backgroundColor: 'rgba(0,0,0,0.02)' // Très subtil fond pour unifier le bloc
-                      }}>
-                        {/* On met en gras "L'âme parle ;" si présent */}
-                        {(() => {
-                          const marker = "L’âme parle ;";
-                          if (sign.parole_ame.includes(marker)) {
-                            const parts = sign.parole_ame.split(marker);
-                            return (
-                              <>
-                                <strong>{marker}</strong>
-                                {parts[1]}
-                              </>
-                            );
-                          }
-                          return sign.parole_ame;
-                        })()}
-                      </div>
-                    )}
-                  </div>
 
                 </div>
               ) : (
