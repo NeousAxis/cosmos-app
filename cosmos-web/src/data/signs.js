@@ -400,11 +400,11 @@ Une maîtrise qui ne repose pas sur la domination, mais sur l’intériorisation
 
 Cette maîtrise se manifeste par :
 
-la capacité à tenir une forme dans le temps,
+• la capacité à tenir une forme dans le temps,
 
-la capacité à assumer les conséquences de ses actes,
+• la capacité à assumer les conséquences de ses actes,
 
-la capacité à agir sans se servir personnellement de ce qui est accompli.
+• la capacité à agir sans se servir personnellement de ce qui est accompli.
 
 Le Capricorne transforme la puissance en justesse et l’élan en responsabilité.
 
