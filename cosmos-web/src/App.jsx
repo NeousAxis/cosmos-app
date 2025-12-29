@@ -55,17 +55,8 @@ function App() {
     // 2. Récupérer la phase active depuis le calendrier perpétuel
     let activePhase = getPhaseForDate(now);
 
-    // FIX RADICAL INCONDITIONNEL
-    if (true) {
-      activePhase = {
-        signId: 'capricorn',
-        phaseId: 'integration',
-        dates: {
-          start: '2025-12-28',
-          end: '2026-01-03'
-        }
-      };
-    }
+    // FIX RADICAL RETIRÉ - Retour à la logique dynamique
+    // activePhase est déterminé par getPhaseForDate(now) ci-dessus
 
     // 3. Charger les infos du signe
     let currentSign = null;
@@ -121,8 +112,23 @@ function App() {
 
   /* --- CALCUL DYNAMIQUE DU POURCENTAGE --- */
   const getPhasePercentage = () => {
-    // FIX RADICAL INCONDITIONNEL
-    return '52%';
+    if (!phase || !phase.start || !phase.end) return '0%';
+
+    const start = new Date(phase.start).getTime();
+    const end = new Date(phase.end).getTime();
+    const now = new Date().getTime(); // Utilise l'heure réelle
+
+    // Sécurité calcul
+    if (end <= start) return '100%';
+
+    const total = end - start;
+    const elapsed = now - start;
+    let p = Math.round((elapsed / total) * 100);
+
+    if (p < 0) p = 0;
+    if (p > 100) p = 100;
+
+    return `${p}%`;
   };
 
   const TabButton = ({ id, label, icon }) => (
