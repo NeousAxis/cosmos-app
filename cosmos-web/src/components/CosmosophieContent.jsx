@@ -271,6 +271,22 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
                 content="Quelles sont les conséquences de mes actes ?"
             />
 
+            <div style={{ marginTop: '40px', marginBottom: '40px' }}>
+                <Title>Conclusion</Title>
+                <Text>
+                    Ces poèmes, médités peuvent apporter la liberté. La liberté est la condition sine qua non pour arpenter l’existence, faire les choix nécessaires et réussir à unir en soi les opposés jusqu’à réfléchir l’éclatante Unité de tout ce qui est. Chaque atome et cellule du corps sont porteurs de l’union de l’origine et de la finalité. Face à la gravité du monde, le seul remède est de jouer par le questionnement à élever sa condition humaine qui est aussi celle de toute l’espèce humaine. Ne pas s’âme-user mais jouer. Jouez à questionner les profondeurs de l’âme jusqu’à l’embrasement de la raison. L’embrasement de la raison permet à l’âme d’accéder au cœur. Si vous ouvrez seulement votre cœur sans la raison, ce seront les émotions qui dicteront votre vie et elle passera continuellement du vacarme de la joie aux mugissements de la tristesse. Vous réagirez à chaque événement par des émotions qui affecteront votre lucidité. De la même façon, si votre raison est enflammée et que le cœur reste fermé alors, la froideur de vos mots apportera partout la douleur.
+                </Text>
+                <Text>
+                    Laissez l’âme imprimer sur votre intellect la partition de la vie. Jouez avec votre instrument cette profonde mélodie, accepter les fausses notes extérieures tant que la mélodie intérieure sonne juste. Menez votre existence comme l’eau de source qui descend de la montagne et embrassez toutes les opportunités, tous les chocs, tous les fracas et conduisez-les dans le silence de votre cœur ; là ils feront votre fortune.
+                </Text>
+                <Text>
+                    À la fin de votre vie, la seule question à laquelle vous essaierez de répondre sera : ai-je été moi ? Car au bout du moi, il y a l’autre qui est aussi une autre facette de moi et ensemble nous sommes les témoins rassemblés de l’Un. Vous percevrez alors la qualité des liens que vous avez tissés durant votre existence. Mais aussi la qualité de votre présence, celle que vous avez réservé à la vie et à tous ses instants précieux. Vous percevrez la grâce avec laquelle vous avez accueilli ce qui s’est présenté à vous puisque vous en êtes l’auteur. Et enfin, la simplicité que vous aurez appliqué à votre existence pour la rendre légère. Il s’agit d’une légèreté menée sérieusement comme celle du papillon sur la fleur qui accède à son nectar mais n’en prend qu’une infime quantité.
+                </Text>
+                <QuoteBlock>
+                    Que le déploiement des vertus de votre cœur réveille le monde. Que la Lumière qui émane de vous façonne l’existence. Que la bonne volonté soit à la base de vos pensées et l’amour à la base de vos actions. Chercher la perfection tout en sachant que le chemin est imparfait. C’est là la vertuosité.
+                </QuoteBlock>
+            </div>
+
             <QuoteBlock>
                 Voici douze poèmes issus de méditations où certaines aspirations furent offertes au travers des énergies astrologiques. Vous êtes invités à les lire, à laisser les mots et les formules invocatoires vous traverser et inspirer en vous une pensée, une émotion, une aspiration.
             </QuoteBlock>
@@ -305,14 +321,14 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
             </div>
 
             <div style={{ margin: '60px 0 20px 0', textAlign: 'center' }}>
-                <h3 style={{ fontFamily: 'Playfair Display', fontSize: '22px', marginBottom: '16px', color: 'var(--text-main)' }}>Les 12 Énergies de l'Année</h3>
+                <h3 style={{ fontFamily: 'Playfair Display', fontSize: '22px', marginBottom: '16px', color: 'var(--text-main)' }}>Les Douze Notes de la Splendeur</h3>
                 <p style={{ fontFamily: 'Inter', fontSize: '15px', color: 'var(--text-muted)', fontStyle: 'italic' }}>
                     Retrouvez ci-après dans une version poétique inspirée, toutes les énergies de l'année.
                 </p>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {sections && sections.map((section) => {
+                {sections && sections.map((section, index) => {
                     // Logique de parsing pour séparer le texte d'intro et la parole de l'âme
                     const splitRegex = /(?:L'|L’)(?:âme|Âme)\s+parle\s*[;:]\s*/i;
                     const parts = section.content.split(splitRegex);
@@ -356,8 +372,7 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
                                     fontWeight: 700,
                                     flexShrink: 0
                                 }}>
-                                    {/* On affiche la première lettre du signe ou un index si id est un nombre, ici id est le slug */}
-                                    {section.title.charAt(0)}
+                                    {index + 1}
                                 </div>
                                 <span style={{ fontFamily: 'Playfair Display', fontSize: '18px', flex: 1 }}>
                                     {section.title}
@@ -421,23 +436,6 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
                         </details>
                     );
                 })}
-            </div>
-
-            {/* CONCLUSION */}
-            <div style={{ marginTop: '60px', marginBottom: '40px' }}>
-                <Title>Conclusion</Title>
-                <Text>
-                    Ces poèmes, médités peuvent apporter la liberté. La liberté est la condition sine qua non pour arpenter l’existence, faire les choix nécessaires et réussir à unir en soi les opposés jusqu’à réfléchir l’éclatante Unité de tout ce qui est. Chaque atome et cellule du corps sont porteurs de l’union de l’origine et de la finalité. Face à la gravité du monde, le seul remède est de jouer par le questionnement à élever sa condition humaine qui est aussi celle de toute l’espèce humaine. Ne pas s’âme-user mais jouer. Jouez à questionner les profondeurs de l’âme jusqu’à l’embrasement de la raison. L’embrasement de la raison permet à l’âme d’accéder au cœur. Si vous ouvrez seulement votre cœur sans la raison, ce seront les émotions qui dicteront votre vie et elle passera continuellement du vacarme de la joie aux mugissements de la tristesse. Vous réagirez à chaque événement par des émotions qui affecteront votre lucidité. De la même façon, si votre raison est enflammée et que le cœur reste fermé alors, la froideur de vos mots apportera partout la douleur.
-                </Text>
-                <Text>
-                    Laissez l’âme imprimer sur votre intellect la partition de la vie. Jouez avec votre instrument cette profonde mélodie, accepter les fausses notes extérieures tant que la mélodie intérieure sonne juste. Menez votre existence comme l’eau de source qui descend de la montagne et embrassez toutes les opportunités, tous les chocs, tous les fracas et conduisez-les dans le silence de votre cœur ; là ils feront votre fortune.
-                </Text>
-                <Text>
-                    À la fin de votre vie, la seule question à laquelle vous essaierez de répondre sera : ai-je été moi ? Car au bout du moi, il y a l’autre qui est aussi une autre facette de moi et ensemble nous sommes les témoins rassemblés de l’Un. Vous percevrez alors la qualité des liens que vous avez tissés durant votre existence. Mais aussi la qualité de votre présence, celle que vous avez réservé à la vie et à tous ses instants précieux. Vous percevrez la grâce avec laquelle vous avez accueilli ce qui s’est présenté à vous puisque vous en êtes l’auteur. Et enfin, la simplicité que vous aurez appliqué à votre existence pour la rendre légère. Il s’agit d’une légèreté menée sérieusement comme celle du papillon sur la fleur qui accède à son nectar mais n’en prend qu’une infime quantité.
-                </Text>
-                <QuoteBlock>
-                    Que le déploiement des vertus de votre cœur réveille le monde. Que la Lumière qui émane de vous façonne l’existence. Que la bonne volonté soit à la base de vos pensées et l’amour à la base de vos actions. Chercher la perfection tout en sachant que le chemin est imparfait. C’est là la vertuosité.
-                </QuoteBlock>
             </div>
         </div>
     );
