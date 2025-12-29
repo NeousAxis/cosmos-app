@@ -293,7 +293,7 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
 
             <div style={{ marginTop: '40px', textAlign: 'center', background: 'rgba(0,0,0,0.03)', padding: '32px 20px', borderRadius: '16px' }}>
                 <p style={{ fontFamily: 'Inter', fontSize: '15px', color: 'var(--text-main)', marginBottom: '24px', lineHeight: '1.6' }}>
-                    Chaque mois vous retrouverez dans l'onglet
+                    Chaque mois, retrouvez le signe de la Roue Cosmique accompagné d'une lecture approfondie de l'énergie mensuelle.
                 </p>
                 <button
                     onClick={onNavigateToSymbolique}
@@ -307,7 +307,7 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
                         fontWeight: 600,
                         cursor: 'pointer',
                         boxShadow: '0 4px 12px rgba(var(--accent-rgb), 0.3)',
-                        marginBottom: '24px',
+                        marginBottom: '0',
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '8px'
@@ -315,9 +315,6 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
                 >
                     Lecture Symbolique
                 </button>
-                <p style={{ fontFamily: 'Inter', fontSize: '15px', color: 'var(--text-main)', marginBottom: 0, lineHeight: '1.6' }}>
-                    le signe du mois de la Roue de Cosmique avec une lecture approfondie de l'énergie mensuelle.
-                </p>
             </div>
 
             <div style={{ margin: '60px 0 20px 0', textAlign: 'center' }}>
