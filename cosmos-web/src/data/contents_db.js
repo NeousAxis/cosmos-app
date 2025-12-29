@@ -16,7 +16,7 @@ Dans cette dynamique, le Capricorne ne représente pas le pouvoir vertical, mais
 La phrase-clé qui éclaire cette transition est :
 « Passer du contrôle à la maîtrise par une écoute profonde de l’intuition. »
 
-Cette intuition n’est pas individuelle. Elle est l’expression de la conscience collective du Verseau, une lumière diffuse qui circule à travers les groupes humains. L’énergie du Capricorne permet à cette intuition collective de se distribuer dans le réel, de devenir structure, règle juste et cadre vivant.
+Cette intuition n’est pas individuelle. Elle est l’expression de la conscience collective du Verseau, une lumière ardente qui circule à travers les groupes humains. L’énergie du Capricorne permet à cette intuition collective de se distribuer dans le réel, de devenir structure, règle juste et cadre vivant.
 
 Silencieusement, une nouvelle forme d’autorité se met en place. Elle ne se proclame pas, elle se reconnaît dans l’action. Elle ne s’impose pas, elle se manifeste lorsque le groupe agit en cohérence avec ce qu’il perçoit ensemble comme juste.`;
 
@@ -86,7 +86,7 @@ Elle cesse d’être guidée par la peur de perdre le contrôle pour s’appuyer
 
 La maîtrise, au contraire, devient possible lorsque l’on fait confiance aux compétences que la vie nous a permis de développer au fil des expériences, des réussites comme des échecs.
 
-Cette confiance est incarnée, elle repose sur ce qui a déjà été traversé et intégré. Là où le contrôle tente d’empêcher le réel d’advenir, la maîtrise s’appuie sur la capacité à y répondre avec justesse. La résistance apparaît lorsque l’on doute de cette compétence intérieure et que l’on préfère sur-anticiper plutôt que s’engager pleinement.
+Cette confiance est incarnée, elle repose sur ce qui a déjà été traversé et intégré. Il faut également ajouter que la maîtrise est aussi une confiance en l'avenir, en l'incertitude du fait d'une meilleure compréhension de l'intelligence de la vie à toujours s'organiser dans la juste direction. Là où le contrôle tente d’empêcher le réel d’advenir, la maîtrise s’appuie sur la capacité à y répondre avec justesse. La résistance apparaît lorsque l’on doute de cette compétence intérieure et que l’on préfère sur-anticiper plutôt que s’engager pleinement.
 
 Écouter l’intuition demande alors un courage particulier, celui de reconnaître que l’on est déjà capable, même sans garantie absolue.`,
                 action: `Observer où le contrôle s’exerce par réflexe, agenda saturé, décisions prises trop vite, besoin de tout valider mentalement. À ces endroits précis, ralentir volontairement et créer un espace d’écoute avant l’action, même bref.
