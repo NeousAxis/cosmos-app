@@ -10,6 +10,7 @@ import Meditation from './components/Meditation';
 import Constellation from './components/Constellation';
 import CosmosLogo from './components/CosmosLogo';
 import Calendar from './components/Calendar';
+import CosmosophieContent from './components/CosmosophieContent';
 import MoonPhase from './components/MoonPhase';
 import { Sparkles, BookOpen, Calendar as CalendarIcon, Feather, Quote, Bell, Settings } from 'lucide-react';
 import { CAPRICORN_QUOTES } from './data/quotes';
@@ -433,61 +434,8 @@ function App() {
 
         {activeTab === 'cosmosophie' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-            <section className="vulgarisation-block" style={{ padding: '24px' }}>
-              <h3 style={{ fontFamily: 'Playfair Display', fontSize: '22px', marginBottom: '32px', textAlign: 'center' }}>Les Douze Notes de la Splendeur</h3>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {COSMOSOPHIE_SECTIONS.map((section, index) => (
-                  <details
-                    key={section.id}
-                    style={{
-                      background: 'rgba(0,0,0,0.02)',
-                      borderRadius: '12px',
-                      overflow: 'hidden',
-                      border: '1px solid rgba(0,0,0,0.05)'
-                    }}
-                  >
-                    <summary style={{
-                      padding: '16px 20px',
-                      cursor: 'pointer',
-                      fontWeight: 600,
-                      fontSize: '15px',
-                      color: 'var(--text-main)',
-                      userSelect: 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px'
-                    }}>
-                      <span style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '28px',
-                        height: '28px',
-                        borderRadius: '50%',
-                        background: 'var(--accent)',
-                        color: '#fff',
-                        fontSize: '13px',
-                        fontWeight: 700,
-                        flexShrink: 0
-                      }}>
-                        {section.id}
-                      </span>
-                      <span style={{ flex: 1 }}>{section.title}</span>
-                    </summary>
-                    <div style={{
-                      padding: '0 20px 20px 60px',
-                      fontSize: '14px',
-                      lineHeight: '1.7',
-                      color: 'var(--text-main)',
-                      whiteSpace: 'pre-line',
-                      textAlign: 'justify'
-                    }}>
-                      {section.content}
-                    </div>
-                  </details>
-                ))}
-              </div>
+            <section className="vulgarisation-block" style={{ padding: 0 }}>
+              <CosmosophieContent />
             </section>
           </motion.div>
         )}
