@@ -92,7 +92,7 @@ const PhaseBlock = ({ title, content }) => (
     </div>
 );
 
-export default function CosmosophieContent() {
+export default function CosmosophieContent({ sections, onNavigateToSymbolique }) {
     return (
         <div style={{ padding: '10px 10px 80px 10px' }}>
             <h2 style={{
@@ -283,6 +283,84 @@ export default function CosmosophieContent() {
             <QuoteBlock>
                 Voici douze poèmes issus de méditations où certaines aspirations furent offertes au travers des énergies astrologiques. Vous êtes invités à les lire, à laisser les mots et les formules invocatoires vous traverser et inspirer en vous une pensée, une émotion, une aspiration.
             </QuoteBlock>
+
+            <div style={{ marginTop: '40px', textAlign: 'center', background: 'rgba(0,0,0,0.03)', padding: '32px 20px', borderRadius: '16px' }}>
+                <p style={{ fontFamily: 'Inter', fontSize: '15px', color: 'var(--text-main)', marginBottom: '24px', lineHeight: '1.6' }}>
+                    Chaque mois vous retrouverez dans l'onglet
+                </p>
+                <button
+                    onClick={onNavigateToSymbolique}
+                    style={{
+                        background: 'var(--accent)',
+                        color: '#fff',
+                        border: 'none',
+                        padding: '12px 24px',
+                        borderRadius: '30px',
+                        fontSize: '15px',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 12px rgba(var(--accent-rgb), 0.3)',
+                        marginBottom: '24px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                    }}
+                >
+                    Lecture Symbolique
+                </button>
+                <p style={{ fontFamily: 'Inter', fontSize: '15px', color: 'var(--text-main)', marginBottom: 0, lineHeight: '1.6' }}>
+                    le signe du mois de la Roue de Cosmique avec une lecture approfondie de l'énergie du signe.
+                </p>
+            </div>
+
+            <div style={{ margin: '60px 0 20px 0', textAlign: 'center' }}>
+                <h3 style={{ fontFamily: 'Playfair Display', fontSize: '22px', marginBottom: '16px', color: 'var(--text-main)' }}>Les 12 Énergies de l'Année</h3>
+                <p style={{ fontFamily: 'Inter', fontSize: '15px', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+                    Retrouvez ci-après dans une version poétique inspirée, toutes les énergies de l'année.
+                </p>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                {sections && sections.map((section) => (
+                    <div key={section.id} style={{
+                        background: '#fff',
+                        borderRadius: '16px',
+                        padding: '24px',
+                        boxShadow: '0 2px 10px rgba(0,0,0,0.03)',
+                        border: '1px solid rgba(0,0,0,0.05)'
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                            <span style={{
+                                width: '28px',
+                                height: '28px',
+                                borderRadius: '50%',
+                                background: 'var(--accent)',
+                                color: '#fff',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '13px',
+                                fontWeight: 700
+                            }}>
+                                {section.id}
+                            </span>
+                            <h4 style={{ margin: 0, fontFamily: 'Playfair Display', fontSize: '18px', color: 'var(--text-main)' }}>
+                                {section.title}
+                            </h4>
+                        </div>
+                        <p style={{
+                            fontFamily: 'Inter',
+                            fontSize: '14px',
+                            lineHeight: '1.8',
+                            color: 'var(--text-main)',
+                            whiteSpace: 'pre-line',
+                            textAlign: 'justify'
+                        }}>
+                            {section.content}
+                        </p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

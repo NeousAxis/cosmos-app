@@ -435,7 +435,14 @@ function App() {
         {activeTab === 'cosmosophie' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
             <section className="vulgarisation-block" style={{ padding: 0 }}>
-              <CosmosophieContent />
+              <CosmosophieContent
+                sections={COSMOSOPHIE_SECTIONS}
+                onNavigateToSymbolique={() => {
+                  setActiveTab('energie');
+                  setEnergyMode('symbolique');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              />
             </section>
           </motion.div>
         )}
