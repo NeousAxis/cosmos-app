@@ -300,7 +300,7 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
                     Lecture Symbolique
                 </button>
                 <p style={{ fontFamily: 'Inter', fontSize: '15px', color: 'var(--text-main)', marginBottom: 0, lineHeight: '1.6' }}>
-                    le signe du mois de la Roue de Cosmique avec une lecture approfondie de l'énergie du signe.
+                    le signe du mois de la Roue de Cosmique avec une lecture approfondie de l'énergie mensuelle.
                 </p>
             </div>
 
