@@ -74,9 +74,9 @@ Ce mois invite à faire moins, mais plus juste, à laisser l’intuition guider 
                 action: "Je choisis de transmettre une compétence ou une vision claire à quelqu'un qui en a besoin, sans attente de retour."
             },
             "integration": {
-                lecture_reel: `Un déplacement profond s’opère entre la volonté de tout tenir, tout organiser, tout anticiper, et la nécessité d’apprendre à faire confiance à une intelligence plus vaste que le mental.
+                lecture_reel: `Un déplacement profond s’opère entre la volonté de tout contrôler, tout organiser, tout anticiper, et la nécessité d’apprendre à faire confiance à une intelligence plus vaste que le mental.
 
-Intérieurement, une tension peut apparaître entre le besoin de sécurité, d’efficacité et de maîtrise rationnelle, et l’émergence d’une perception plus fine, plus directe, qui ne passe pas par l’analyse mais par le ressenti juste.
+Intérieurement, une tension peut apparaître entre le besoin de sécurité, d’efficacité et de contrôle rationnel, et l’émergence d’une perception plus fine, plus directe, qui ne passe pas par l’analyse mais par le ressenti juste.
 
 Ce qui se joue n’est pas un lâcher-prise passif, mais un changement de centre de pilotage. L’action ne disparaît pas, elle se décale.
 
