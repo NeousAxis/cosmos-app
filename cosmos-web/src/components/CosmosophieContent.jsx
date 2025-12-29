@@ -311,46 +311,133 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
                 </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                {sections && sections.map((section) => (
-                    <div key={section.id} style={{
-                        background: '#fff',
-                        borderRadius: '16px',
-                        padding: '24px',
-                        boxShadow: '0 2px 10px rgba(0,0,0,0.03)',
-                        border: '1px solid rgba(0,0,0,0.05)'
-                    }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                            <span style={{
-                                width: '28px',
-                                height: '28px',
-                                borderRadius: '50%',
-                                background: 'var(--accent)',
-                                color: '#fff',
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {sections && sections.map((section) => {
+                    // Logique de parsing pour séparer le texte d'intro et la parole de l'âme
+                    const splitRegex = /(?:L'|L’)(?:âme|Âme)\s+parle\s*[;:]\s*/i;
+                    const parts = section.content.split(splitRegex);
+                    const introText = parts[0].trim();
+                    const soulText = parts.length > 1 ? parts[1].trim() : "";
+
+                    // Extraction de la première phrase pour l'exergue
+                    const firstSentenceEnd = introText.indexOf('.');
+                    const quote = firstSentenceEnd > -1 ? introText.substring(0, firstSentenceEnd + 1) : introText;
+
+                    return (
+                        <details key={section.id} style={{
+                            background: '#fff',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(0,0,0,0.05)',
+                            overflow: 'hidden',
+                            boxShadow: '0 2px 5px rgba(0,0,0,0.02)'
+                        }}>
+                            <summary style={{
+                                padding: '20px 24px',
+                                cursor: 'pointer',
+                                fontWeight: 600,
+                                fontSize: '16px',
+                                color: 'var(--text-main)',
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'center',
-                                fontSize: '13px',
-                                fontWeight: 700
+                                gap: '16px',
+                                userSelect: 'none',
+                                listStyle: 'none'
                             }}>
-                                {section.id}
-                            </span>
-                            <h4 style={{ margin: 0, fontFamily: 'Playfair Display', fontSize: '18px', color: 'var(--text-main)' }}>
-                                {section.title}
-                            </h4>
-                        </div>
-                        <p style={{
-                            fontFamily: 'Inter',
-                            fontSize: '14px',
-                            lineHeight: '1.8',
-                            color: 'var(--text-main)',
-                            whiteSpace: 'pre-line',
-                            textAlign: 'justify'
-                        }}>
-                            {section.content}
-                        </p>
-                    </div>
-                ))}
+                                <div style={{
+                                    width: '32px',
+                                    height: '32px',
+                                    borderRadius: '50%',
+                                    background: 'var(--accent)',
+                                    color: '#fff',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '14px',
+                                    fontWeight: 700,
+                                    flexShrink: 0
+                                }}>
+                                    {/* On affiche la première lettre du signe ou un index si id est un nombre, ici id est le slug */}
+                                    {section.title.charAt(0)}
+                                </div>
+                                <span style={{ fontFamily: 'Playfair Display', fontSize: '18px', flex: 1 }}>
+                                    {section.title}
+                                </span>
+                                <span style={{ color: 'var(--accent)', fontSize: '20px' }}>+</span>
+                            </summary>
+
+                            <div style={{ padding: '0 24px 32px 24px', borderTop: '1px solid rgba(0,0,0,0.03)' }}>
+                                {/* Citation en exergue */}
+                                <div style={{
+                                    fontFamily: 'Playfair Display',
+                                    fontSize: '18px',
+                                    fontStyle: 'italic',
+                                    textAlign: 'center',
+                                    color: 'var(--text-muted)',
+                                    margin: '32px 0 24px 0',
+                                    padding: '0 20px',
+                                    lineHeight: '1.6'
+                                }}>
+                                    "{quote}"
+                                </div>
+
+                                <div style={{ width: '40px', height: '1px', background: 'var(--accent)', margin: '0 auto 32px auto' }}></div>
+
+                                {/* Texte Principal */}
+                                <p style={{
+                                    fontFamily: 'Playfair Display',
+                                    fontSize: '16px',
+                                    lineHeight: '1.8',
+                                    color: 'var(--text-main)',
+                                    marginBottom: '32px',
+                                    whiteSpace: 'pre-line',
+                                    textAlign: 'justify'
+                                }}>
+                                    {introText}
+                                </p>
+
+                                {/* Bloc Âme Parle */}
+                                {soulText && (
+                                    <div style={{
+                                        background: '#F9F9F9',
+                                        padding: '24px',
+                                        borderLeft: '4px solid var(--accent)',
+                                        borderRadius: '0 8px 8px 0'
+                                    }}>
+                                        <p style={{
+                                            fontFamily: 'Playfair Display',
+                                            fontSize: '16px',
+                                            lineHeight: '1.8',
+                                            color: 'var(--text-main)',
+                                            margin: 0,
+                                            fontStyle: 'italic',
+                                            textAlign: 'justify'
+                                        }}>
+                                            <strong style={{ fontStyle: 'normal', color: '#000' }}>L'âme parle : </strong>
+                                            {soulText}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+                        </details>
+                    );
+                })}
+            </div>
+
+            {/* CONCLUSION */}
+            <div style={{ marginTop: '60px', marginBottom: '40px' }}>
+                <Title>Conclusion</Title>
+                <Text>
+                    Ces poèmes, médités peuvent apporter la liberté. La liberté est la condition sine qua none pour arpenter l’existence, faire les choix nécessaires et réussir à unir en soi les opposés jusqu’à réfléchir l’éclatante Unité de tout ce qui est. Chaque atome et cellule du corps sont porteurs de l’union de l’origine et de la finalité. Face à la gravité du monde, le seul remède est de jouer par le questionnement à élever sa condition humaine qui est aussi celle de toute l’espèce humaine. Ne pas s’âme-user mais jouer. Jouez à questionner les profondeurs de l’âme jusqu’à l’embrasement de la raison. L’embrasement de la raison permet à l’âme d’accéder au cœur. Si vous ouvrez seulement votre cœur sans la raison, ce seront les émotions qui dicteront votre vie et elle passera continuellement du vacarme de la joie aux mugissements de la tristesse. Vous réagirez à chaque événement par des émotions qui affecterons votre lucidité. De la même façon, si votre raison est enflammée et que le cœur reste fermé alors, la froideur de vos mots apportera partout la douleur.
+                </Text>
+                <Text>
+                    Laissez l’âme imprimer sur votre intellect la partition de la vie. Jouez avec votre instrument cette profonde mélodie, accepter les fausses notes extérieures tant que la mélodie intérieure sonne juste. Menez votre existence comme l’eau de source qui descend de la montagne et embrassez toutes les opportunités, tous les chocs, tous les fracas et conduisez-les dans le silence de votre cœur ; là ils feront votre fortune.
+                </Text>
+                <Text>
+                    À la fin de votre vie, la seule question à laquelle vous essaierez de répondre sera : ai-je été moi ? Car au bout du moi, il y a l’autre qui est aussi une autre facette de moi et ensemble nous sommes les témoins rassemblés de l’Un. Vous percevrez alors la qualité des liens que vous avez tissés durant votre existence. Mais aussi la qualité de votre présence, celle que vous avez réservé à la vie et à tous ses instants précieux. Vous percevrez la grâce avec laquelle vous avez accueilli ce qui s’est présenté à vous puisque vous en êtes l’auteur. Et enfin, la simplicité que vous aurez appliqué à votre existence pour la rendre légère. Il s’agit d’une légèreté menée sérieusement comme celle du papillon sur la fleur qui accède à son nectar mais n’en prend qu’une infime quantité.
+                </Text>
+                <QuoteBlock>
+                    Que le déploiement des vertus de votre cœur réveille le monde. Que la Lumière qui émane de vous façonne l’existence. Que la bonne volonté soit à la base de vos pensées et l’amour à la base de vos actions. Chercher la perfection tout en sachant que le chemin est imparfait. C’est là la vertuosité.
+                </QuoteBlock>
             </div>
         </div>
     );
