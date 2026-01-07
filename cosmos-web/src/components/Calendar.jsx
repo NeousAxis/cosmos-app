@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import MoonIcon from './MoonIcon';
+import { CALENDAR } from '../data/calendar';
 
 const Calendar = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
@@ -41,6 +42,29 @@ const Calendar = () => {
 
         return { type, label, percentage: visualPercent, fraction };
     };
+
+    const getManualPeak = (date) => {
+        // Ajustement pour UTC/Locale : on compare YYYY-MM-DD
+        // On utilise l'heure locale de date (qui est passée comme new Date(y, m, d, 12, 0, 0))
+        // Donc toISOString() pourrait décaler s'il est minuit, mais ici on est à midi.
+        // Le plus sûr :
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const dateStr = `${year}-${month}-${day}`;
+
+        for (const signCycle of CALENDAR) {
+            if (signCycle.year === year || signCycle.year === year - 1 || signCycle.year === year + 1) {
+                for (const phase of signCycle.phases) {
+                    if (phase.peak === dateStr) {
+                        return phase.id;
+                    }
+                }
+            }
+        }
+        return null;
+    };
+
 
     const getDaysInMonth = (year, month) => {
         return new Date(year, month + 1, 0).getDate();
@@ -95,61 +119,21 @@ const Calendar = () => {
     }
 
     // Calcul des dates clés (NL et PL) pour la légende
-    // On cherche les jours où la fraction est la plus proche de 0 (NL) et 0.5 (PL)
-    // Attention : il peut y avoir 2 NL ou 2 PL dans un mois (très rare mais possible, ex: Blue Moon)
-    // Ici on simplifie en prenant les principales
     const getMoonEvents = () => {
-        const events = [];
+        let bestNew = null;
+        let bestFull = null;
+
         for (let d = 1; d <= daysCount; d++) {
             const date = new Date(year, month, d, 12, 0, 0);
-            const frac = getMoonPhaseFraction(date);
+            const peak = getManualPeak(date);
 
-            // Nouvelle Lune (proche de 0 ou 1)
-            // Seuil très strict pour ne pas détecter plusieurs jours
-            // Le cycle est continu. Le minimum local de distance à 0/1 indique le jour J.
-            // Simplification : on utilise getPhaseInfo avec un seuil strict
-
-            // Meilleure approche : détecter le passage ou utiliser getPhaseInfo
-            // On va utiliser getPhaseInfo et ne garder que le jour qui est 'new' ou 'full' ET le plus proche de l'idéal
+            if (peak === 'integration') bestNew = d; // Integration = Nouvelle Lune
+            if (peak === 'contact') bestFull = d;    // Contact = Pleine Lune
         }
-
-        // Approche par recherche du min/max local de précision
-        let bestNew = { dist: 1, day: null };
-        let bestFull = { dist: 1, day: null };
-
-        // On scanne les jours pour trouver le jour le plus "New" et le plus "Full"
-        for (let d = 1; d <= daysCount; d++) {
-            const date = new Date(year, month, d, 12, 0, 0);
-            const frac = getMoonPhaseFraction(date);
-
-            const distNew = Math.min(frac, 1 - frac);
-            const distFull = Math.abs(frac - 0.5);
-
-            // Si on a plusieurs occurrences (ex début et fin de mois), on peut avoir besoin d'une liste
-            // Pour l'instant, prenons la première occurrence significative.
-            // Une NL/PL dure ~1-2 jours visuellement, mais mathématiquement 1 instant.
-
-            // On va simplement chercher les jours qui sont typés 'new' ou 'full' par notre algo principal
-            const info = getPhaseInfo(date);
-
-            if (info.type === 'new') {
-                if (bestNew.day === null || distNew < bestNew.dist) {
-                    bestNew = { dist: distNew, day: d };
-                }
-            }
-            if (info.type === 'full') {
-                if (bestFull.day === null || distFull < bestFull.dist) {
-                    bestFull = { dist: distFull, day: d };
-                }
-            }
-        }
-
-        // Raffinement : si on veut supporter 2 PL dans le mois, il faudrait détecter les changements de pente.
-        // Pour l'instant, affichons au moins une de chaque si elles existent.
 
         return {
-            newMoon: bestNew.day,
-            fullMoon: bestFull.day
+            newMoon: bestNew,
+            fullMoon: bestFull
         };
     };
 
@@ -180,8 +164,20 @@ const Calendar = () => {
 
                     const isToday = d === today.getDate() && month === today.getMonth() && year === today.getFullYear();
                     const dateObj = new Date(year, month, d, 12, 0, 0);
-                    const phase = getPhaseInfo(dateObj);
-                    const isMainPhase = phase.type === 'full' || phase.type === 'new';
+
+                    // 1. Récupérer l'info algorithmique par défaut
+                    let phase = getPhaseInfo(dateObj);
+
+                    // 2. Vérifier si c'est un Peak Manuel (Force Override)
+                    const manualPeak = getManualPeak(dateObj);
+                    const isMainPhase = !!manualPeak;
+
+                    if (manualPeak) {
+                        if (manualPeak === 'alignement') phase = { ...phase, type: 'quarter-waxing', label: 'Premier Quartier', percentage: 50 };
+                        if (manualPeak === 'contact') phase = { ...phase, type: 'full', label: 'Pleine Lune', percentage: 100 };
+                        if (manualPeak === 'distribution') phase = { ...phase, type: 'quarter-waning', label: 'Dernier Quartier', percentage: 50 };
+                        if (manualPeak === 'integration') phase = { ...phase, type: 'new', label: 'Nouvelle Lune', percentage: 0 };
+                    }
 
                     return (
                         <div
