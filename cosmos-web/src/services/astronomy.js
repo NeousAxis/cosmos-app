@@ -131,7 +131,8 @@ function buildFinalCalendar(phases) {
 function getMidpointDate(d1, d2) {
     const t1 = d1.getTime();
     const t2 = d2.getTime();
-    return new Date((t1 + t2) / 2);
+    // Bias backwards by 18 hours to ensure cutoffs align with user preference (Strictly earlier)
+    return new Date((t1 + t2) / 2 - (18 * 60 * 60 * 1000));
 }
 
 function addDays(date, days) {
