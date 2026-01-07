@@ -461,17 +461,67 @@ function App() {
 
                             <div className="teaching-text">
                               {(() => {
-                                if (actionTab === 'alignement') {
-                                  // Texte spécifique demandé
-                                  const text = `Pendant cette phase du cycle, il est intéressant d'observer où le contrôle s’exerce par réflexe, agenda saturé, décisions prises trop vite, besoin de tout valider mentalement. À ces endroits précis, ralentir volontairement et créer un espace d’écoute avant l’action, même bref.
+                                let title = "";
+                                let text = "";
+
+                                switch (actionTab) {
+                                  case 'alignement':
+                                    text = `Pendant cette phase du cycle, il est intéressant d'observer où le contrôle s’exerce par réflexe, agenda saturé, décisions prises trop vite, besoin de tout valider mentalement. À ces endroits précis, ralentir volontairement et créer un espace d’écoute avant l’action, même bref.
 
 Avant une décision importante, poser une question simple et attendre la réponse sans la forcer, est-ce juste maintenant. La réponse ne vient pas sous forme de raisonnement, mais de clarté intérieure, de tension ou de détente.
 
 Ce mois invite à faire moins, mais plus juste, à laisser l’intuition guider la structure plutôt que l’inverse, et à agir en confiance à partir de ce qui est déjà maîtrisé intérieurement.`;
-                                  return formatText(text);
-                                } else {
-                                  return <p style={{ fontStyle: 'italic', color: 'var(--text-muted)', textAlign: 'center' }}>Contenu à venir pour la phase {actionTab}...</p>;
+                                    break;
+                                  case 'contact':
+                                    title = "Reconnaître comment la peur crée la séparation";
+                                    text = `Pendant cette phase, il devient possible de ressentir plus finement comment la peur engendre une forme de dualité intérieure. La peur divise, elle place face à la situation, face aux autres, face au futur, comme s’il fallait se défendre ou se protéger de ce qui advient.
+
+Observer comment le contrôle naît souvent de cette séparation. Lorsque la peur est active, l’expérience se fragmente : il y a ce que je veux maîtriser, ce qui me résiste, et moi au centre, tendu entre les deux. Cette posture consomme beaucoup d’énergie et rigidifie la perception.
+
+Le Contact invite à ne pas combattre cette peur, mais à la regarder avec lucidité. En la reconnaissant, la séparation commence déjà à se dissoudre. Ce qui était perçu comme une menace devient un terrain d’apprentissage. L’autorité ne se cherche plus à l’extérieur, elle se réorganise intérieurement.
+
+Cette phase permet de sentir que la maîtrise véritable ne naît pas de l’opposition, mais de la capacité à rester présent au cœur de ce qui est vécu.`;
+                                    break;
+                                  case 'distribution':
+                                    title = "Explorer ce que la confiance rend possible";
+                                    text = `Cette phase ouvre une question essentielle : à quoi ressemblerait une vie guidée par la confiance plutôt que par la peur ? Non pas une confiance naïve, mais une confiance ancrée dans l’expérience, forgée par ce qui a déjà été traversé et intégré.
+
+Observer comment les décisions changeraient si elles n’étaient plus dictées par l’urgence de contrôler. Comment l’action pourrait devenir plus simple, plus juste, plus alignée. La confiance ne supprime pas l’effort, elle en change la qualité. Elle permet d’agir sans se disperser.
+
+Puis élargir la perception. Imaginer ce que deviendrait le monde si les structures humaines étaient guidées par cette même confiance. Des structures capables de soutenir la vie plutôt qu’au service de la peur, des règles au service du vivant plutôt qu’au service de la peur.
+
+La Distribution est une phase d’ouverture. Elle permet de laisser circuler une vision plus vaste, non comme un idéal abstrait, mais comme une orientation intérieure qui commence à influencer concrètement les choix quotidiens.`;
+                                    break;
+                                  case 'integration':
+                                    title = "Ancrer la confiance par l’expérience vivante";
+                                    text = `Le Capricorne n’intègre pas par austérité mais par une stabilisation mentale, émotionnelle et physique. Bien qu’il soit un signe sérieux, il intègre profondément par le jeu, à l’image du cabri qui explore, trébuche, recommence et apprend à maîtriser son environnement par l’expérience directe. Sa rigueur n’exclut pas la joie de l’essai, elle s’y appuie.
+
+Dans cette phase, il ne s’agit donc pas de figer une posture idéale, mais de l’éprouver dans le réel, encore et encore. Le Capricorne comprend que la maîtrise ne se décrète pas, elle se construit par l’expérimentation patiente, par l’ajustement progressif, par l’intelligence du corps autant que de l’esprit.
+
+La confiance du Capricorne est double. Elle s’enracine dans les expériences qui l’ont forgé, ce qui a été vécu, tenté, parfois raté, puis intégré. Mais elle ne s’y limite pas. Elle inclut aussi une confiance en l’avenir, une capacité à avancer vers l’inconnu sans garantie, précisément parce que l’on sait pouvoir apprendre en chemin.
+
+Le mot confiance vient de confidere, se fier avec. Il exprime une alliance intérieure, une fidélité à ce qui est reconnu comme juste, même lorsque le chemin n’est pas entièrement visible. Être confiant, ce n’est pas avoir éliminé la dualité, c’est ne plus en avoir peur.
+
+Durant cette phase, il est essentiel de ne pas craindre de retomber dans la dualité, car cela arrivera nécessairement. Nous sommes pétris d’habitudes, de réflexes anciens, de mécanismes de contrôle. Le plus important n’est pas d’éviter ces retours, mais de ne pas abandonner la posture sous prétexte d’imperfection.
+
+Le Capricorne sait que chaque chute affine la maîtrise. Chaque retour du contrôle devient un terrain de jeu pour apprendre à revenir à la confiance. C’est ainsi que, progressivement, la posture cesse d’être un effort conscient et devient une manière d’être.
+
+Intégrer, pour le Capricorne, c’est transformer l’expérience répétée en stabilité vivante.
+Non une rigidité,
+mais une base solide, joyeuse et fiable,
+à partir de laquelle il peut s’élancer vers l’Un-connu,
+le mystère qu’il reconnaît déjà en lui.`;
+                                    break;
+                                  default:
+                                    return <p style={{ fontStyle: 'italic', color: 'var(--text-muted)', textAlign: 'center' }}>Contenu à venir pour la phase {actionTab}...</p>;
                                 }
+
+                                return (
+                                  <div className="teaching-text-container">
+                                    {title && <h4 style={{ fontFamily: 'Playfair Display', fontSize: '18px', marginBottom: '16px', color: 'var(--text-main)', marginTop: 0 }}>{title}</h4>}
+                                    {formatText(text)}
+                                  </div>
+                                );
                               })()}
                             </div>
                           </div>
