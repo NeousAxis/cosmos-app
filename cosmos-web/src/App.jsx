@@ -7,7 +7,7 @@ import { getMeditationSign } from './utils';
 import { getPhaseForDate } from './data/calendar';
 import { getMoonTrend } from './services/astronomy';
 import { CONTENTS_DB } from './data/contents_db';
-import Meditation from './components/Meditation';
+import { CONTENTS_DB } from './data/contents_db';
 import Constellation from './components/Constellation';
 import CosmosLogo from './components/CosmosLogo';
 import Calendar from './components/Calendar';
@@ -44,7 +44,6 @@ function App() {
   });
 
   const [activeTab, setActiveTab] = useState('energie');
-  const [isMeditationOpen, setIsMeditationOpen] = useState(false);
   const [phaseContent, setPhaseContent] = useState({});
   const [energyMode, setEnergyMode] = useState('individuel');
 
@@ -430,14 +429,7 @@ function App() {
               )}
             </section>
 
-            <section style={{ textAlign: 'center' }}>
-              <button
-                className="btn-primary"
-                onClick={() => setIsMeditationOpen(true)}
-              >
-                Lancer la Pratique (10 min)
-              </button>
-            </section>
+
           </motion.div>
         )}
 
@@ -645,15 +637,7 @@ function App() {
         <TabButton id="parametres" icon={<Settings size={20} />} label="Paramètres" />
       </nav>
 
-      <AnimatePresence>
-        {isMeditationOpen && (
-          <Meditation
-            sign={sign}
-            phase={phase}
-            onClose={() => setIsMeditationOpen(false)}
-          />
-        )}
-      </AnimatePresence>
+
     </div>
   );
 }
