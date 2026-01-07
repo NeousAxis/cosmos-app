@@ -687,21 +687,21 @@ export const CALENDAR = [
       {
         "id": "alignement",
         "start": "2025-12-24",
-        "end": "2025-12-31"
+        "end": "2025-12-30"
       },
       {
         "id": "contact",
-        "start": "2026-01-01",
-        "end": "2026-01-07"
+        "start": "2025-12-31",
+        "end": "2026-01-06"
       },
       {
         "id": "distribution",
-        "start": "2026-01-08",
-        "end": "2026-01-15"
+        "start": "2026-01-07",
+        "end": "2026-01-14"
       },
       {
         "id": "integration",
-        "start": "2026-01-16",
+        "start": "2026-01-15",
         "end": "2026-01-22"
       }
     ]
@@ -718,11 +718,11 @@ export const CALENDAR = [
       {
         "id": "contact",
         "start": "2026-01-30",
-        "end": "2026-02-06"
+        "end": "2026-02-05"
       },
       {
         "id": "distribution",
-        "start": "2026-02-07",
+        "start": "2026-02-06",
         "end": "2026-02-13"
       },
       {
@@ -739,22 +739,22 @@ export const CALENDAR = [
       {
         "id": "alignement",
         "start": "2026-02-21",
-        "end": "2026-02-28"
+        "end": "2026-02-27"
       },
       {
         "id": "contact",
-        "start": "2026-03-01",
-        "end": "2026-03-07"
+        "start": "2026-02-28",
+        "end": "2026-03-06"
       },
       {
         "id": "distribution",
-        "start": "2026-03-08",
-        "end": "2026-03-15"
+        "start": "2026-03-07",
+        "end": "2026-03-14"
       },
       {
         "id": "integration",
-        "start": "2026-03-16",
-        "end": "2026-03-22"
+        "start": "2026-03-15",
+        "end": "2026-03-21"
       }
     ]
   },
@@ -764,23 +764,23 @@ export const CALENDAR = [
     "phases": [
       {
         "id": "alignement",
-        "start": "2026-03-23",
+        "start": "2026-03-22",
         "end": "2026-03-29"
       },
       {
         "id": "contact",
         "start": "2026-03-30",
-        "end": "2026-04-06"
+        "end": "2026-04-05"
       },
       {
         "id": "distribution",
-        "start": "2026-04-07",
+        "start": "2026-04-06",
         "end": "2026-04-13"
       },
       {
         "id": "integration",
         "start": "2026-04-14",
-        "end": "2026-04-21"
+        "end": "2026-04-20"
       }
     ]
   },
@@ -790,23 +790,23 @@ export const CALENDAR = [
     "phases": [
       {
         "id": "alignement",
-        "start": "2026-04-22",
-        "end": "2026-04-28"
+        "start": "2026-04-21",
+        "end": "2026-04-27"
       },
       {
         "id": "contact",
-        "start": "2026-04-29",
+        "start": "2026-04-28",
         "end": "2026-05-05"
       },
       {
         "id": "distribution",
         "start": "2026-05-06",
-        "end": "2026-05-13"
+        "end": "2026-05-12"
       },
       {
         "id": "integration",
-        "start": "2026-05-14",
-        "end": "2026-05-20"
+        "start": "2026-05-13",
+        "end": "2026-05-19"
       }
     ]
   },
@@ -816,23 +816,23 @@ export const CALENDAR = [
     "phases": [
       {
         "id": "alignement",
-        "start": "2026-05-21",
-        "end": "2026-05-27"
+        "start": "2026-05-20",
+        "end": "2026-05-26"
       },
       {
         "id": "contact",
-        "start": "2026-05-28",
-        "end": "2026-06-04"
+        "start": "2026-05-27",
+        "end": "2026-06-03"
       },
       {
         "id": "distribution",
-        "start": "2026-06-05",
+        "start": "2026-06-04",
         "end": "2026-06-11"
       },
       {
         "id": "integration",
         "start": "2026-06-12",
-        "end": "2026-06-19"
+        "end": "2026-06-18"
       }
     ]
   },
@@ -842,23 +842,23 @@ export const CALENDAR = [
     "phases": [
       {
         "id": "alignement",
-        "start": "2026-06-20",
-        "end": "2026-06-26"
+        "start": "2026-06-19",
+        "end": "2026-06-25"
       },
       {
         "id": "contact",
-        "start": "2026-06-27",
+        "start": "2026-06-26",
         "end": "2026-07-03"
       },
       {
         "id": "distribution",
         "start": "2026-07-04",
-        "end": "2026-07-11"
+        "end": "2026-07-10"
       },
       {
         "id": "integration",
-        "start": "2026-07-12",
-        "end": "2026-07-18"
+        "start": "2026-07-11",
+        "end": "2026-07-17"
       }
     ]
   },
@@ -868,23 +868,23 @@ export const CALENDAR = [
     "phases": [
       {
         "id": "alignement",
-        "start": "2026-07-19",
-        "end": "2026-07-26"
+        "start": "2026-07-18",
+        "end": "2026-07-25"
       },
       {
         "id": "contact",
-        "start": "2026-07-27",
-        "end": "2026-08-02"
+        "start": "2026-07-26",
+        "end": "2026-08-01"
       },
       {
         "id": "distribution",
-        "start": "2026-08-03",
-        "end": "2026-08-09"
+        "start": "2026-08-02",
+        "end": "2026-08-08"
       },
       {
         "id": "integration",
-        "start": "2026-08-10",
-        "end": "2026-08-17"
+        "start": "2026-08-09",
+        "end": "2026-08-16"
       }
     ]
   },
@@ -894,23 +894,23 @@ export const CALENDAR = [
     "phases": [
       {
         "id": "alignement",
-        "start": "2026-08-18",
-        "end": "2026-08-24"
+        "start": "2026-08-17",
+        "end": "2026-08-23"
       },
       {
         "id": "contact",
-        "start": "2026-08-25",
+        "start": "2026-08-24",
         "end": "2026-08-31"
       },
       {
         "id": "distribution",
         "start": "2026-09-01",
-        "end": "2026-09-08"
+        "end": "2026-09-07"
       },
       {
         "id": "integration",
-        "start": "2026-09-09",
-        "end": "2026-09-15"
+        "start": "2026-09-08",
+        "end": "2026-09-14"
       }
     ]
   },
@@ -920,23 +920,23 @@ export const CALENDAR = [
     "phases": [
       {
         "id": "alignement",
-        "start": "2026-09-16",
-        "end": "2026-09-23"
+        "start": "2026-09-15",
+        "end": "2026-09-22"
       },
       {
         "id": "contact",
-        "start": "2026-09-24",
-        "end": "2026-09-30"
+        "start": "2026-09-23",
+        "end": "2026-09-29"
       },
       {
         "id": "distribution",
-        "start": "2026-10-01",
-        "end": "2026-10-07"
+        "start": "2026-09-30",
+        "end": "2026-10-06"
       },
       {
         "id": "integration",
-        "start": "2026-10-08",
-        "end": "2026-10-15"
+        "start": "2026-10-07",
+        "end": "2026-10-14"
       }
     ]
   },
@@ -946,23 +946,23 @@ export const CALENDAR = [
     "phases": [
       {
         "id": "alignement",
-        "start": "2026-10-16",
-        "end": "2026-10-22"
+        "start": "2026-10-15",
+        "end": "2026-10-21"
       },
       {
         "id": "contact",
-        "start": "2026-10-23",
+        "start": "2026-10-22",
         "end": "2026-10-29"
       },
       {
         "id": "distribution",
         "start": "2026-10-30",
-        "end": "2026-11-06"
+        "end": "2026-11-05"
       },
       {
         "id": "integration",
-        "start": "2026-11-07",
-        "end": "2026-11-13"
+        "start": "2026-11-06",
+        "end": "2026-11-12"
       }
     ]
   },
@@ -972,23 +972,23 @@ export const CALENDAR = [
     "phases": [
       {
         "id": "alignement",
-        "start": "2026-11-14",
-        "end": "2026-11-21"
+        "start": "2026-11-13",
+        "end": "2026-11-20"
       },
       {
         "id": "contact",
-        "start": "2026-11-22",
-        "end": "2026-11-28"
+        "start": "2026-11-21",
+        "end": "2026-11-27"
       },
       {
         "id": "distribution",
-        "start": "2026-11-29",
-        "end": "2026-12-05"
+        "start": "2026-11-28",
+        "end": "2026-12-04"
       },
       {
         "id": "integration",
-        "start": "2026-12-06",
-        "end": "2026-12-13"
+        "start": "2026-12-05",
+        "end": "2026-12-12"
       }
     ]
   },
