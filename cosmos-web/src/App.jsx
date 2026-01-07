@@ -191,11 +191,14 @@ function App() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)', marginRight: '4px' }}>
+                      {getMoonTrend()}
+                    </span>
                     <MoonPhase phaseId={phase.id} percentageStr={getPhasePercentage()} />
                     <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-main)' }}>{getPhasePercentage()}</span>
                   </div>
                   <span className="phase-name">
-                    {phase.name} <span style={{ opacity: 0.6, fontWeight: 400 }}>· {getMoonTrend()}</span>
+                    {phase.name}
                   </span>
                 </div>
               </div>

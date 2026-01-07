@@ -7,32 +7,31 @@ const MoonPhase = ({ phaseId, percentageStr = "0%" }) => {
 
     let emoji = '🌑';
 
-    // Logique de sélection précise de l'Emoji basé sur la phase Cosmos et sa progression
+    // Logique de sélection précise de l'Emoji basée sur les phases Cosmos
+    // Alignement : De 45° (Mid New-1Q) à 135° (Mid 1Q-Full). Centre: 1Q (90°)
     if (phaseId === 'alignement') {
-        // De Nouvelle Lune à Premier Quartier
-        if (progress < 40) emoji = '🌑';      // Nouvelle Lune
-        else if (progress < 75) emoji = '🌒'; // Croissant
-        else emoji = '🌓';                    // Quartier
+        if (progress < 30) emoji = '🌒';      // Croissant
+        else if (progress < 70) emoji = '🌓'; // Premier Quartier
+        else emoji = '🌔';                    // Gibbeuse Croissante
     }
+    // Contact : De 135° (Mid 1Q-Full) à 225° (Mid Full-LastQ). Centre: Full (180°)
     else if (phaseId === 'contact') {
-        // De Premier Quartier à Pleine Lune
-        if (progress < 30) emoji = '🌓';      // Quartier
-        else if (progress < 70) emoji = '🌔'; // Gibbeuse Croissante
-        else emoji = '🌕';                    // Pleine Lune
+        if (progress < 30) emoji = '🌔';      // Gibbeuse Croissante
+        else if (progress < 70) emoji = '🌕'; // Pleine Lune
+        else emoji = '🌖';                    // Gibbeuse Décroissante
     }
+    // Distribution : De 225° (Mid Full-LastQ) à 315° (Mid LastQ-New). Centre: LastQ (270°)
     else if (phaseId === 'distribution') {
-        // De Pleine Lune à Dernier Quartier
-        if (progress < 40) emoji = '🌕';      // Pleine Lune
-        else if (progress < 75) emoji = '🌖'; // Gibbeuse Décroissante
-        else emoji = '🌗';                    // Dernier Quartier
+        if (progress < 30) emoji = '🌖';      // Gibbeuse Décroissante
+        else if (progress < 70) emoji = '🌗'; // Dernier Quartier
+        else emoji = '🌘';                    // Dernier Croissant
     }
+    // Intégration : De 315° (Mid LastQ-New) à 45° (Mid New-1Q). Centre: New (0/360°)
     else if (phaseId === 'integration') {
-        // De Dernier Quartier à Nouvelle Lune
-        if (progress < 60) emoji = '🌗';      // Dernier Quartier (étendu pour couvrir 52%)
-        else if (progress < 85) emoji = '🌘'; // Dernier Croissant
-        else emoji = '🌑';                    // Nouvelle Lune
+        if (progress < 30) emoji = '🌘';      // Dernier Croissant
+        else if (progress < 70) emoji = '🌑'; // Nouvelle Lune
+        else emoji = '🌒';                    // Premier Croissant (Cycle suivant)
     } else {
-        // Fallback ou période de transition
         emoji = '🌑';
     }
 
