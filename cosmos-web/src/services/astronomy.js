@@ -22,6 +22,16 @@ function getMoonPhaseInternal(date) {
 }
 
 /**
+ * Retourne la tendance lunaire (Croissant ou Décroissant)
+ */
+export function getMoonTrend(date = new Date()) {
+    const phase = getMoonPhaseInternal(date);
+    // 0.0 - 0.5 = Croissant (Waxing)
+    // 0.5 - 1.0 = Décroissant (Waning)
+    return phase < 0.5 ? 'Croissant' : 'Décroissant';
+}
+
+/**
  * Trouve les dates précises des 4 phases majeures pour une année donnée
  * Algorithme simplifié de recherche de pics
  */

@@ -5,6 +5,7 @@ import { FESTIVALS } from './data/festivals';
 import { COSMOSOPHIE_SECTIONS } from './data/splendeur';
 import { getMeditationSign } from './utils';
 import { getPhaseForDate } from './data/calendar';
+import { getMoonTrend } from './services/astronomy';
 import { CONTENTS_DB } from './data/contents_db';
 import Meditation from './components/Meditation';
 import Constellation from './components/Constellation';
@@ -116,11 +117,14 @@ function App() {
     if (!phase || !phase.start || !phase.end) return '0%';
 
     const start = new Date(phase.start).getTime();
-    const end = new Date(phase.end).getTime();
-    const now = new Date().getTime(); // Utilise l'heure réelle
+    // La date de fin est inclusive (fin de la journée), on ajoute donc 1 jour pour le calcul
+    const endRaw = new Date(phase.end);
+    const end = new Date(endRaw.getTime() + 86400000).getTime();
 
-    // Sécurité calcul
-    if (end <= start) return '100%';
+    const now = new Date().getTime();
+
+    if (now >= end) return '100%';
+    if (now <= start) return '0%';
 
     const total = end - start;
     const elapsed = now - start;
@@ -183,14 +187,16 @@ function App() {
             <section className="vulgarisation-block">
               <div className="phase-header">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span className="section-title" style={{ marginBottom: 0 }}>PHASE DU CYCLE</span>
+                  <span className="section-title" style={{ marginBottom: 0 }}>PHASE LUNAIRE</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <MoonPhase phaseId={phase.id} percentageStr={getPhasePercentage()} />
                     <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-main)' }}>{getPhasePercentage()}</span>
                   </div>
-                  <span className="phase-name">{phase.name}</span>
+                  <span className="phase-name">
+                    {phase.name} <span style={{ opacity: 0.6, fontWeight: 400 }}>· {getMoonTrend()}</span>
+                  </span>
                 </div>
               </div>
 
