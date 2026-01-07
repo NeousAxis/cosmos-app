@@ -5,7 +5,7 @@ import { FESTIVALS } from './data/festivals';
 import { COSMOSOPHIE_SECTIONS } from './data/splendeur';
 import { getMeditationSign } from './utils';
 import { getPhaseForDate } from './data/calendar';
-import { getMoonTrend } from './services/astronomy';
+
 import { CONTENTS_DB } from './data/contents_db';
 import Constellation from './components/Constellation';
 import CosmosLogo from './components/CosmosLogo';
@@ -193,7 +193,12 @@ function App() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)', marginRight: '4px' }}>
-                      {getMoonTrend()}
+                      {({
+                        alignement: 'Premier Quartier',
+                        contact: 'Pleine Lune',
+                        distribution: 'Dernier Quartier',
+                        integration: 'Nouvelle Lune'
+                      })[phase.id]}
                     </span>
                     <MoonPhase phaseId={phase.id} percentageStr={getPhasePercentage()} />
                     <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-main)' }}>{getPhasePercentage()}</span>
