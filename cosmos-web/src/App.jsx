@@ -46,6 +46,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('energie');
   const [phaseContent, setPhaseContent] = useState({});
   const [energyMode, setEnergyMode] = useState('individuel');
+  const [actionTab, setActionTab] = useState('alignement');
 
   /* --- CHARGEMENT DES DONNÉES (AUTO + MANUEL) --- */
   useEffect(() => {
@@ -419,8 +420,60 @@ function App() {
                                 « {sign.note_cle} »
                               </p>
                             </div>
-                            <span className="teaching-label">Ce que cette phrase invite à ajuster concrètement</span>
-                            {formatText(phaseContent.action)}
+                            <span className="teaching-label" style={{ marginBottom: '16px', display: 'block' }}>Comment s'ajuster intérieurement pendant les 4 phases du cycle mensuel.</span>
+
+                            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+                              <div style={{
+                                display: 'flex',
+                                background: 'rgba(0,0,0,0.05)',
+                                padding: '4px',
+                                borderRadius: '24px',
+                                gap: '4px',
+                                flexWrap: 'wrap',
+                                justifyContent: 'center'
+                              }}>
+                                {['Alignement', 'Contact', 'Distribution', 'Intégration'].map((tab) => {
+                                  const id = tab.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // alignement, contact, distribution, integration
+                                  const isActive = actionTab === id;
+                                  return (
+                                    <button
+                                      key={id}
+                                      onClick={() => setActionTab(id)}
+                                      style={{
+                                        padding: '6px 14px',
+                                        borderRadius: '20px',
+                                        border: 'none',
+                                        background: isActive ? 'var(--text-main)' : 'transparent',
+                                        color: isActive ? '#fff' : 'var(--text-muted)',
+                                        fontSize: '12px',
+                                        fontWeight: 500,
+                                        cursor: 'pointer',
+                                        transition: 'all 0.2s ease',
+                                        fontFamily: 'Inter'
+                                      }}
+                                    >
+                                      {tab}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+
+                            <div className="teaching-text">
+                              {(() => {
+                                if (actionTab === 'alignement') {
+                                  // Texte spécifique demandé
+                                  const text = `Pendant cette phase du cycle, il est intéressant d'observer où le contrôle s’exerce par réflexe, agenda saturé, décisions prises trop vite, besoin de tout valider mentalement. À ces endroits précis, ralentir volontairement et créer un espace d’écoute avant l’action, même bref.
+
+Avant une décision importante, poser une question simple et attendre la réponse sans la forcer, est-ce juste maintenant. La réponse ne vient pas sous forme de raisonnement, mais de clarté intérieure, de tension ou de détente.
+
+Ce mois invite à faire moins, mais plus juste, à laisser l’intuition guider la structure plutôt que l’inverse, et à agir en confiance à partir de ce qui est déjà maîtrisé intérieurement.`;
+                                  return formatText(text);
+                                } else {
+                                  return <p style={{ fontStyle: 'italic', color: 'var(--text-muted)', textAlign: 'center' }}>Contenu à venir pour la phase {actionTab}...</p>;
+                                }
+                              })()}
+                            </div>
                           </div>
                         </>
                       )}
