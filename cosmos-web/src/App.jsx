@@ -7,7 +7,6 @@ import { getMeditationSign } from './utils';
 import { getPhaseForDate } from './data/calendar';
 import { getMoonTrend } from './services/astronomy';
 import { CONTENTS_DB } from './data/contents_db';
-import { CONTENTS_DB } from './data/contents_db';
 import Constellation from './components/Constellation';
 import CosmosLogo from './components/CosmosLogo';
 import Calendar from './components/Calendar';
