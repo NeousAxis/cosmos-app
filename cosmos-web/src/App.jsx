@@ -161,10 +161,7 @@ function App() {
 
   return (
     <div className="app-container" style={{ paddingBottom: '90px' }}>
-      <header style={{ position: 'relative', paddingTop: '20px' }}>
-        <div style={{ position: 'absolute', right: '20px', top: '20px', zIndex: 10 }}>
-          <PremiumButton onClick={() => alert("L'offre Premium sera bientôt disponible ! 🌟")} />
-        </div>
+      <header>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '8px' }}>
           <CosmosLogo size={36} />
           <h1 style={{ margin: 0 }}>COSMOS</h1>
@@ -176,6 +173,7 @@ function App() {
 
       <main>
         {activeTab === 'energie' && (
+          // ... (keep existing content)
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
             <section className="sign-card">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '16px' }}>
@@ -436,6 +434,7 @@ function App() {
           </motion.div>
         )}
 
+        {/* ... (keep other tabs like cosmosophie, inspiration, etc.) */}
         {activeTab === 'cosmosophie' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
             <section className="vulgarisation-block" style={{ padding: 0 }}>
@@ -609,14 +608,7 @@ function App() {
           </motion.div>
         )}
 
-        {activeTab === 'parametres' && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-            <section className="sign-card" style={{ padding: '32px 24px', textAlign: 'center' }}>
-              <h3 style={{ fontFamily: 'Playfair Display', fontSize: '24px', marginBottom: '24px' }}>Paramètres</h3>
-              <p style={{ color: 'var(--text-muted)' }}>Prochainement...</p>
-            </section>
-          </motion.div>
-        )}
+        {/* Removed Parametres Tab Content since we removed the button */}
       </main>
 
       <nav style={{
@@ -637,9 +629,11 @@ function App() {
         <TabButton id="cosmosophie" icon={<BookOpen size={20} />} label="Cosmosophie" />
         <TabButton id="inspiration" icon={<Quote size={20} />} label="Inspiration" />
         <TabButton id="calendrier" icon={<CalendarIcon size={20} />} label="Calendrier" />
-        <TabButton id="parametres" icon={<Settings size={20} />} label="Paramètres" />
+        {/* Replaced Settings with Premium */}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <PremiumButton onClick={() => alert("L'offre Premium sera bientôt disponible ! 🌟")} />
+        </div>
       </nav>
-
 
     </div>
   );
