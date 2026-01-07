@@ -466,6 +466,7 @@ function App() {
 
                                 switch (actionTab) {
                                   case 'alignement':
+                                    title = "Identifier le contrôle et revenir à l’axe";
                                     text = `Pendant cette phase du cycle, il est intéressant d'observer où le contrôle s’exerce par réflexe, agenda saturé, décisions prises trop vite, besoin de tout valider mentalement. À ces endroits précis, ralentir volontairement et créer un espace d’écoute avant l’action, même bref.
 
 Avant une décision importante, poser une question simple et attendre la réponse sans la forcer, est-ce juste maintenant. La réponse ne vient pas sous forme de raisonnement, mais de clarté intérieure, de tension ou de détente.
@@ -488,7 +489,9 @@ Cette phase permet de sentir que la maîtrise véritable ne naît pas de l’opp
 
 Observer comment les décisions changeraient si elles n’étaient plus dictées par l’urgence de contrôler. Comment l’action pourrait devenir plus simple, plus juste, plus alignée. La confiance ne supprime pas l’effort, elle en change la qualité. Elle permet d’agir sans se disperser.
 
-Puis élargir la perception. Imaginer ce que deviendrait le monde si les structures humaines étaient guidées par cette même confiance. Des structures capables de soutenir la vie plutôt qu’au service de la peur, des règles au service du vivant plutôt qu’au service de la peur.
+Puis élargir la perception. Imaginer ce que deviendrait le monde si les structures humaines étaient guidées par cette même confiance. Des structures capables de soutenir la vie plutôt que de la contraindre, des règles au service du vivant plutôt qu’au service de la peur.
+
+Dans le corps, cela peut se traduire par un rythme plus posé, une respiration moins haute, des gestes plus économes et plus précis. L’action naît alors d’un centre stable, plutôt que d’une tension permanente.
 
 La Distribution est une phase d’ouverture. Elle permet de laisser circuler une vision plus vaste, non comme un idéal abstrait, mais comme une orientation intérieure qui commence à influencer concrètement les choix quotidiens.`;
                                     break;
