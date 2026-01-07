@@ -142,7 +142,7 @@ export default function CosmosophieContent({ sections, onNavigateToSymbolique })
 
             <PhaseBlock
                 title="1. Alignement Spirituel"
-                content="Le premier quartier de lune se rapporte au début d'un alignement avec l’une des douze constellations. Pour l’humain, c’est le temps de l’écoute, du silence pour que se réalise un alignement intérieur, un ajustement souterrain. Ce temps est comparable à la saison d’hiver qui laisse apparaître un endormissement extérieur, pendant que la nature organise sous le froid et la neige, sa future apogée. C’est une prise de contact avec l’émergence de la nouvelle énergie."
+                content="Le premier quartier de lune se rapporte au début d'un alignement avec l’une des douze constellations. Pour l’humain, c’est le temps de l’écoute, du silence pour que se réalise un alignement intérieur, un ajustement souterrain. Ce temps est comparable à la saison d’hiver qui laisse apparaître un endormissement extérieur, pendant que la nature organise sous le froid et la neige, sa future apogée. C’est un alignement intérieur avec la nouvelle énergie."
             />
 
             <PhaseBlock
