@@ -1,13 +1,13 @@
 
-import { generateCosmosCalendar } from './services/astronomy.js';
+import { generateCosmosCalendar } from './src/services/astronomy.js';
 import fs from 'fs';
 
 const years = [2025, 2026, 2027, 2028, 2029, 2030];
 let fullCalendar = [];
 
 years.forEach(year => {
-    const cal = generateCosmosCalendar(year);
-    fullCalendar = [...fullCalendar, ...cal];
+  const cal = generateCosmosCalendar(year);
+  fullCalendar = [...fullCalendar, ...cal];
 });
 
 const content = `/**
