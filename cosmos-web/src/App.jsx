@@ -12,6 +12,7 @@ import CosmosLogo from './components/CosmosLogo';
 import Calendar from './components/Calendar';
 import CosmosophieContent from './components/CosmosophieContent';
 import MoonPhase from './components/MoonPhase';
+import PremiumButton from './components/PremiumButton';
 import { Sparkles, BookOpen, Calendar as CalendarIcon, Feather, Quote, Bell, Settings } from 'lucide-react';
 import { CAPRICORN_QUOTES } from './data/quotes';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -160,7 +161,10 @@ function App() {
 
   return (
     <div className="app-container" style={{ paddingBottom: '90px' }}>
-      <header>
+      <header style={{ position: 'relative', paddingTop: '20px' }}>
+        <div style={{ position: 'absolute', right: '20px', top: '20px', zIndex: 10 }}>
+          <PremiumButton onClick={() => alert("L'offre Premium sera bientôt disponible ! 🌟")} />
+        </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '8px' }}>
           <CosmosLogo size={36} />
           <h1 style={{ margin: 0 }}>COSMOS</h1>
